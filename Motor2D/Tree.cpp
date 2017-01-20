@@ -30,6 +30,6 @@ void Tree::CreateNewCube()
 	p2SString name; name.create("TreeCube: %d", tree_cubes_list.count());
 	
 	// Create tree cube on the center point
-	TreeCube* tree_cube = new TreeCube({ center_point_top.x - (tree_cube->info.GetAnim()->frames[0].w/2) ,center_point_top.y }, name.GetString());
+	TreeCube* tree_cube = new TreeCube(iPoint(center_point_top.x, 1), name.GetString());
 	tree_cubes_list.add(tree_cube);
 }
