@@ -6,10 +6,13 @@
 
 struct CubePart
 {
+	CubePart() {  };
 	CubePart(iPoint _pos, SDL_Rect _rect)
 	{
-		pos = _pos; rect = { _rect.x, _rect.y, _rect.w, _rect.h };
-	}
+		pos = _pos; 
+		rect = { _rect.x, _rect.y, _rect.w, _rect.h };
+	};
+
 	iPoint pos;
 	SDL_Rect rect;
 };

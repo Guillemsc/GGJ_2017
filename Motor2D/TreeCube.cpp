@@ -4,7 +4,7 @@ TreeCube::TreeCube(iPoint position, const char * entity_name, p2List<SDL_Rect> r
 {
 	for (int i = 0; i < rects.count(); i++)
 	{
-		CubePart cubepart(iPoint(position.x, position.y + (i*rects[i].h)), rects[i]);
+		CubePart cubepart(iPoint(position.x, position.y + (i*rects[i].h)), { rects[i].x, rects[i].y, rects[i].w, rects[i].h });
 		tree_cube_parts.add(cubepart);
 	}
 }
