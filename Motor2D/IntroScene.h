@@ -4,6 +4,8 @@
 #include "Scene.h"
 
 class UIButton;
+class UIWindow;
+class UICheckBox;
 
 class IntroScene: public Scene{
 public:
@@ -27,9 +29,10 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 private:
-	UIButton* start_button;
-	UIButton* options_button;
-
+	UIButton*		start_button;
+	UIButton*		options_button;
+	UIWindow*		options_window;
+	UICheckBox*		music_check;
 public:
 
 private:
