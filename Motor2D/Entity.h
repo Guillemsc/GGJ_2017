@@ -5,6 +5,7 @@
 
 enum EntityType 
 {
+	Tree,
 	TreeCube,
 	Flower,
 	Branch,
