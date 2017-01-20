@@ -7,6 +7,7 @@ struct SDL_Texture;
 
 class Scene;
 class FirstScene;
+class IntroScene;
 
 class UIImage;
 class UILabel;
@@ -50,6 +51,7 @@ public:
 	Scene* current_scene = nullptr;
 
 	FirstScene* first_scene = nullptr;
+	IntroScene* intro_scene = nullptr;
 
 private:
 	SDL_Texture* debug_tex;

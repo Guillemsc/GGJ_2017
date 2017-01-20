@@ -20,6 +20,7 @@
 #include "j1Console.h"
 #include "FirstScene.h"
 #include "Scene.h"
+#include "IntroScene.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -42,11 +43,12 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	first_scene = new FirstScene();
+	//first_scene = new FirstScene();
+	intro_scene = new IntroScene();
 
 	if (current_scene == nullptr)
 	{
-		current_scene = first_scene;
+		current_scene = intro_scene;
 		current_scene->Start();
 	}
 
