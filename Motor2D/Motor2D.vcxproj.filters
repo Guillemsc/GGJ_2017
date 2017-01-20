@@ -85,6 +85,9 @@
     <ClCompile Include="IntroScene.cpp">
       <Filter>Desenvolupament  ========\Scenes\IntroScene</Filter>
     </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <Filter>Desenvolupament  ========\Entities\Grass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -225,6 +228,9 @@
     <ClInclude Include="IntroScene.h">
       <Filter>Desenvolupament  ========\Scenes\IntroScene</Filter>
     </ClInclude>
+    <ClInclude Include="Grass.h">
+      <Filter>Desenvolupament  ========\Entities\Grass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -268,6 +274,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Scenes\IntroScene">
       <UniqueIdentifier>{8a094a1a-a039-4024-a134-821257db10be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Entities\Grass">
+      <UniqueIdentifier>{4c118e74-edb8-48c3-ba3b-0efc740f46c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
