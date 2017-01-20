@@ -2,6 +2,9 @@
 #include "TreeCube.h"
 #include "Flower.h"
 #include "Branch.h"
+#include <random>
+#include <iostream>
+using namespace std;
 
 Tree::Tree()
 {
@@ -63,7 +66,22 @@ void Tree::CreateNewFlower()
 	p2SString name; name.create("Flower: %d", flower_list.count());
 
 	// Create flowers on a percentage
-	Flower* flower = new Flower();
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> random(0, 2); //0 don't create, 1 create in left, 2 create in rigth
+	int rand = random(gen);
+
+	switch (rand) {
+	case 1:
+		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_left");
+		break;
+	case 2:
+		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_right");
+		break;
+	default:
+		break;
+	}
+
 }
 
 void Tree::CreateNewBranch()
@@ -71,8 +89,22 @@ void Tree::CreateNewBranch()
 	// Set Name
 	p2SString name; name.create("Branch: %d", branch_list.count());
 
-	// Create flowers on a percentage
-	Branch* branch = new Branch();
+	// Create branchs on a percentage
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> random(0, 2); //0 don't create, 1 create in left, 2 create in rigth
+	int rand = random(gen);
+
+	switch (rand) {
+	case 1:
+		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_left");
+		break;
+	case 2:
+		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_right");
+		break;
+	default:
+		break;
+	}
 }
 
 // Update center_point_top
