@@ -25,7 +25,7 @@ bool Tree::Update(float dt)
 		if (create_cube)
 		{
 			CreateNewCube();
-			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->info.GetAnim()->frames[0].h;
+			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->GetHeight();
 			create_cube = false;
 		}
 
@@ -57,9 +57,9 @@ void Tree::CreateNewCube()
 	if (tree_cubes_list.count() == 0)
 		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString());
 	
-	else
 		// Create tree cube on the center point
-		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), center_point_top.y), name.GetString());
+	else
+		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString());
 
 	tree_cubes_list.add(tree_cube);
 }
@@ -123,8 +123,8 @@ void Tree::UpdateCenterPointTop()
 {
 	if (tree_cubes_list.count() > 0)
 	{
-		center_point_top.x = tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2);
-		center_point_top.y = tree_cubes_list.end->data->info.GetPos().y;
+		center_point_top.x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth() / 2);
+		center_point_top.y = tree_cubes_list.end->data->GetY();
 	}
 }
 

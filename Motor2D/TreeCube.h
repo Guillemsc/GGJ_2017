@@ -4,6 +4,13 @@
 #include "Sprite2D.h"
 #include "Entity.h"
 
+struct CubePart
+{
+	SDL_Texture* texture = nullptr;
+	iPoint pos;
+	SDL_Rect rect;
+};
+
 class TreeCube : public Entity
 {
 public:
@@ -15,8 +22,11 @@ public:
 
 	bool Draw();
 
+	int GetX();
+	int GetY();
 	int GetHeight();
 	int GetWidth();
+	void SetPos(int x, int y);
 
 public:
 	p2List<Sprite2D> tree_cube_parts;
