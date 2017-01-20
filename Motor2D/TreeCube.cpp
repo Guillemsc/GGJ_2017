@@ -1,11 +1,12 @@
 #include "TreeCube.h"
 
-TreeCube::TreeCube(iPoint position, const char * entity_name) : Entity(tree_Cube, position, entity_name)
+TreeCube::TreeCube(iPoint position, const char * entity_name, p2List<SDL_Rect> rects) : Entity(tree_Cube, position, entity_name)
 {
-	//for (i = 0; i < 5; i++) {
-	//	Sprite2D tmp(position.x + 55, position.y + 57);
-	//	tree_cube_parts.add(tmp);
-	//}
+	for (int i = 0; i < rects.count(); i++)
+	{
+		CubePart cubepart(iPoint(position.x, position.y + (i*rects[i].h)), rects[i]);
+		tree_cube_parts.add(cubepart);
+	}
 }
 
 TreeCube::~TreeCube()
@@ -27,7 +28,7 @@ int TreeCube::GetX()
 	int ret = -1;
 
 	if (tree_cube_parts.count() > 0)
-		ret = tree_cube_parts[0].GetPos().x;
+		ret = tree_cube_parts[0].pos.x;
 	
 	return ret;
 }
@@ -37,7 +38,7 @@ int TreeCube::GetY()
 	int ret = -1;
 
 	if (tree_cube_parts.count() > 0)
-		ret = tree_cube_parts[0].GetPos().y;
+		ret = tree_cube_parts[0].pos.y;
 	
 	return ret;
 }
@@ -47,7 +48,7 @@ int TreeCube::GetHeight()
 	int ret = -1;
 
 	if (tree_cube_parts.count() > 0)
-		ret = tree_cube_parts[0].GetAnim()->frames[0].h * tree_cube_parts.count();
+		ret = tree_cube_parts[0].rect.h * tree_cube_parts.count();
 
 	return ret;
 }
@@ -56,7 +57,7 @@ int TreeCube::GetWidth()
 {
 	int ret = -1;
 	if (tree_cube_parts.count() > 0)
-		ret = tree_cube_parts[0].GetAnim()->frames[0].w;
+		ret = tree_cube_parts[0].rect.w;
 	
 	return ret;
 }
@@ -67,7 +68,8 @@ void TreeCube::SetPos(int x, int y)
 	{
 		for (int i = 0; i < tree_cube_parts.count(); i++)
 		{
-			tree_cube_parts[i].SetPos(iPoint(x, y + (i * tree_cube_parts[0].GetAnim()->frames[0].h)));
+			tree_cube_parts[i].pos.x = x;
+			tree_cube_parts[i].pos.y = y + (i*tree_cube_parts[i].rect.h);
 		}
 	}
 }

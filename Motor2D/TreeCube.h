@@ -6,7 +6,10 @@
 
 struct CubePart
 {
-	SDL_Texture* texture = nullptr;
+	CubePart(iPoint _pos, SDL_Rect _rect)
+	{
+		pos = _pos; rect = { _rect.x, _rect.y, _rect.w, _rect.h };
+	}
 	iPoint pos;
 	SDL_Rect rect;
 };
@@ -14,7 +17,7 @@ struct CubePart
 class TreeCube : public Entity
 {
 public:
-	TreeCube(iPoint position, const char* entity_name);
+	TreeCube(iPoint position, const char* entity_name, p2List<SDL_Rect> rects);
 
 	~TreeCube();
 
@@ -29,7 +32,9 @@ public:
 	void SetPos(int x, int y);
 
 public:
-	p2List<Sprite2D> tree_cube_parts;
+	SDL_Texture* texture = nullptr;
+
+	p2List<CubePart> tree_cube_parts;
 
 };
 #endif // !_TREECUBE_H_

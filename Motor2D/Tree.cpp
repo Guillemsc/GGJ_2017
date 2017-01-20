@@ -49,17 +49,21 @@ void Tree::StartGrowing()
 void Tree::CreateNewCube()
 {
 	// Set name
-	p2SString name; name.create("TreeCube: %d", tree_cubes_list.count());
+	p2SString name("tree_cube");
+
+	// LoadXML
+	p2List<SDL_Rect> rects;
+
 	
 	TreeCube* tree_cube = nullptr;
 
 		// Create tree cube on starting point
 	if (tree_cubes_list.count() == 0)
-		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString());
+		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString(), rects);
 	
 		// Create tree cube on the center point
 	else
-		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString());
+		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString(), rects);
 
 	tree_cubes_list.add(tree_cube);
 }
@@ -132,10 +136,10 @@ void Tree::UpdateCenterPointTop()
 void Tree::MakeTreeGrow()
 {
 	// Update position of the last treecube
-	tree_cubes_list.end->data->info.SetPos(iPoint(tree_cubes_list.end->data->info.GetPos().x, tree_cubes_list.end->data->info.GetPos().y - speed));
+	tree_cubes_list.end->data->SetPos(tree_cubes_list.end->data->GetX(), tree_cubes_list.end->data->GetY() - speed);
 	
 	// Check if we have to create another treecube
-	if (tree_cubes_list.end->data->info.GetPos().y <= distance_next_treecube) 
+	if (tree_cubes_list.end->data->GetY() <= distance_next_treecube) 
 	{
 		create_cube = true;
 	}
