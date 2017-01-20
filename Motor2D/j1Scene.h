@@ -45,6 +45,7 @@ public:
 	bool CleanUp();
 
 	void UIReaction(UIElement* element, int react);
+	void OnCVar(p2List<p2SString>& tokens);
 
 	void ChangeScene(Scene* new_scene);
 

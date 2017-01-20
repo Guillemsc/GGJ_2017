@@ -52,6 +52,8 @@ bool j1Scene::Start()
 		current_scene->Start();
 	}
 
+	App->console->AddCVar("scene.wind_speed", this, "Set wind speed to x value. Max Args: 1. Args: -10<x<10");
+
 	return true;
 }
 
@@ -102,6 +104,11 @@ bool j1Scene::CleanUp()
 void j1Scene::UIReaction(UIElement * element, int react)
 {
 	current_scene->UIReaction(element, react);
+}
+
+void j1Scene::OnCVar(p2List<p2SString>& tokens)
+{
+	current_scene->OnCVar(tokens);
 }
 
 void j1Scene::ChangeScene(Scene * new_scene)

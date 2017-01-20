@@ -2,6 +2,7 @@
 #include "j1Scene.h"
 #include "j1Gui.h"
 #include "UIButton.h"
+#include "j1Console.h"
 
 IntroScene::IntroScene()
 {
@@ -58,6 +59,24 @@ void IntroScene::OnCommand(p2List<p2SString>& tokens)
 
 void IntroScene::OnCVar(p2List<p2SString>& tokens)
 {
+	switch (tokens.count())
+	{
+	case 1:
+		if (tokens[0] == "scene.wind_speed"){
+			p2SString speed("wind speed: %.2f", wind_force);
+			App->console->AddText(speed.GetString(), Output);
+		}
+		break;
+	case 2:
+		if (tokens[0] == "scene.wind_speed") {
+			wind_force = atof(tokens[1].GetString());
+			p2SString speed("wind speed set to %.2f", wind_force);
+			App->console->AddText(speed.GetString(), Output);
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void IntroScene::SaveCVar(p2SString & cvar_name, pugi::xml_node & node)

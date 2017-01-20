@@ -18,6 +18,9 @@ bool Grass::Update(float dt)
 	if(acumulated_dt>dt*10){
 		speed = CalculateAnimSpeed(App->scene->GetWindForce());
 		info.GetAnim()->SetSpeed(speed);
+		if (speed < 0.1 && speed > -.1)
+			info.SetAnimation(Idle);
+		else info.SetAnimation(Run);
 		acumulated_dt = 0;
 	}
 	return true;
