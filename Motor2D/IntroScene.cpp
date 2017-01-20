@@ -1,4 +1,7 @@
 #include "IntroScene.h"
+#include "j1Scene.h"
+#include "j1Gui.h"
+#include "UIButton.h"
 
 IntroScene::IntroScene()
 {
@@ -10,22 +13,22 @@ IntroScene::~IntroScene()
 
 bool IntroScene::Start()
 {
-	return false;
+	return true;
 }
 
 bool IntroScene::PreUpdate()
 {
-	return false;
+	return true;
 }
 
 bool IntroScene::Update(float dt)
 {
-	return false;
+	return true;
 }
 
 bool IntroScene::PostUpdate()
 {
-	return false;
+	return true;
 }
 
 void IntroScene::Draw()
@@ -34,7 +37,7 @@ void IntroScene::Draw()
 
 bool IntroScene::CleanUp()
 {
-	return false;
+	return true;
 }
 
 void IntroScene::UIReaction(UIElement * element, int react)
