@@ -9,6 +9,7 @@ enum EntityType
 	tree_Cube,
 	flower,
 	branch,
+	grass,
 	NoType
 };
 

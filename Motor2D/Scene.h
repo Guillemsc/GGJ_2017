@@ -30,6 +30,10 @@ public:
 
 	virtual void OnCollision(PhysBody* bodyA, PhysBody* bodyB) {};
 
+public:
+
+	float wind_force = 0;
+
 };
 
 #endif

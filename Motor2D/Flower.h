@@ -15,7 +15,7 @@ public:
 
 	bool Update(float dt);
 
-	bool Draw();
+	bool Draw(); //Afegir angle al blit
 
 private:
 
