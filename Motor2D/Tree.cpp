@@ -25,7 +25,7 @@ bool Tree::Update(float dt)
 		if (create_cube)
 		{
 			CreateNewCube();
-			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->info.GetAnim()->frames[0].h;
+			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->GetHeight();
 			create_cube = false;
 		}
 
@@ -57,9 +57,9 @@ void Tree::CreateNewCube()
 	if (tree_cubes_list.count() == 0)
 		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString());
 	
-	else
 		// Create tree cube on the center point
-		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), center_point_top.y), name.GetString());
+	else
+		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString());
 
 	tree_cubes_list.add(tree_cube);
 }
@@ -70,23 +70,23 @@ void Tree::CreateNewFlower()
 	p2SString name; name.create("Flower: %d", flower_list.count());
 
 	// Create flowers on a percentage
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> random(0, 2); //0 don't create, 1 create in left, 2 create in rigth
-	int rand = random(gen);
+	int rand = RandomGenerate(0, 2); //0 don't create, 1 create in left, 2 create in rigth
+	Flower* flower;
 
 	switch (rand) {
 	case 1: {
-		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_left");
+		flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_left");
 	}
 		break;
 	case 2: {
-		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_right");
+		flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_right");
 	}
 		break;
 	default:
 		break;
 	}
+
+	if (rand != 0) flower_list.add(flower);
 
 }
 
@@ -95,23 +95,26 @@ void Tree::CreateNewBranch()
 	// Set Name
 	p2SString name; name.create("Branch: %d", branch_list.count());
 
-	// Create branchs on a percentage
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> random(0, 2); //0 don't create, 1 create in left, 2 create in rigth
-	int rand = random(gen);
+	// Create branchs on a random number
+	int rand = RandomGenerate(0, 2); //0 don't create, 1 create in left, 2 create in rigth
+	Branch* branch;
 
 	switch (rand) {
 	case 1:	{
-		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_left");
+		branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_left");
 	}
 		break;
 	case 2: {
-		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_right");
+		branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_right");
 	}
 		break;
 	default:
 		break;
+	}
+
+	if (rand != 0) {
+		branch_list.add(branch);
+		CreateNewFlower();
 	}
 }
 
@@ -120,8 +123,8 @@ void Tree::UpdateCenterPointTop()
 {
 	if (tree_cubes_list.count() > 0)
 	{
-		center_point_top.x = tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2);
-		center_point_top.y = tree_cubes_list.end->data->info.GetPos().y;
+		center_point_top.x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth() / 2);
+		center_point_top.y = tree_cubes_list.end->data->GetY();
 	}
 }
 
@@ -136,4 +139,12 @@ void Tree::MakeTreeGrow()
 	{
 		create_cube = true;
 	}
+}
+
+int Tree::RandomGenerate(int x, int y)
+{
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> random(x, y);
+	return random(gen);
 }

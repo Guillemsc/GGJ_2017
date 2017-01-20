@@ -1,4 +1,5 @@
 #include "Flower.h"
+#include "j1Render.h"
 
 Flower::Flower() : Entity(EntityType::flower)
 {
@@ -19,5 +20,10 @@ bool Flower::Update(float dt)
 
 bool Flower::Draw()
 {
+	float angle;
+	if (GetName() == "flower_left") angle = 180;
+	else if (GetName() == "flower_right") angle = 0;
+
+	App->render->Blit(info.GetTexture(), info.GetPos().x, info.GetPos().y, &info.GetAnim()->GetCurrentFrameRect(), true, 1.0F, angle);
 	return true;
 }

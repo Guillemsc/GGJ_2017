@@ -38,6 +38,8 @@ public:
 
 	void MakeTreeGrow();
 
+	int RandomGenerate(int x, int y);
+
 public:
 	// Growing speed of the tree
 	int speed = 0;
