@@ -16,6 +16,7 @@ class Entity
 {
 public:
 	Entity();
+	Entity(EntityType type);
 	Entity(EntityType type, iPoint position, const char* entity_name);
 
 	~Entity();

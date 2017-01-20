@@ -1,6 +1,6 @@
 #include "Flower.h"
 
-Flower::Flower()
+Flower::Flower() : Entity(EntityType::Flower)
 {
 }
 

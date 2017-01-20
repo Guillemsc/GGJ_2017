@@ -1,6 +1,6 @@
 #include "Branch.h"
 
-Branch::Branch()
+Branch::Branch() : Entity(EntityType::Branch)
 {
 }
 

@@ -5,6 +5,10 @@ Entity::Entity()
 {
 }
 
+Entity::Entity(EntityType type) : type(type)
+{
+}
+
 Entity::Entity(EntityType type, iPoint position, const char* entity_name): type(type)
 {
 	name.create(entity_name);
