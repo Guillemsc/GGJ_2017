@@ -75,8 +75,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Branch.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FirstScene.cpp" />
+    <ClCompile Include="Flower.cpp" />
     <ClCompile Include="j1Console.cpp" />
     <ClCompile Include="j1Entities.cpp" />
     <ClCompile Include="j1FileSystem.cpp" />
@@ -98,11 +100,15 @@
     <ClCompile Include="j1Window.cpp" />
     <ClCompile Include="PugiXml\src\pugixml.cpp" />
     <ClCompile Include="Sprite2D.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="TreeCube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Branch.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FirstScene.h" />
+    <ClInclude Include="Flower.h" />
     <ClInclude Include="j1Console.h" />
     <ClInclude Include="j1Entities.h" />
     <ClInclude Include="ModulePhysics.h" />
@@ -110,6 +116,8 @@
     <ClInclude Include="p2Stack.h" />
     <ClInclude Include="Sprite2D.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="TreeCube.h" />
     <ClInclude Include="UICheckBox.h" />
     <ClInclude Include="UIImage.h" />
     <ClInclude Include="UIButton.h" />

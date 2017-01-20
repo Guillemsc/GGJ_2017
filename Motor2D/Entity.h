@@ -3,8 +3,12 @@
 
 #include "Sprite2D.h"
 
-enum EntityType {
-	NoType,
+enum EntityType 
+{
+	TreeCube,
+	Flower,
+	Branch,
+	NoType
 };
 
 class Entity
