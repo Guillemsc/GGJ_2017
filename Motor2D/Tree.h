@@ -6,6 +6,8 @@
 #include "TreeCube.h"
 
 class TreeCube;
+class Flower;
+class Branch;
 
 enum WindDirection
 {
@@ -17,6 +19,7 @@ enum WindDirection
 class Tree : public Entity
 {
 public:
+	Tree();
 	Tree(iPoint starting_position, const char* entity_name, int speed);
 
 	~Tree();
@@ -28,6 +31,8 @@ public:
 	void StartGrowing();
 
 	void CreateNewCube();
+	void CreateNewFlower();
+	void CreateNewBranch();
 
 public:
 	// Growing speed of the tree
@@ -38,6 +43,8 @@ public:
 
 	// List with tree cubes
 	p2List<TreeCube*> tree_cubes_list;
+	p2List<Flower*> flower_list;
+	p2List<Branch*> branch_list;
 
 	// Highest point on the tree
 	iPoint center_point_top;

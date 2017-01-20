@@ -1,10 +1,10 @@
 #include "Flower.h"
 
-Flower::Flower() : Entity(EntityType::Flower)
+Flower::Flower() : Entity(EntityType::flower)
 {
 }
 
-Flower::Flower(iPoint position, const char * entity_name) : Entity(EntityType::Flower, position, entity_name)
+Flower::Flower(iPoint position, const char * entity_name) : Entity(EntityType::flower, position, entity_name)
 {
 }
 

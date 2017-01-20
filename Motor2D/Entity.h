@@ -5,10 +5,10 @@
 
 enum EntityType 
 {
-	Tree,
-	Tree_Cube,
-	Flower,
-	Branch,
+	tree,
+	tree_Cube,
+	flower,
+	branch,
 	NoType
 };
 

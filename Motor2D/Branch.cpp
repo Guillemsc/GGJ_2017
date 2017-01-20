@@ -1,10 +1,10 @@
 #include "Branch.h"
 
-Branch::Branch() : Entity(EntityType::Branch)
+Branch::Branch() : Entity(EntityType::branch)
 {
 }
 
-Branch::Branch(iPoint position, const char * entity_name) : Entity(EntityType::Branch, position, entity_name)
+Branch::Branch(iPoint position, const char * entity_name) : Entity(EntityType::branch, position, entity_name)
 {
 }
 
