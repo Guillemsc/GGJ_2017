@@ -82,6 +82,9 @@
     <ClCompile Include="TreeCube.cpp">
       <Filter>Desenvolupament  ========\Entities\TreeCube</Filter>
     </ClCompile>
+    <ClCompile Include="IntroScene.cpp">
+      <Filter>Desenvolupament  ========\Scenes\IntroScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -219,6 +222,9 @@
     <ClInclude Include="TreeCube.h">
       <Filter>Desenvolupament  ========\Entities\TreeCube</Filter>
     </ClInclude>
+    <ClInclude Include="IntroScene.h">
+      <Filter>Desenvolupament  ========\Scenes\IntroScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -259,6 +265,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Entities\TreeCube">
       <UniqueIdentifier>{160d62e8-2f10-4842-9787-80fdfbcfe62a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Scenes\IntroScene">
+      <UniqueIdentifier>{8a094a1a-a039-4024-a134-821257db10be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
