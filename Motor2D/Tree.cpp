@@ -16,6 +16,15 @@ Tree::Tree(iPoint position, const char* entity_name, int _speed) : Entity(Entity
 
 Tree::~Tree()
 {
+	while (tree_cubes_list.count()) {
+		tree_cubes_list.del(tree_cubes_list.end);
+	}
+	while (branch_list.count()) {
+		branch_list.del(branch_list.end);
+	}
+	while (flower_list.count()) {
+		flower_list.del(flower_list.end);
+	}
 }
 
 bool Tree::Update(float dt)
