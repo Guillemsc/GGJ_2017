@@ -72,11 +72,13 @@ void Tree::CreateNewFlower()
 	int rand = random(gen);
 
 	switch (rand) {
-	case 1:
+	case 1: {
 		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_left");
+	}
 		break;
-	case 2:
+	case 2: {
 		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_right");
+	}
 		break;
 	default:
 		break;
@@ -96,11 +98,13 @@ void Tree::CreateNewBranch()
 	int rand = random(gen);
 
 	switch (rand) {
-	case 1:
+	case 1:	{
 		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_left");
+	}
 		break;
-	case 2:
+	case 2: {
 		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_right");
+	}
 		break;
 	default:
 		break;
