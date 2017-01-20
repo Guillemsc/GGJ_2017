@@ -29,7 +29,15 @@ void Tree::CreateNewCube()
 	// Set name
 	p2SString name; name.create("TreeCube: %d", tree_cubes_list.count());
 	
-	// Create tree cube on the center point
-	TreeCube* tree_cube = new TreeCube(iPoint(center_point_top.x, 1), name.GetString());
+	TreeCube* tree_cube = nullptr;
+
+	// Create tree cube on starting point
+	if (tree_cubes_list.count() == 0)
+		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString());
+	
+	else
+		// Create tree cube on the center point
+		tree_cube = new TreeCube(iPoint(center_point_top.x, center_point_top.y), name.GetString());
+
 	tree_cubes_list.add(tree_cube);
 }
