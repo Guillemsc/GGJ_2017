@@ -20,6 +20,7 @@ class j1PathFinding;
 class j1Fonts;
 class j1Gui;
 class j1Console;
+class j1Entities;
 class ModulePhysics;
 
 class j1App
@@ -103,6 +104,7 @@ public:
 	j1Fonts*			font = NULL;
 	j1Gui*				gui = NULL;
 	j1Console*			console = NULL;
+	j1Entities*			entities = NULL;
 	ModulePhysics*		physics = NULL;
 
 	bool				quit = false;
