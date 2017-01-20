@@ -15,9 +15,12 @@ public:
 
 	bool Update(float dt);
 
-	bool Draw(); //Afegir angle al blit
+	bool Draw(); 
+
+	void ChangeDirection(const char* _direction);
+	p2SString GetDirection();
 
 private:
-
+	p2SString direction = nullptr;
 };
 #endif // !_FLOWER_H_

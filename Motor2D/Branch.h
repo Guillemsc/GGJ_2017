@@ -17,7 +17,10 @@ public:
 
 	bool Draw();
 
-private:
+	void ChangeDirection(const char* _direction);
+	p2SString GetDirection();
 
+private:
+	p2SString direction = nullptr;
 };
 #endif // !_BRANCH_H_

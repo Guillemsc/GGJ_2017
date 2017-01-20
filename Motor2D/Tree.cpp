@@ -70,51 +70,45 @@ void Tree::CreateNewCube()
 	tree_cubes_list.add(tree_cube);
 }
 
-void Tree::CreateNewFlower(int x, int y)
+void Tree::CreateNewFlower(int x, int y, p2SString _direction)
 {
 	// Set Name
-	p2SString name; name.create("Flower: %d", flower_list.count());
+	p2SString name; name.create("flower");
 
 	// Create flowers on a percentage
-	int rand = RandomGenerate(0, 2); //0 don't create, 1 create in left, 2 create in rigth
-	Flower* flower;
+	int rand = RandomGenerate(0, 1); // 0 No create, 1 Create
 
-	switch (rand) {
-	case 1: {
-		flower = new Flower(iPoint(x, y), "flower_left");
+	if (rand != 0) {
+		Flower* flower = new Flower(iPoint(x, y), name.GetString());
+		flower->ChangeDirection(_direction.GetString());
+		flower_list.add(flower);
 	}
-		break;
-	case 2: {
-		flower = new Flower(iPoint(x, y), "flower_right");
-	}
-		break;
-	default:
-		break;
-	}
-
-	if (rand != 0) flower_list.add(flower);
-
 }
 
 void Tree::CreateNewBranch()
 {
 	// Set Name
-	p2SString name; name.create("Branch: %d", branch_list.count());
+	p2SString name; name.create("branch");
 
 	// Create branchs on a random number
 	int rand = RandomGenerate(0, 2); //0 don't create, 1 create in left, 2 create in rigth
 	Branch* branch;
+	p2SString _direction;
 	int x, y = tree_cubes_list.end->data->GetY();
 
 	switch (rand) {
 	case 1:	{
 		x = tree_cubes_list.end->data->GetX() - (tree_cubes_list.end->data->GetWidth() / 2);
-		branch = new Branch(iPoint(x, y), "branch_left");
+		branch = new Branch(iPoint(x, y), name.GetString());
+		_direction.create("left");
+		branch->ChangeDirection(_direction.GetString());
 	}
 		break;
 	case 2: {
 		x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth() / 2);
-		branch = new Branch(iPoint(x, y), "branch_right");
+		branch = new Branch(iPoint(x, y), name.GetString());
+		_direction.create("right");
+		branch->ChangeDirection(_direction.GetString());
 	}
 		break;
 	default:
@@ -123,7 +117,7 @@ void Tree::CreateNewBranch()
 
 	if (rand != 0) {
 		branch_list.add(branch);
-		CreateNewFlower(x, y);
+		CreateNewFlower(x, y, _direction.GetString());
 	}
 }
 

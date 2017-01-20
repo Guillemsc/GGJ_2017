@@ -21,9 +21,20 @@ bool Flower::Update(float dt)
 bool Flower::Draw()
 {
 	float angle;
-	if (GetName() == "flower_left") angle = 180;
-	else if (GetName() == "flower_right") angle = 0;
+	if (GetDirection() == "left") angle = 180;
+	else if (GetDirection() == "right") angle = 0;
 
 	App->render->Blit(info.GetTexture(), info.GetPos().x, info.GetPos().y, &info.GetAnim()->GetCurrentFrameRect(), true, 1.0F, angle);
+	
 	return true;
+}
+
+void Flower::ChangeDirection(const char * _direction)
+{
+	direction = _direction;
+}
+
+p2SString Flower::GetDirection()
+{
+	return direction;
 }
