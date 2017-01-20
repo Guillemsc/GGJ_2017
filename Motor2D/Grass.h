@@ -5,6 +5,7 @@
 
 class Grass : public Entity
 {
+public:
 	Grass(iPoint pos);
 	~Grass();
 

@@ -88,6 +88,9 @@
     <ClCompile Include="Grass.cpp">
       <Filter>Desenvolupament  ========\Entities\Grass</Filter>
     </ClCompile>
+    <ClCompile Include="Cloud.cpp">
+      <Filter>Desenvolupament  ========\Entities\Cloud</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -231,6 +234,9 @@
     <ClInclude Include="Grass.h">
       <Filter>Desenvolupament  ========\Entities\Grass</Filter>
     </ClInclude>
+    <ClInclude Include="Cloud.h">
+      <Filter>Desenvolupament  ========\Entities\Cloud</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -277,6 +283,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Entities\Grass">
       <UniqueIdentifier>{4c118e74-edb8-48c3-ba3b-0efc740f46c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Entities\Cloud">
+      <UniqueIdentifier>{3a1fb127-4c74-492a-a597-7e9cf6d0d3f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

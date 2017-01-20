@@ -1,4 +1,6 @@
 #include "j1Entities.h"
+#include "Grass.h"
+#include "Cloud.h"
 #include "p2Log.h"
 
 j1Entities::j1Entities()
@@ -57,7 +59,7 @@ bool j1Entities::CleanUp()
 
 Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 {
-	static_assert(NoType == 5, "CreateEntity code need update");
+	static_assert(NoType == 6, "CreateEntity code need update");
 
 	Entity* tmp = nullptr;
 
@@ -72,6 +74,10 @@ Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 	case branch:
 		break;
 	case grass:
+		tmp = new Grass(iPoint(pos_x, pos_y));
+		break;
+	case cloud:
+		tmp = new Cloud(iPoint(pos_x, pos_y));
 		break;
 	case NoType:
 		break;

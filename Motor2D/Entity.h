@@ -10,6 +10,7 @@ enum EntityType
 	flower,
 	branch,
 	grass,
+	cloud,
 	NoType
 };
 
