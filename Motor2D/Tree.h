@@ -53,6 +53,9 @@ public:
 	// Highest point on the tree
 	iPoint center_point_top;
 
+	// Distance to have the next tree cube
+	int distance_next_treecube = 0;
+
 private:
 	bool growing = false;
 

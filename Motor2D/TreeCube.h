@@ -16,7 +16,7 @@ public:
 	bool Draw();
 
 public:
-
+	p2List<Sprite2D> tree_cube_parts;
 
 };
 #endif // !_TREECUBE_H_

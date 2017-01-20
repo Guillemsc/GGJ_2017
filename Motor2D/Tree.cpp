@@ -22,8 +22,12 @@ bool Tree::Update(float dt)
 {
 	if (growing)
 	{
-		if(create_cube)
+		if (create_cube)
+		{
 			CreateNewCube();
+			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->info.GetAnim()->frames[0].h;
+			create_cube = false;
+		}
 
 		UpdateCenterPointTop();
 	}
@@ -117,12 +121,19 @@ void Tree::UpdateCenterPointTop()
 	if (tree_cubes_list.count() > 0)
 	{
 		center_point_top.x = tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2);
-		center_point_top.x = tree_cubes_list.end->data->info.GetPos().y;
+		center_point_top.y = tree_cubes_list.end->data->info.GetPos().y;
 	}
 }
 
 // Takes the cubes higher
 void Tree::MakeTreeGrow()
 {
-	//tree_cubes_list.end->data->info.SetPos()
+	// Update position of the last treecube
+	tree_cubes_list.end->data->info.SetPos(iPoint(tree_cubes_list.end->data->info.GetPos().x, tree_cubes_list.end->data->info.GetPos().y - speed));
+	
+	// Check if we have to create another treecube
+	if (tree_cubes_list.end->data->info.GetPos().y <= distance_next_treecube) 
+	{
+		create_cube = true;
+	}
 }
