@@ -70,23 +70,23 @@ void Tree::CreateNewFlower()
 	p2SString name; name.create("Flower: %d", flower_list.count());
 
 	// Create flowers on a percentage
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> random(0, 2); //0 don't create, 1 create in left, 2 create in rigth
-	int rand = random(gen);
+	int rand = RandomGenerate(0, 2); //0 don't create, 1 create in left, 2 create in rigth
+	Flower* flower;
 
 	switch (rand) {
 	case 1: {
-		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_left");
+		flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_left");
 	}
 		break;
 	case 2: {
-		Flower* flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_right");
+		flower = new Flower(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "flower_right");
 	}
 		break;
 	default:
 		break;
 	}
+
+	if (rand != 0) flower_list.add(flower);
 
 }
 
@@ -95,23 +95,26 @@ void Tree::CreateNewBranch()
 	// Set Name
 	p2SString name; name.create("Branch: %d", branch_list.count());
 
-	// Create branchs on a percentage
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> random(0, 2); //0 don't create, 1 create in left, 2 create in rigth
-	int rand = random(gen);
+	// Create branchs on a random number
+	int rand = RandomGenerate(0, 2); //0 don't create, 1 create in left, 2 create in rigth
+	Branch* branch;
 
 	switch (rand) {
 	case 1:	{
-		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_left");
+		branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x - (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_left");
 	}
 		break;
 	case 2: {
-		Branch* branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_right");
+		branch = new Branch(iPoint(tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2), tree_cubes_list.end->data->info.GetPos().y), "branch_right");
 	}
 		break;
 	default:
 		break;
+	}
+
+	if (rand != 0) {
+		branch_list.add(branch);
+		CreateNewFlower();
 	}
 }
 
@@ -136,4 +139,12 @@ void Tree::MakeTreeGrow()
 	{
 		create_cube = true;
 	}
+}
+
+int Tree::RandomGenerate(int x, int y)
+{
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> random(x, y);
+	return random(gen);
 }
