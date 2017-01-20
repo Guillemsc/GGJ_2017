@@ -7,13 +7,15 @@
 class TreeCube : public Entity
 {
 public:
-	TreeCube(iPoint position, const char* entity_name, int speed);
+	TreeCube(iPoint position, const char* entity_name);
 
 	~TreeCube();
 
 	bool Update(float dt);
 
 	bool Draw();
+
+
 
 public:
 
