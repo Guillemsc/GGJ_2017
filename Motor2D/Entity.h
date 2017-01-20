@@ -1,5 +1,5 @@
 #ifndef _ENTITY_H_
-#define _EMTITY_H_
+#define _ENTITY_H_
 
 #include "Sprite2D.h"
 

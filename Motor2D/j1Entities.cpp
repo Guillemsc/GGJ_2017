@@ -57,12 +57,20 @@ bool j1Entities::CleanUp()
 
 Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 {
-	static_assert(NoType == 0, "CreateEntity code need update");
+	static_assert(NoType == 4, "CreateEntity code need update");
 
 	Entity* tmp = nullptr;
 
 	switch (type)
 	{
+	case Tree:
+		break;
+	case Tree_Cube:
+		break;
+	case Flower:
+		break;
+	case Branch:
+		break;
 	case NoType:
 		break;
 	default:
