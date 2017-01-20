@@ -13,6 +13,7 @@ IntroScene::~IntroScene()
 
 bool IntroScene::Start()
 {
+	//App->gui->CreateUIElement(Button, 360, 250);
 	return true;
 }
 
