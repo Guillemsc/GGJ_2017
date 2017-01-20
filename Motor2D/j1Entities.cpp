@@ -63,13 +63,13 @@ Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 
 	switch (type)
 	{
-	case Tree:
+	case tree:
 		break;
-	case Tree_Cube:
+	case tree_Cube:
 		break;
-	case Flower:
+	case flower:
 		break;
-	case Branch:
+	case branch:
 		break;
 	case NoType:
 		break;
