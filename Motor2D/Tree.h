@@ -31,7 +31,7 @@ public:
 	void StartGrowing();
 
 	void CreateNewCube();
-	void CreateNewFlower();
+	void CreateNewFlower(int x, int y);
 	void CreateNewBranch();
 
 	void UpdateCenterPointTop();
