@@ -21,6 +21,11 @@ public:
 	p2SString GetDirection();
 
 private:
+	int CalculateAnimSpeed(float wind)const;
+
+private:
+	float speed = 0;
+	float acumulated_dt = 0;
 	p2SString direction = nullptr;
 };
 #endif // !_BRANCH_H_

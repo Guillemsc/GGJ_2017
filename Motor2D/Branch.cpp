@@ -1,5 +1,6 @@
 #include "Branch.h"
 #include "j1Render.h"
+#include "j1Scene.h"
 
 Branch::Branch() : Entity(EntityType::branch)
 {
@@ -15,6 +16,12 @@ Branch::~Branch()
 
 bool Branch::Update(float dt)
 {
+	acumulated_dt += dt;
+	if (acumulated_dt>dt * 10) {
+		speed = CalculateAnimSpeed(App->scene->GetWindForce());
+		info.GetAnim()->SetSpeed(speed);
+		acumulated_dt = 0;
+	}
 	return true;
 }
 
@@ -37,4 +44,9 @@ void Branch::ChangeDirection(const char * _direction)
 p2SString Branch::GetDirection()
 {
 	return direction;
+}
+
+int Branch::CalculateAnimSpeed(float wind) const
+{
+	return wind / 15.0f;
 }

@@ -1,5 +1,6 @@
 #include "Flower.h"
 #include "j1Render.h"
+#include "j1Scene.h"
 
 Flower::Flower() : Entity(EntityType::flower)
 {
@@ -15,6 +16,12 @@ Flower::~Flower()
 
 bool Flower::Update(float dt)
 {
+	acumulated_dt += dt;
+	if (acumulated_dt>dt * 10) {
+		speed = CalculateAnimSpeed(App->scene->GetWindForce());
+		info.GetAnim()->SetSpeed(speed);
+		acumulated_dt = 0;
+	}
 	return true;
 }
 
@@ -37,4 +44,9 @@ void Flower::ChangeDirection(const char * _direction)
 p2SString Flower::GetDirection()
 {
 	return direction;
+}
+
+int Flower::CalculateAnimSpeed(float wind) const
+{
+	return wind / 15.0f;
 }
