@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config>
 	<app framerate_cap="">
-		<title>Pathfinding Test</title>
-		<organization>UPC</organization>
+		<title>Grow</title>
+		<organization>Boolas Studio</organization>
 	</app>
 	<renderer>
 		<vsync value="true" />
