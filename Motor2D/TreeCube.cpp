@@ -1,12 +1,12 @@
 #include "TreeCube.h"
 #include "j1Render.h"
 
-TreeCube::TreeCube(iPoint position, const char * entity_name, p2List<SDL_Rect> rects, SDL_Texture* _texture) : Entity(tree_Cube, position, entity_name)
+TreeCube::TreeCube(iPoint position, const char * entity_name, p2List<SDL_Rect*> rects, SDL_Texture* _texture) : Entity(tree_Cube, position, entity_name)
 {
 	for (int i = 0; i < rects.count(); i++)
 	{
 		texture = _texture;
-		CubePart cubepart(iPoint(position.x, position.y + (i*rects[i].h)), { rects[i].x, rects[i].y, rects[i].w, rects[i].h });
+		CubePart cubepart(iPoint(position.x, position.y + (i*rects[i]->h)), { rects[i]->x, rects[i]->y, rects[i]->w, rects[i]->h });
 		tree_cube_parts.add(cubepart);
 	}
 }

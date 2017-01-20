@@ -20,7 +20,7 @@ struct CubePart
 class TreeCube : public Entity
 {
 public:
-	TreeCube(iPoint position, const char* entity_name, p2List<SDL_Rect> rects, SDL_Texture* texture);
+	TreeCube(iPoint position, const char* entity_name, p2List<SDL_Rect*> rects, SDL_Texture* texture);
 
 	~TreeCube();
 

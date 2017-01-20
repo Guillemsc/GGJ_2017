@@ -45,10 +45,11 @@ bool j1Scene::Start()
 {
 	//first_scene = new FirstScene();
 	intro_scene = new IntroScene();
+	first_scene = new FirstScene();
 
 	if (current_scene == nullptr)
 	{
-		current_scene = intro_scene;
+		current_scene = first_scene;
 		current_scene->Start();
 	}
 

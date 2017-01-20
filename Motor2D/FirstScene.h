@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 
+class Tree;
 class FirstScene : public Scene 
 {
 public:
@@ -25,6 +26,8 @@ public:
 	void SaveCVar(p2SString& cvar_name, pugi::xml_node& node) const;
 
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
+
+	Tree* t1 = nullptr;
 };
 
 #endif
