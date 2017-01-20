@@ -110,3 +110,8 @@ void j1Scene::ChangeScene(Scene * new_scene)
 	current_scene = new_scene;
 	current_scene->Start();
 }
+
+float j1Scene::GetWindForce() const
+{
+	return current_scene->wind_force;
+}

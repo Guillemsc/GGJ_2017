@@ -12,6 +12,12 @@ class Grass : public Entity
 
 	bool Draw();
 
+private:
+	int CalculateAnimSpeed(float wind)const;
+
+private:
+	float speed = 0;
+	float acumulated_dt = 0;
 
 };
 

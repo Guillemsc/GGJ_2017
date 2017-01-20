@@ -1,0 +1,15 @@
+<!--grass configuration xml-->
+
+<config>
+  <texture path=""/>
+  <anim type="0" speed="0.1">
+    <frame x="" y="" w="" h=""/>
+    <frame x="" y="" w="" h=""/>
+    <frame x="" y="" w="" h=""/>
+  </anim>
+  <anim type="2" speed="0.1">
+    <frame x="" y="" w="" h=""/>
+    <frame x="" y="" w="" h=""/>
+    <frame x="" y="" w="" h=""/>
+  </anim>
+</config>

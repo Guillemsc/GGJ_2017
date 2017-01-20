@@ -48,6 +48,10 @@ public:
 
 	void ChangeScene(Scene* new_scene);
 
+	float GetWindForce()const;
+
+public:
+
 	Scene* current_scene = nullptr;
 
 	FirstScene* first_scene = nullptr;
