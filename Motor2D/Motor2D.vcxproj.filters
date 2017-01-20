@@ -283,5 +283,8 @@
     <Xml Include="..\Game\config.xml">
       <Filter>Desenvolupament  ========</Filter>
     </Xml>
+    <Xml Include="..\Game\grass.xml">
+      <Filter>Desenvolupament  ========\Entities\Grass</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
