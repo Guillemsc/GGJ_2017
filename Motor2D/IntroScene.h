@@ -3,6 +3,8 @@
 
 #include "Scene.h"
 
+class UIButton;
+
 class IntroScene: public Scene{
 public:
 	IntroScene();
@@ -25,6 +27,8 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 private:
+	UIButton* start_button;
+	UIButton* options_button;
 
 public:
 
