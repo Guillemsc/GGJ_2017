@@ -53,19 +53,17 @@ void Tree::CreateNewCube()
 
 	// LoadXML
 	p2List<SDL_Rect> rects;
+	SDL_Texture* texture = nullptr;
 
-	
 	TreeCube* tree_cube = nullptr;
 
 		// Create tree cube on starting point
 	if (tree_cubes_list.count() == 0)
-		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString(), rects);
+		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString(), rects, texture);
 	
 	else
 		// Create tree cube on the center point
-		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString(), rects);
-
-
+		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString(), rects, texture);
 
 	tree_cubes_list.add(tree_cube);
 }
