@@ -4,7 +4,7 @@ Flower::Flower()
 {
 }
 
-Flower::Flower(EntityType type, iPoint position, const char * entity_name, WindDirection direction)
+Flower::Flower(iPoint position, const char * entity_name) : Entity(EntityType::Flower, position, entity_name)
 {
 }
 
@@ -14,10 +14,10 @@ Flower::~Flower()
 
 bool Flower::Update(float dt)
 {
-	return false;
+	return true;
 }
 
 bool Flower::Draw()
 {
-	return false;
+	return true;
 }
