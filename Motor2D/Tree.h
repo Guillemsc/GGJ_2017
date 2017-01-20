@@ -29,6 +29,10 @@ public:
 
 	void CreateNewCube();
 
+	void UpdateCenterPointTop();
+
+	void MakeTreeGrow();
+
 public:
 	// Growing speed of the tree
 	int speed = 0;
@@ -44,5 +48,7 @@ public:
 
 private:
 	bool growing = false;
+
+	bool create_cube = true;
 };
 #endif // !_TREE_H_
