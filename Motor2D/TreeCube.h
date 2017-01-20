@@ -15,6 +15,9 @@ public:
 
 	bool Draw();
 
+	int GetHeight();
+	int GetWidth();
+
 public:
 	p2List<Sprite2D> tree_cube_parts;
 
