@@ -3,6 +3,9 @@
 
 #include "Sprite2D.h"
 #include "Entity.h"
+#include "TreeCube.h"
+
+class TreeCube;
 
 enum WindDirection
 {
@@ -26,6 +29,7 @@ public:
 	int speed = 0;
 	int wind_force = 0;
 	WindDirection wind_direction = no_wind;
+	p2List<TreeCube*> tree_cubes_list;
 
 };
 #endif // !_TREE_H_
