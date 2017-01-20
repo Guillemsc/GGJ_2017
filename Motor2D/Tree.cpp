@@ -17,12 +17,15 @@ Tree::Tree(iPoint position, const char* entity_name, int _speed) : Entity(Entity
 Tree::~Tree()
 {
 	while (tree_cubes_list.count()) {
+		RELEASE(tree_cubes_list.end->data);
 		tree_cubes_list.del(tree_cubes_list.end);
 	}
 	while (branch_list.count()) {
+		RELEASE(branch_list.end->data);
 		branch_list.del(branch_list.end);
 	}
 	while (flower_list.count()) {
+		RELEASE(flower_list.end->data);
 		flower_list.del(flower_list.end);
 	}
 }
