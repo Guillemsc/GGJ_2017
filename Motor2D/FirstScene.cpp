@@ -18,6 +18,8 @@
 #include "UICheckBox.h"
 #include "j1Console.h"
 #include "j1Scene.h"
+#include "Tree.h"
+#include "j1Entities.h"
 
 FirstScene::FirstScene()
 {
@@ -32,6 +34,11 @@ bool FirstScene::Start()
 	// XML load test
 	pugi::xml_document doc; App->LoadXML("test.xml", doc);
 	int value = doc.child("test").attribute("value").as_int();
+
+	t1 = (Tree*)App->entities->CreateEntity(tree, 300, 300);
+	t1->Set(1);
+	t1->StartGrowing();
+
 	return true;
 }
 
@@ -42,6 +49,7 @@ bool FirstScene::PreUpdate()
 
 bool FirstScene::Update(float dt)
 {
+
 	return true;
 }
 

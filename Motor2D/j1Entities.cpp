@@ -2,6 +2,7 @@
 #include "Grass.h"
 #include "Cloud.h"
 #include "p2Log.h"
+#include "Tree.h"
 
 j1Entities::j1Entities()
 {
@@ -66,6 +67,7 @@ Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 	switch (type)
 	{
 	case tree:
+		tmp = new Tree(iPoint(pos_x, pos_y), "tree_cube");
 		break;
 	case tree_Cube:
 		break;

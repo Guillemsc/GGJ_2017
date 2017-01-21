@@ -4,32 +4,59 @@
 #include "Branch.h"
 #include <random>
 #include <iostream>
+#include "j1FileSystem.h"
 using namespace std;
 
 Tree::Tree()
 {
 }
 
-Tree::Tree(iPoint position, const char* entity_name, int _speed) : Entity(EntityType::tree, position, entity_name), speed(_speed)
+Tree::Tree(iPoint position, const char* entity_name) : Entity(EntityType::tree, position, entity_name)
 {
 }
 
 Tree::~Tree()
 {
+	while (tree_cubes_list.count()) {
+		RELEASE(tree_cubes_list.end->data);
+		tree_cubes_list.del(tree_cubes_list.end);
+	}
+	while (branch_list.count()) {
+		RELEASE(branch_list.end->data);
+		branch_list.del(branch_list.end);
+	}
+	while (flower_list.count()) {
+		RELEASE(flower_list.end->data);
+		flower_list.del(flower_list.end);
+	}
+}
+
+void Tree::Set(int _speed)
+{
+	speed = _speed;
+	App->LoadXML("tree_cube.xml", doc);
+	LoadRects();
 }
 
 bool Tree::Update(float dt)
 {
+	for (int i = 0; i < tree_cubes_list.count(); i++)
+	{
+		tree_cubes_list[i]->Update(dt);
+		tree_cubes_list[i]->Draw();
+	}
+		
 	if (growing)
 	{
 		if (create_cube)
 		{
 			CreateNewCube();
-			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->info.GetAnim()->frames[0].h;
+			distance_next_treecube = center_point_top.y - tree_cubes_list.end->data->GetHeight();
 			create_cube = false;
 		}
 
 		UpdateCenterPointTop();
+		MakeTreeGrow();
 	}
 
 	return true;
@@ -51,21 +78,21 @@ void Tree::CreateNewCube()
 	// Set name
 	p2SString name("tree_cube");
 
-	// LoadXML
-	p2List<SDL_Rect> rects;
-	SDL_Texture* texture = nullptr;
-
 	TreeCube* tree_cube = nullptr;
 
 		// Create tree cube on starting point
 	if (tree_cubes_list.count() == 0)
+	{
 		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString(), rects, texture);
-	
+		center_point_top.y = info.GetPos().y;
+	}
 	else
 		// Create tree cube on the center point
 		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString(), rects, texture);
 
-	tree_cubes_list.add(tree_cube);
+	if(tree_cube!= nullptr)
+		tree_cubes_list.add(tree_cube);
+
 }
 
 void Tree::CreateNewFlower(int x, int y, p2SString _direction)
@@ -124,7 +151,7 @@ void Tree::UpdateCenterPointTop()
 {
 	if (tree_cubes_list.count() > 0)
 	{
-		center_point_top.x = tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->info.GetAnim()->frames[0].w / 2);
+		center_point_top.x = tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->GetWidth() / 2);
 		center_point_top.y = tree_cubes_list.end->data->info.GetPos().y;
 	}
 }
@@ -148,4 +175,22 @@ int Tree::RandomGenerate(int x, int y)
 	mt19937 gen(rd());
 	uniform_int_distribution<> random(x, y);
 	return random(gen);
+}
+
+void Tree::LoadRects()
+{
+	pugi::xml_node node = doc.child("cube1");
+
+	texture = App->tex->Load(node.attribute("texture").as_string());
+
+	node = node.child("rects");
+	for (; node != NULL; node = node.child("rects").next_sibling())
+	{
+		SDL_Rect* rect = new SDL_Rect();
+		rect->x = node.attribute("rect_x").as_int();
+		rect->y = node.attribute("rect_y").as_int();
+		rect->w = node.attribute("rect_w").as_int();
+		rect->h = node.attribute("rect_h").as_int();
+		rects.add(rect);
+	}
 }

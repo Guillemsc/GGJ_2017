@@ -480,4 +480,6 @@ void j1App::LoadXML(const char* path, pugi::xml_document& doc)
 
 	if (result == NULL)
 		LOG("Could not load xml file %s. pugi error: %s", path, result.description());
+	else
+		LOG("Succes loading xml file %s.", path);
 }
