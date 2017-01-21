@@ -225,14 +225,20 @@ void Tree::WindForceOnTree(float force)
 
 		if (current_cube == to_copy && current_cube->prev != nullptr)
 		{
+			int i = 0;
 			for (; current_part != nullptr; current_part = current_part->prev)
 			{
-				if (current_part != current_cube->data->tree_cube_parts.end && current_part != current_cube->data->tree_cube_parts.end->prev)
+				if (current_part == current_cube->data->tree_cube_parts.end)
 				{
+					general_counter -= force * 1.6f;
 					current_part->data->pos.x += general_counter;
-
-					general_counter += force / 1.3f;
 				}
+				else
+				{
+					general_counter += force * 0.6f * i;
+					current_part->data->pos.x += general_counter;
+				}
+				i++;
 			}
 		}
 		else
