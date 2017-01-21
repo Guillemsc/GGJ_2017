@@ -20,8 +20,8 @@ bool j1BackgroundDrawer::Update(float dt)
 		if (App->render->camera.y % 2090 == 0 && App->render->camera.y != 0) {
 			it++;
 			if (it % 2 == 0) 
-				back1_2_y -= 2211;
-			else back1_1_y -= 2211;
+				back1_2_y -= 2706;
+			else back1_1_y -= 2706;
 		}
 	}
 	return true;
@@ -30,7 +30,7 @@ bool j1BackgroundDrawer::Update(float dt)
 bool j1BackgroundDrawer::Start()
 {
 	back_tex = App->tex->Load("Sprites/back2.png");
-	background = { 0,0, 700,2211 };
+	background = { 0,0, 700,2708 };
 	return true;
 }
 
