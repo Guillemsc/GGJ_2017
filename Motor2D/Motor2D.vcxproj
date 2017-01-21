@@ -105,6 +105,7 @@
     <ClCompile Include="Sprite2D.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="TreeCube.cpp" />
+    <ClCompile Include="WindOscillatingBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="UIScrollBar.h" />
     <ClInclude Include="UIWindow.h" />
+    <ClInclude Include="WindOscillatingBar.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Game\cloud.xml" />

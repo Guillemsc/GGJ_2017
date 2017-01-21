@@ -8,6 +8,7 @@ class Cloud;
 class UIWindow;
 class UICheckBox;
 class UIImage;
+class WindOscillatingBar;
 
 class IntroScene: public Scene{
 public:
@@ -40,11 +41,7 @@ private:
 	UIWindow*		options_window;
 	UICheckBox*		music_check;
 
-	UIWindow*		wind_window;
-	UIImage*		wind_bar;
-
-	float			angle = 0;
-
+	WindOscillatingBar*	wind_bar;
 public:
 
 private:

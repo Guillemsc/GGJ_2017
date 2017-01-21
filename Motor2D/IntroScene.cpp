@@ -7,6 +7,7 @@
 #include "UICheckBox.h"
 #include "j1Console.h"
 #include "j1Entities.h"
+#include "WindOscillatingBar.h"
 
 IntroScene::IntroScene()
 {
@@ -37,13 +38,8 @@ bool IntroScene::Start()
 	music_check->AddListener(App->scene);
 	music_check->active = false;
 
-	wind_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 200, 20);
-	options_window->SetRect({ 20,20,60,30 }); //adjust to final one
-
-	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, 10, 20);
-	wind_bar->SetRect({ 20,20,60,30 }); //adjust to final one
-	wind_bar->AddListener(App->scene);
-
+	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
+	
 	return true;
 }
 
@@ -54,9 +50,7 @@ bool IntroScene::PreUpdate()
 
 bool IntroScene::Update(float dt)
 {
-	wind_bar->position.x = (wind_window->position.w - 10)/2 + ((wind_window->position.w - 10) /2)*sin(angle);
-	angle += 0.05;
-
+	wind_bar->UpdateBar();
 	return true;
 }
 
@@ -71,6 +65,7 @@ void IntroScene::Draw()
 
 bool IntroScene::CleanUp()
 {
+	delete wind_bar;
 	return true;
 }
 
