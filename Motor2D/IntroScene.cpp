@@ -28,6 +28,7 @@ bool IntroScene::Start()
 	options_button->AddListener(App->scene);
 
 	test_cloud = (Cloud*)App->entities->CreateEntity(cloud, 50, 50);
+	test_grass = (Grass*)App->entities->CreateEntity(grass, 50, 600);
 
 	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);
 	options_window->SetRect({ 20,20,60,30 }); //ajust to final one

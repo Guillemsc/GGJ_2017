@@ -1,15 +1,36 @@
 <!--grass configuration xml-->
 
 <config>
-  <texture path=""/>
+  <texture path="Sprites/treechunks.png"/>
   <anim type="0" speed="0.1">
-    <frame x="" y="" w="" h=""/>
-    <frame x="" y="" w="" h=""/>
-    <frame x="" y="" w="" h=""/>
+    <frame x="225" y="0" w="108" h="93"/>
   </anim>
-  <anim type="1" speed="0.1">
-    <frame x="" y="" w="" h=""/>
-    <frame x="" y="" w="" h=""/>
-    <frame x="" y="" w="" h=""/>
+  <anim type="1" speed="0.1"> <!--small wind right-->
+    <frame x="225" y="0" w="108" h="93"/>
+    <frame x="117" y="0" w="108" h="93"/>
+    <frame x="117" y="0" w="108" h="93"/>
+    <frame x="117" y="0" w="108" h="93"/>
+  </anim>
+  <anim type="2" speed="0.1">    <!--small wind left-->
+    <frame x="225" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+  </anim>
+  <anim type="3" speed="0.1">    <!--hard wind right-->
+    <frame x="117" y="0" w="108" h="93"/>
+    <frame x="117" y="0" w="108" h="93"/>
+    <frame x="117" y="0" w="108" h="93"/>
+    <frame x="225" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+    <frame x="225" y="0" w="108" h="93"/>
+  </anim>
+  <anim type="4" speed="0.1">    <!--hard wind left-->
+    <frame x="117" y="0" w="108" h="93"/>
+    <frame x="225" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+    <frame x="393" y="0" w="108" h="93"/>
+    <frame x="225" y="0" w="108" h="93"/>
   </anim>
 </config>
