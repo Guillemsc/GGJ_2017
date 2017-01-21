@@ -9,6 +9,7 @@
 #include "j1Entities.h"
 #include "j1Audio.h"
 #include "j1Scene.h"
+#include "UIImage.h"
 
 Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
@@ -17,6 +18,16 @@ Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rec
 	rect2 = { _rect2.x, _rect2.y, _rect2.w, _rect2.h };
 	end_label = (UILabel*)App->gui->CreateUIElement(Label, 100, 200, nullptr, 400, 60);
 	end_label->active = false;
+
+	highlight = { 631, 654, 185, 167 };
+	standard = { 816, 654, 185, 167 };
+
+	star1 = (UIImage*)App->gui->CreateUIElement(Image, 100, 250, nullptr, 185, 167);
+	star1->SetRect(standard); star1->active = false;
+	star2 = (UIImage*)App->gui->CreateUIElement(Image, 250, 220, nullptr, 185, 167);
+	star2->SetRect(standard); star2->active = false;
+	star3 = (UIImage*)App->gui->CreateUIElement(Image, 400, 250, nullptr, 185, 167);
+	star3->SetRect(standard); star3->active = false;
 }
 
 Levels::~Levels()
@@ -31,6 +42,7 @@ bool Levels::Update(float dt)
 		end_level_FX = App->audio->LoadFx("audio/fx/end_level_FX.wav");
 		one_time = false;
 	}
+
 	if (tree->tree_cubes_list.count() < 3) {
 		play = true;
 	}
@@ -55,7 +67,8 @@ bool Levels::Update(float dt)
 		tree->speed = 0;
 		level_ended = true;
 		level_finished = true;
-
+		star1->active = true;	star2->active = true;	star3->active = true;
+		star1->SetRect(highlight);
 		if (play) {
 			App->audio->PlayFx(end_level_FX);
 			play = false;
@@ -63,8 +76,6 @@ bool Levels::Update(float dt)
 
 		if (App->scene->num_birds != 0) {
 			int birds_not_nested = App->scene->num_birds - App->scene->nested;
-			App->gui->CreateUIElement(Window, 50, 200, nullptr, 300, 300);
-			iPoint pos(0, 0);
 				while (App->scene->num_birds != 0) {
 					if (App->scene->nested != 0) {
 						App->scene->nested--;
@@ -76,14 +87,12 @@ bool Levels::Update(float dt)
 				}
 		}
 		
-
-
 		if(accomplished_distance != 0)
 			final_percentage = ((accomplished_distance * 100) / level_distance);
 			
-		//end_label->active = true;
-		////p2SString txt("Level completed");
-		//end_label->SetText(txt.GetString());
+		if (final_percentage >= 40) star2->SetRect(highlight);
+		if (final_percentage >= 75) star3->SetRect(highlight);
+
 	}
 
 	for (int i = 0; i < level_points_list.count(); i++)
@@ -105,6 +114,7 @@ void Levels::SetLevel(int level)
 	level_finished = false;
 	final_percentage = 0.0f;
 	accomplished_distance = 0;
+	ResetStars();
 
 	switch (level)
 	{
@@ -186,6 +196,13 @@ void Levels::ClearBirds() const
 			App->entities->DeleteEntity(bird_ent->data);
 		}
 	}
+}
+
+void Levels::ActiveStars() const
+{
+	star1->active = true;
+	star2->active = true;
+	star3->active = true;
 }
 
 void Levels::Level1()
@@ -422,4 +439,11 @@ void Levels::Level6()
 	CreateLevelPoint(iPoint(300, -3750), 100, 100);
 	CreateLevelPoint(iPoint(300, -3850), 100, 100);
 	CreateLevelPoint(iPoint(300, -3950), 100, 100);
+}
+
+void Levels::ResetStars()
+{
+	star1->SetRect(standard); star1->active = false;
+	star2->SetRect(standard); star2->active = false;
+	star3->SetRect(standard); star3->active = false;
 }

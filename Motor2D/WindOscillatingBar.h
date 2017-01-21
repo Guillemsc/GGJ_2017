@@ -2,6 +2,7 @@
 #define _WINDOSCILLATINGBAR_
 
 #include "j1Render.h"
+#include "j1Timer.h"
 
 class UIWindow;
 class UIImage;
@@ -35,8 +36,13 @@ private:
 	bool one_time = true;
 	uint soft_wind_FX = NULL;
 	uint hard_wind_FX = NULL;
+	uint light_wind_FX = NULL;
 
 	float offset = 0;
+
+	j1Timer timer;
+	int random_num;
+	bool start_timer = true;
 public:
 
 	float wind_power = 0;	

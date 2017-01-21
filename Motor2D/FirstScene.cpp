@@ -198,6 +198,7 @@ bool FirstScene::Update(float dt)
 	if (t1->center_point_top.x < App->render->camera.x || t1->center_point_top.x > App->render->camera.x + App->render->camera.w)
 	{
 		// Stop level
+		levels->ActiveStars();
 		levels->level_ended = true;
 		t1->speed = 0;
 	}

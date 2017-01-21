@@ -4,7 +4,11 @@
 #include "j1Input.h"
 #include "Sprite2D.h"
 #include "j1Audio.h"
+#include <random>
+#include <iostream>
+#include "j1Scene.h"
 
+using namespace std;
 WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 {
 	pugi::xml_document doc;
@@ -42,8 +46,24 @@ void WindOscillatingBar::UpdateBar()
 	if (one_time) {
 		soft_wind_FX = App->audio->LoadFx("audio/fx/soft_wind_FX.wav");
 		hard_wind_FX = App->audio->LoadFx("audio/fx/hard_wind_FX.wav");
+		light_wind_FX = App->audio->LoadFx("audio/fx/light_wind_FX.wav");
 		one_time = false;
 	}
+
+	if (start_timer) {
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<> random(4, 6);
+		random_num = random(gen);
+		start_timer = false;
+		timer.Start();
+	}
+	else if (timer.ReadSec() >= random_num) {
+		App->audio->PlayFx(light_wind_FX);
+
+		start_timer = true;
+	}
+
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
