@@ -63,11 +63,10 @@ public:
 	int distance_next_treecube = 0;
 
 	pugi::xml_document doc;
-
-	p2List<SDL_Rect*> rects;
 	SDL_Texture* texture = nullptr;
 
 private:
+	p2List<SDL_Rect> rects;
 	bool growing = false;
 
 	bool create_cube = true;

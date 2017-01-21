@@ -5,6 +5,7 @@
 #include <random>
 #include <iostream>
 #include "j1FileSystem.h"
+#include "p2Log.h"
 using namespace std;
 
 Tree::Tree()
@@ -43,7 +44,6 @@ bool Tree::Update(float dt)
 	for (int i = 0; i < tree_cubes_list.count(); i++)
 	{
 		tree_cubes_list[i]->Update(dt);
-		tree_cubes_list[i]->Draw();
 	}
 		
 	if (growing)
@@ -64,6 +64,10 @@ bool Tree::Update(float dt)
 
 bool Tree::Draw()
 {
+	for (int i = tree_cubes_list.count()-1; i >= 0; i--)
+	{
+		tree_cubes_list[i]->Draw();
+	}
 	return true;
 }
 
@@ -151,8 +155,8 @@ void Tree::UpdateCenterPointTop()
 {
 	if (tree_cubes_list.count() > 0)
 	{
-		center_point_top.x = tree_cubes_list.end->data->info.GetPos().x + (tree_cubes_list.end->data->GetWidth() / 2);
-		center_point_top.y = tree_cubes_list.end->data->info.GetPos().y;
+		center_point_top.x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth() / 2);
+		center_point_top.y = tree_cubes_list.end->data->GetY();
 	}
 }
 
@@ -184,13 +188,13 @@ void Tree::LoadRects()
 	texture = App->tex->Load(node.attribute("texture").as_string());
 
 	node = node.child("rects");
-	for (; node != NULL; node = node.child("rects").next_sibling())
+	for (; node != NULL; node = node.next_sibling("rects"))
 	{
-		SDL_Rect* rect = new SDL_Rect();
-		rect->x = node.attribute("rect_x").as_int();
-		rect->y = node.attribute("rect_y").as_int();
-		rect->w = node.attribute("rect_w").as_int();
-		rect->h = node.attribute("rect_h").as_int();
+		SDL_Rect rect = {0, 0, 0, 0};
+		rect.x = node.attribute("rect_x").as_int();
+		rect.y = node.attribute("rect_y").as_int();
+		rect.w = node.attribute("rect_w").as_int();
+		rect.h = node.attribute("rect_h").as_int();
 		rects.add(rect);
 	}
 }
