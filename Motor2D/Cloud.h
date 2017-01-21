@@ -20,8 +20,8 @@ private:
 	float speed = 0;
 	float acumulated_dt = 0;
 	int element = 0;
-	int curr_frame = 3;
-	int target_frame = 3;
+	int curr_frame = 0;
+	int target_frame = 0;
 
 };
 

@@ -14,6 +14,7 @@ Cloud::Cloud(iPoint pos) : Entity(cloud,pos,"cloud")
 	mt19937 gen(rd());
 	uniform_int_distribution<> random(0, 1);
 	element = random(gen);
+	info.GetAnim()->SetInitialFrame(2);
 }
 
 Cloud::~Cloud()
@@ -27,17 +28,8 @@ bool Cloud::Update(float dt)
 		speed = CalculateSpeed(App->scene->GetWindForce());
 		iPoint pos(info.GetPos().x+speed*dt, info.GetPos().y);
 		info.SetPos(pos);
-		target_frame = GetTargetFrame(speed);
-		if(curr_frame != target_frame){
-			if (curr_frame < target_frame){
-				info.GetAnim()->AnimForward();
-				curr_frame++;
-			}
-			else {
-				info.GetAnim()->AnimBack();
-				curr_frame--;
-			}
-		}
+		target_frame = GetTargetFrame(App->scene->GetWindForce());
+		info.GetAnim()->SetInitialFrame(target_frame);
 		acumulated_dt = 0;
 	}
 	return true;
@@ -57,9 +49,9 @@ int Cloud::CalculateSpeed(float wind) const
 
 int Cloud::GetTargetFrame(float speed) const
 {
-	if ((speed / 15.0f) > 7.0f) return 0;
-	if ((speed / 15.0f) > 3.0f) return 1;
-	if (speed / 15.0f > -3.0f) return 2;
-	if (speed / 15.0f > -7.0f) return 3;
+	if (speed > 7.0f) return 0;
+	if (speed > 1.5f) return 1;
+	if (speed > -1.5f) return 2;
+	if (speed > -7.0f) return 3;
 	return 4;
 }
