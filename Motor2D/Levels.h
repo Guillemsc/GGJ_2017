@@ -5,6 +5,7 @@
 #include "Entity.h"
 
 class Tree;
+class UILabel;
 
 struct LevelPoint
 {
@@ -58,6 +59,7 @@ private:
 	p2List<LevelPoint> level_points_list;
 	Tree* tree = nullptr;
 
+	UILabel* end_label;
 
 };
 #endif // !_LEVELS_H_

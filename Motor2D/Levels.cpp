@@ -3,10 +3,14 @@
 #include "j1Textures.h"
 #include "Tree.h"
 #include "p2Log.h"
+#include "UILabel.h"
+#include "j1Gui.h"
 
 Levels::Levels(Tree* _tree) : tree(_tree)
 {
 	//texture = App->tex->Load("")
+	end_label = (UILabel*)App->gui->CreateUIElement(Label, 100, 200, nullptr, 400, 60);
+	end_label->active = true;
 }
 
 Levels::~Levels()
@@ -40,6 +44,10 @@ bool Levels::Update(float dt)
 
 		if(accomplished_distance != 0)
 			final_percentage = ((accomplished_distance * 100) / level_distance);
+
+		end_label->active = true;
+		p2SString txt; txt.create("level %d completed in a %.f percent", current_level, final_percentage);
+		end_label->SetText(txt.GetString());
 	}
 
 	return true;
