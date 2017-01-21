@@ -29,6 +29,7 @@
 
 #define CAMERA_SCROLL 300
 #define NUMBER_LEVELS 6
+#define TIMER 180
 
 FirstScene::FirstScene()
 {
@@ -118,7 +119,6 @@ bool FirstScene::Update(float dt)
 		counter2 = 0;
 
 
-
 	// Camera
 	if(t1->center_point_top.y <= CAMERA_SCROLL && !levels->level_ended)
 	App->render->camera.y = -t1->center_point_top.y + CAMERA_SCROLL;
@@ -152,13 +152,13 @@ bool FirstScene::Update(float dt)
 	}
 
 	// Camera moves down
-	if (levels->level_ended && -App->render->camera.y<0 && (counter2 > 180 || !levels->level_finished )) // wait 3 sec
+	if (levels->level_ended && -App->render->camera.y<0 && (counter2 > TIMER || !levels->level_finished )) // wait 3 sec
 	{
 		App->render->camera.y -= ceil(250 * dt);
 	}
 	// Level swaper ----------------
 
-	else if (levels->level_ended && (counter2 > 180 || !levels->level_finished))
+	else if (levels->level_ended && (counter2 > TIMER || !levels->level_finished))
 	{
 		// Change if finished
 		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS){
