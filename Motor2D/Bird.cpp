@@ -3,11 +3,13 @@
 #include "j1Scene.h"
 #include "j1Render.h"
 #include "j1Audio.h"
+#include "FirstScene.h"
 
 Bird::Bird(iPoint pos):Entity(bird,pos,"bird")
 {
 	info.SetAnimation(Run);
 	draw_order = AfterAll;
+	App->scene->first_scene->birds++;
 }
 
 Bird::~Bird()
@@ -39,6 +41,7 @@ bool Bird::Update(float dt)
 			nested = true;
 			App->scene->AddNested();
 			App->audio->PlayFx(bird_later_FX);
+			App->scene->first_scene->nested_birds++;
 		}
 	}
 	if (info.GetPos().y >= 680){

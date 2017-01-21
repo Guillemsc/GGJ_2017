@@ -186,6 +186,9 @@ bool FirstScene::Update(float dt)
 			break;
 		}
 
+		birds = 0;
+		nested_birds = 0;
+
 		t1->Reset();
 		t1->StartGrowing();
 		t1->speed = 3;

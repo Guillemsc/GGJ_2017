@@ -55,6 +55,9 @@ public:
 
 	bool wait_for_menu = false;
 
+	int birds = 0;
+	int nested_birds = 0;
+
 private:
 
 	Grass* grass1 = nullptr;
