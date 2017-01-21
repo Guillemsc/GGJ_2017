@@ -45,9 +45,7 @@ bool FirstScene::Start()
 	t1->Set(3);
 	t1->StartGrowing();
 
-	cloud1 = (Cloud*)App->entities->CreateEntity(cloud, 25, 30);
-	cloud2 = (Cloud*)App->entities->CreateEntity(cloud, 250, 130);
-	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 100, 70);
+	clouds.add((Cloud*)App->entities->CreateEntity(cloud, 275, 125));
 
 	grass1 = (Grass*)App->entities->CreateEntity(grass, 25, 680);
 	//grass2 = (Grass*)App->entities->CreateEntity(grass, 230, 670);
@@ -92,6 +90,11 @@ bool FirstScene::Update(float dt)
 
 	// Levels
 	levels->Update(dt);
+
+	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y){
+		clouds.add((Cloud*)App->entities->CreateEntity(cloud, 425, -App->render->camera.y-75));
+	}
+	prev_cam_y = App->render->camera.y;
 
 	return true;
 }
