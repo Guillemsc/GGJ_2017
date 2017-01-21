@@ -28,6 +28,7 @@
 #include <iostream>
 
 #define CAMERA_SCROLL 300
+#define NUMBER_LEVELS 6
 
 FirstScene::FirstScene()
 {
@@ -138,7 +139,7 @@ bool FirstScene::Update(float dt)
 	else if (levels->level_ended)
 	{
 		// Change if finished
-		if(levels->level_finished)
+		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS)
 			levels->SetLevel(levels->current_level + 1);
 		// Stay if failed
 		else

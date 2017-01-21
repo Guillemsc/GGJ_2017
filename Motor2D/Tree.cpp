@@ -298,14 +298,18 @@ void Tree::Reset()
 
 	distance_next_treecube = 0;
 
-	while (tree_cubes_list.count()) {
-		RELEASE(tree_cubes_list.end->data);
-		tree_cubes_list.del(tree_cubes_list.end);
+	for (int i = 0; i < tree_cubes_list.count(); i++)
+	{
+		delete(tree_cubes_list[i]);
 	}
-	while (branch_list.count()) {
-		RELEASE(branch_list.end->data);
-		branch_list.del(branch_list.end);
+
+	for (int i = 0; i < branch_list.count(); i++)
+	{
+		delete(branch_list[i]);
 	}
+
+	tree_cubes_list.clear();
+	branch_list.clear();
 
 	end_tree_steps = 0;
 }

@@ -15,8 +15,8 @@ struct CubePart
 	};
 
 	iPoint pos;
-	SDL_Rect rect;
-	SDL_Rect rect_green;
+	SDL_Rect rect = {0 ,0, 0, 0};
+	SDL_Rect rect_green = { 0 ,0, 0, 0 };
 };
 
 class TreeCube : public Entity

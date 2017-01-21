@@ -17,14 +17,14 @@ public:
 
 	iPoint GetPosition();
 private:
-	UIWindow*		wind_window;
-	UIImage*		wind_bar;
+	UIWindow*		wind_window = nullptr;
+	UIImage*		wind_bar = nullptr;
 
 
 	float			angle = 0;
 
-	SDL_Rect		window_rect;
-	SDL_Rect		bar_rect;
+	SDL_Rect		window_rect = NULLRECT;
+	SDL_Rect		bar_rect = NULLRECT;
 	
 	bool play = false;
 
