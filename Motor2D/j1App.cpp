@@ -20,6 +20,7 @@
 #include "j1BackgroundDrawer.h"
 #include "ModulePhysics.h"
 #include "j1DrawEntities.h"
+#include "j1GroundDrawer.h"
 
 // Constructor
 j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
@@ -42,6 +43,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	entities = new j1Entities();
 	back = new j1BackgroundDrawer();
 	draw_entities = new j1DrawEntities();
+	ground = new j1GroundDrawer();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -62,6 +64,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	// scene last
 	AddModule(scene);
 	AddModule(draw_entities);
+	AddModule(ground);
+
 
 	// render last to swap buffer
 	AddModule(render);

@@ -24,6 +24,7 @@ class j1Entities;
 class ModulePhysics;
 class j1BackgroundDrawer;
 class j1DrawEntities;
+class j1GroundDrawer;
 
 class j1App
 {
@@ -110,6 +111,7 @@ public:
 	ModulePhysics*		physics = NULL;
 	j1BackgroundDrawer*	back = NULL;
 	j1DrawEntities*		draw_entities = NULL;
+	j1GroundDrawer*		ground = NULL;
 
 	bool				quit = false;
 

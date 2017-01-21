@@ -113,7 +113,8 @@ bool FirstScene::Update(float dt)
 	}
 	prev_cam_y = App->render->camera.y;
 
-	if (gen_cloud) {
+	if (gen_cloud) 
+	{
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> random2(App->render->camera.x, App->render->camera.x + App->render->camera.w);
@@ -125,12 +126,13 @@ bool FirstScene::Update(float dt)
 		App->render->camera.y -= ceil(250 * dt);
 	}
 
+	App->render->Blit(t1->texture, 0, 700, &ground_rect);
 	return true;
 }
 
 bool FirstScene::PostUpdate()
 {
-	App->render->Blit(t1->texture, 0, 700, &ground_rect);
+	//App->render->Blit(t1->texture, 0, 700, &ground_rect);
 	return true;
 }
 
