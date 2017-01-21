@@ -6,6 +6,8 @@
 #include "j1FileSystem.h"
 #include "p2Log.h"
 #include "j1Render.h"
+#include "Bird.h"
+#include "j1Entities.h"
 
 using namespace std;
 
@@ -128,6 +130,8 @@ void Tree::CreateNewBranch(p2List_item<TreeCube*>* node)
 		x = node->data->GetX() + (node->data->GetWidth());
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Run);
+		Bird* tmp = (Bird*)App->entities->CreateEntity(bird, x+RandomGenerate(-200,200), y - 150);
+		tmp->SetNest(branch);
 	}
 			break;
 	case 3: {

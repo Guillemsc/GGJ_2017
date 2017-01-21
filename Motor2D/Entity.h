@@ -10,6 +10,7 @@ enum EntityType
 	branch,
 	grass,
 	cloud,
+	bird,
 	NoType
 };
 
@@ -33,6 +34,8 @@ public:
 	virtual bool Draw();
 
 	const char* GetName()const;
+
+	EntityType GetType()const;
 
 private:
 

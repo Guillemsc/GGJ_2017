@@ -4,6 +4,10 @@
 #include "Scene.h"
 #include "j1Render.h"
 
+enum Events {
+	bird_nest, storm, wind_gust, wind, against_wind, events_num
+};
+
 class Tree;
 class Grass;
 class Cloud;
@@ -59,6 +63,8 @@ private:
 
 	int prev_cam_y;
 	bool gen_cloud = true;
+
+	bool active_events[events_num];
 
 };
 

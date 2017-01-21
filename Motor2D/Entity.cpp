@@ -44,3 +44,8 @@ const char * Entity::GetName() const
 {
 	return name.GetString();
 }
+
+EntityType Entity::GetType() const
+{
+	return type;
+}

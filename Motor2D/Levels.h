@@ -38,6 +38,8 @@ public:
 	int GetLevelDistance();
 	int GetCurrentLevelPoint();
 
+	void ClearBirds() const;
+
 private:
 	void Level1();
 	void Level2();

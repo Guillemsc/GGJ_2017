@@ -57,6 +57,8 @@ bool FirstScene::Start()
 
 	wind_bar = new WindOscillatingBar(30, 30, 200, 20);
 
+	for (int i = 0; i < events_num; i++)
+			active_events[i] = false;
 	// Ground
 	pugi::xml_node node = t1->doc.child("config").child("ground");
 	ground_rect = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int()};
@@ -69,6 +71,8 @@ bool FirstScene::Start()
 	SDL_Rect shadow_red = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int() };
 	levels = new Levels(t1, t1->texture, shadow, shadow_red);
 	levels->SetLevel(1);
+	active_events[1] = true;
+	
 
 	return true;
 }
@@ -116,6 +120,7 @@ bool FirstScene::Update(float dt)
 	}
 	prev_cam_y = App->render->camera.y;
 
+	//Generate Clouds
 	if (gen_cloud) 
 	{
 		std::random_device rd;
@@ -136,11 +141,39 @@ bool FirstScene::Update(float dt)
 	else if (levels->level_ended)
 	{
 		// Change if finished
-		if(levels->level_finished)
+		if(levels->level_finished){
 			levels->SetLevel(levels->current_level + 1);
+		}
 		// Stay if failed
 		else
 			levels->SetLevel(levels->current_level);
+
+		switch (levels->current_level)
+		{
+		case 5:
+			active_events[wind_gust] = true;
+			break;
+		case 6:
+			active_events[wind_gust] = false;
+			active_events[storm] = true;
+			break;
+		case 7:
+			active_events[against_wind] = true;
+			active_events[storm] = false;
+			break;
+		case 8:
+			active_events[against_wind] = false;
+			active_events[storm] = true;
+			active_events[wind_gust] = true;
+			break;
+		case 9:
+			active_events[against_wind] = true;
+			active_events[storm] = false;
+			active_events[wind_gust] = true;
+			break;
+		default:
+			break;
+		}
 
 		t1->Reset();
 		t1->StartGrowing();
@@ -160,6 +193,11 @@ bool FirstScene::Update(float dt)
 
 	// Blit ground
 	App->render->Blit(t1->texture, 0, 700, &ground_rect);
+
+	//Event Mangement
+	if (active_events[bird] == true) {
+
+	}
 
 	return true;
 }

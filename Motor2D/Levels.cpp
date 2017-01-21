@@ -5,6 +5,8 @@
 #include "p2Log.h"
 #include "UILabel.h"
 #include "j1Gui.h"
+#include "Entity.h"
+#include "j1Entities.h"
 
 Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
@@ -100,6 +102,7 @@ void Levels::CreateLevelPoint(iPoint pos, int w, int h)
 void Levels::CleanLevel()
 {
 	level_points_list.clear();
+	ClearBirds();
 }
 
 int Levels::GetLevelDistance()
@@ -132,6 +135,15 @@ int Levels::GetCurrentLevelPoint()
 	}
 
 	return -1;
+}
+
+void Levels::ClearBirds() const
+{
+	for (p2List_item<Entity*>* bird_ent = App->entities->GetFirstEntity(); bird_ent; bird_ent = bird_ent->next) {
+		if (bird_ent->data->GetType() == bird){
+			App->entities->DeleteEntity(bird_ent->data);
+		}
+	}
 }
 
 void Levels::Level1()

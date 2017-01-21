@@ -3,6 +3,7 @@
 #include "Cloud.h"
 #include "p2Log.h"
 #include "Tree.h"
+#include "Bird.h"
 
 j1Entities::j1Entities()
 {
@@ -61,7 +62,7 @@ bool j1Entities::CleanUp()
 
 Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 {
-	static_assert(NoType == 5, "CreateEntity code need update");
+	static_assert(NoType == 6, "CreateEntity code need update");
 
 	Entity* tmp = nullptr;
 
@@ -80,6 +81,8 @@ Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 	case cloud:
 		tmp = new Cloud(iPoint(pos_x, pos_y));
 		break;
+	case bird:
+		tmp = new Bird(iPoint(pos_x, pos_y));
 	case NoType:
 		break;
 	default:

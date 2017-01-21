@@ -75,6 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Branch.cpp" />
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -112,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Bird.h" />
     <ClInclude Include="Branch.h" />
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Entity.h" />
@@ -165,6 +167,7 @@
     <ClInclude Include="WindOscillatingBar.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="..\Game\bird.xml" />
     <Xml Include="..\Game\branch.xml" />
     <Xml Include="..\Game\cloud.xml" />
     <Xml Include="..\Game\config.xml" />
