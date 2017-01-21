@@ -59,22 +59,22 @@ public:
 	IntroScene* intro_scene = nullptr;
 
 private:
-	SDL_Texture* debug_tex;
+	SDL_Texture* debug_tex = nullptr;
 
-	UIImage* banner;
-	UILabel* text;
-	UILabel* text2;
-	UIButton* button;
-	UIButton* button2;
-	UIWindow* window;
-	UIInputText* input_text;
-	UIScrollBar* horizontal;
-	UIScrollBar* vertical;
-	UICheckBox* option1;
-	UICheckBox* option2;
-	UICheckBox* multi_option1;
-	UICheckBox* multi_option2;
-	UIWindow* vis;
+	UIImage* banner = nullptr;
+	UILabel* text = nullptr;
+	UILabel* text2 = nullptr;
+	UIButton* button = nullptr;
+	UIButton* button2 = nullptr;
+	UIWindow* window = nullptr;
+	UIInputText* input_text = nullptr;
+	UIScrollBar* horizontal = nullptr;
+	UIScrollBar* vertical = nullptr;
+	UICheckBox* option1 = nullptr;
+	UICheckBox* option2 = nullptr;
+	UICheckBox* multi_option1 = nullptr;
+	UICheckBox* multi_option2 = nullptr;
+	UIWindow* vis = nullptr;
 };
 
 #endif // __j1SCENE_H__

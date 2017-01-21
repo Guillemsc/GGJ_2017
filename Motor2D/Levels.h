@@ -44,6 +44,9 @@ private:
 	void Level1();
 	void Level2();
 	void Level3();
+	void Level4();
+	void Level5();
+	void Level6();
 
 public:
 	int current_level = 0;
@@ -59,15 +62,15 @@ public:
 	float final_percentage = 0.0f;
 
 	SDL_Texture* texture = nullptr;
-	SDL_Rect rect;
-	SDL_Rect rect2;
+	SDL_Rect rect = NULLRECT;
+	SDL_Rect rect2 = NULLRECT;
 
 private:
 	bool debug = true;
 	p2List<LevelPoint> level_points_list;
 	Tree* tree = nullptr;
 
-	UILabel* end_label;
+	UILabel* end_label = nullptr;
 
 };
 #endif // !_LEVELS_H_

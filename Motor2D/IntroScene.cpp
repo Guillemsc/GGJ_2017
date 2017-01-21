@@ -46,18 +46,18 @@ bool IntroScene::Start()
 }
 
 bool IntroScene::PreUpdate()
-{
+{	
 	return true;
 }
 
 bool IntroScene::Update(float dt)
 {
-	wind_bar->UpdateBar();
 	return true;
 }
 
 bool IntroScene::PostUpdate()
 {
+	wind_bar->UpdateBar();
 	return true;
 }
 

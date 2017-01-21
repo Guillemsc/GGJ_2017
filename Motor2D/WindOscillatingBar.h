@@ -15,19 +15,23 @@ public:
 
 	void UpdateBar();
 
+	iPoint GetPosition();
 private:
-	UIWindow*		wind_window;
-	UIImage*		wind_bar;
-	Sprite2D*		sprite;
+	UIWindow*		wind_window = nullptr;
+	UIImage*		wind_bar = nullptr;
+
 
 	float			angle = 0;
 
-	SDL_Rect		window_rect;
-	SDL_Rect		bar_rect;
+	SDL_Rect		window_rect = NULLRECT;
+	SDL_Rect		bar_rect = NULLRECT;
+	
+	bool play = false;
 
-
+	uint bar_bouncing_fx = NULL;
 public:
-	float wind_power = 0;
+	float wind_power = 0;	
+	Sprite2D*		sprite;
 };
 
 #endif _WINDOSCILLATINGBAR_

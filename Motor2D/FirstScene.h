@@ -45,23 +45,23 @@ public:
 	int counter = 0;
 	int force = 0;
 
-	WindOscillatingBar*	wind_bar;
+	WindOscillatingBar*	wind_bar = nullptr;
 
 	Levels* levels = nullptr;
 
 	// Ground
-	SDL_Rect ground_rect;
+	SDL_Rect ground_rect = NULLRECT;
 
 private:
 	p2List<Cloud*> clouds;
 
-	Grass* grass1;
-	Grass* grass2;
-	Grass* grass3;
-	Grass* grass4;
-	Grass* grass5;
+	Grass* grass1 = nullptr;
+	Grass* grass2 = nullptr;
+	Grass* grass3 = nullptr;
+	Grass* grass4 = nullptr;
+	Grass* grass5 = nullptr;
 
-	int prev_cam_y;
+	int prev_cam_y = 0;
 	bool gen_cloud = true;
 
 	bool active_events[events_num];

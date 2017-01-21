@@ -45,7 +45,7 @@ public:
 
 private:
 	p2SString name;
-	EntityType type;
+	EntityType type = EntityType::NoType;
 
 };
 #endif // !_ENTITY_H_

@@ -28,6 +28,7 @@
 #include <iostream>
 
 #define CAMERA_SCROLL 300
+#define NUMBER_LEVELS 6
 
 FirstScene::FirstScene()
 {
@@ -70,9 +71,11 @@ bool FirstScene::Start()
 	node = t1->doc.child("config").child("back_shadow_red");
 	SDL_Rect shadow_red = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int() };
 	levels = new Levels(t1, t1->texture, shadow, shadow_red);
+
 	levels->SetLevel(1);
 	active_events[1] = true;
 	
+
 
 	return true;
 }
@@ -141,7 +144,7 @@ bool FirstScene::Update(float dt)
 	else if (levels->level_ended)
 	{
 		// Change if finished
-		if(levels->level_finished){
+		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS){
 			levels->SetLevel(levels->current_level + 1);
 		}
 		// Stay if failed
