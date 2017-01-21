@@ -39,6 +39,7 @@ public:
 	void UpdateCenterPointTop();
 
 	void MakeTreeGrow();
+	void WindForceOnTree(float force);
 
 	int RandomGenerate(int x, int y);
 

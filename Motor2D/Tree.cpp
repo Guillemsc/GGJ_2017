@@ -173,6 +173,39 @@ void Tree::MakeTreeGrow()
 	}
 }
 
+void Tree::WindForceOnTree(float force)
+{
+	int general_counter = 1;
+	int cube_counter = 1;
+	p2List_item<TreeCube*>* current_cube = tree_cubes_list.end;
+	p2List_item<TreeCube*>* to_copy = current_cube;
+	
+	for (cube_counter; cube_counter < 4; cube_counter++)
+	{
+		if (current_cube->prev != nullptr)
+		{
+			current_cube = current_cube->prev;
+		}
+		else
+			break;
+	}
+
+	for(int i = 0; i < cube_counter; i++)
+	{
+		p2List_item<CubePart*>* current_part = current_cube->data->tree_cube_parts.end;
+
+		for (; current_part != nullptr; current_part = current_part->prev)
+		{	
+			current_part->data->pos.x += general_counter;
+			general_counter -= force;
+		}
+
+		current_cube = current_cube->next;
+	}
+
+
+}
+
 int Tree::RandomGenerate(int x, int y)
 {
 	random_device rd;

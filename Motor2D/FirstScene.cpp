@@ -49,7 +49,22 @@ bool FirstScene::PreUpdate()
 
 bool FirstScene::Update(float dt)
 {
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
+	{
+		force++;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+	{
+		force--;
+	}
+	if (counter == 10)
+	{
+		t1->WindForceOnTree(force);
+		counter = 0;
+	}
+	counter++;
 
+	App->render->camera.y += t1->speed;
 	return true;
 }
 

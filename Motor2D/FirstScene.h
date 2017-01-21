@@ -28,6 +28,9 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 	Tree* t1 = nullptr;
+
+	int counter = 0;
+	int force = 0;
 };
 
 #endif
