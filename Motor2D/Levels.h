@@ -41,6 +41,7 @@ public:
 private:
 	void Level1();
 	void Level2();
+	void Level3();
 
 public:
 	int current_level = 0;
@@ -51,6 +52,7 @@ public:
 	int last_point = 0;
 
 	bool level_ended = false;
+	bool level_finished = false;
 
 	float final_percentage = 0.0f;
 

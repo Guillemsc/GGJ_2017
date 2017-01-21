@@ -131,18 +131,29 @@ bool FirstScene::Update(float dt)
 	{
 		App->render->camera.y -= ceil(250 * dt);
 	}
-	// Level change
+	// Level swaper ----------------
+
 	else if (levels->level_ended)
 	{
-		/*levels->SetLevel(2);
+		// Change if finished
+		if(levels->level_finished)
+			levels->SetLevel(levels->current_level + 1);
+		// Stay if failed
+		else
+			levels->SetLevel(levels->current_level);
+
 		t1->Reset();
 		t1->StartGrowing();
-		t1->speed = 2;*/
+		t1->speed = 3;
+		wind_bar->wind_power = wind_force = 0;
 	}
+
+	// ---------------------------
 
 	// End game if out of the limits
 	if (t1->center_point_top.x < App->render->camera.x || t1->center_point_top.x > App->render->camera.x + App->render->camera.w)
 	{
+		// Stop level
 		levels->level_ended = true;
 		t1->speed = 0;
 	}
