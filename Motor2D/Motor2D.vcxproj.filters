@@ -91,12 +91,14 @@
     <ClCompile Include="Cloud.cpp">
       <Filter>Desenvolupament  ========\Entities\Cloud</Filter>
     </ClCompile>
-    <ClCompile Include="WindOscillatingBar.cpp" />
     <ClCompile Include="Levels.cpp">
       <Filter>Desenvolupament  ========\Entities</Filter>
     </ClCompile>
     <ClCompile Include="j1BackgroundDrawer.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="WindOscillatingBar.cpp">
+      <Filter>Desenvolupament  ========\Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +321,9 @@
     </Xml>
     <Xml Include="..\Game\branch.xml">
       <Filter>Desenvolupament  ========\Entities\Branch</Filter>
+    </Xml>
+    <Xml Include="..\Game\wind_oscillating_bar.xml">
+      <Filter>Desenvolupament  ========\Tools</Filter>
     </Xml>
   </ItemGroup>
 </Project>

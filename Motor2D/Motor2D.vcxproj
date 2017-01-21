@@ -168,6 +168,7 @@
     <Xml Include="..\Game\config.xml" />
     <Xml Include="..\Game\grass.xml" />
     <Xml Include="..\Game\tree_cube.xml" />
+    <Xml Include="..\Game\wind_oscillating_bar.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,13 @@
+<!--oscillator configuration xml-->
+
+<config>
+  
+  <texture path="Sprites/treechunks.png"/>
+  
+  <window x = "0" y = "601" w = "591" h = "148"/> <!--window-->
+  
+  <bar x = "594" y = "604" w = "67" h = "142"/>
+  
+</config>
+	
+

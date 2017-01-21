@@ -5,11 +5,22 @@
 
 WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 {
-	wind_window = (UIWindow*)App->gui->CreateUIElement(Window, x, y, nullptr, w, h);
-	wind_window->SetRect({ 20,20,60,30 }); //adjust to final one
+	pugi::xml_document doc;
+	App->LoadXML("wind_oscillating_bar.xml", doc);
 
-	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, w/20, h);
-	wind_bar->SetRect({ 20,20,60,30 }); //adjust to final one
+	pugi::xml_node node = doc.child("config");
+
+	window_rect = { node.child("window").attribute("x").as_int(), node.child("window").attribute("y").as_int(),
+				   node.child("window").attribute("w").as_int(), node.child("window").attribute("h").as_int() };
+
+	bar_rect = { node.child("bar").attribute("x").as_int(),	bar_rect.y = node.child("bar").attribute("y").as_int(),
+				 node.child("bar").attribute("w").as_int(),	bar_rect.h = node.child("bar").attribute("h").as_int() };
+
+	wind_window = (UIWindow*)App->gui->CreateUIElement(Window, x, y, nullptr, window_rect.w, window_rect.h);
+	wind_window->SetRect(window_rect); //adjust to final one
+
+	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, bar_rect.w, bar_rect.h);
+	wind_bar->SetRect(bar_rect); //adjust to final one
 }
 
 WindOscillatingBar::~WindOscillatingBar()

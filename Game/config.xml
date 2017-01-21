@@ -11,7 +11,7 @@
 		<default_font file="fonts/pixellari/Pixellari.ttf" size="12" />
 	</font>
 	<gui>
-		<atlas file="gui/atlas.png" />
+		<atlas file="Sprites/treechunks.png"/>
 	</gui>
 	<window>
 		<resolution width="700" height="825" scale="1" />
