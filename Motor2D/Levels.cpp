@@ -6,10 +6,11 @@
 #include "UILabel.h"
 #include "j1Gui.h"
 
-Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect) : tree(_tree)
+Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
 	texture = _texture;
 	rect = { _rect.x, _rect.y, _rect.w, _rect.h };
+	rect2 = { _rect2.x, _rect2.y, _rect2.w, _rect2.h };
 	end_label = (UILabel*)App->gui->CreateUIElement(Label, 100, 200, nullptr, 400, 60);
 	end_label->active = false;
 }
