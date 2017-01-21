@@ -314,5 +314,8 @@
     <Xml Include="..\Game\cloud.xml">
       <Filter>Desenvolupament  ========\Entities\Cloud</Filter>
     </Xml>
+    <Xml Include="..\Game\tree_cube.xml">
+      <Filter>Desenvolupament  ========\Entities\TreeCube</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

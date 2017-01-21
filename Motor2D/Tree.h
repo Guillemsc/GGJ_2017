@@ -70,8 +70,11 @@ public:
 	pugi::xml_document doc;
 	SDL_Texture* texture = nullptr;
 
+	int end_tree_steps = 0;
+
 private:
 	p2List<SDL_Rect> rects;
+	p2List<SDL_Rect> rects_green;
 	bool growing = false;
 
 	bool create_cube = true;

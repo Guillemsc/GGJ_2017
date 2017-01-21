@@ -64,9 +64,14 @@ bool Tree::Update(float dt)
 
 bool Tree::Draw()
 {
+	int position = 0;
+
+	if (end_tree_steps != 0)
+		position -= end_tree_steps;
 	for (int i = tree_cubes_list.count()-1; i >= 0; i--)
 	{
-		tree_cubes_list[i]->Draw();
+		tree_cubes_list[i]->Draw(position);
+		position++;
 	}
 	return true;
 }
@@ -87,12 +92,12 @@ void Tree::CreateNewCube()
 		// Create tree cube on starting point
 	if (tree_cubes_list.count() == 0)
 	{
-		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString(), rects, texture);
+		tree_cube = new TreeCube(iPoint(info.GetPos().x, info.GetPos().y), name.GetString(), rects, rects_green, texture);
 		center_point_top.y = info.GetPos().y;
 	}
 	else
 		// Create tree cube on the center point
-		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString(), rects, texture);
+		tree_cube = new TreeCube(iPoint(center_point_top.x - (tree_cubes_list.end->data->GetWidth() / 2), center_point_top.y), name.GetString(), rects, rects_green, texture);
 
 	if(tree_cube!= nullptr)
 		tree_cubes_list.add(tree_cube);
@@ -235,7 +240,7 @@ int Tree::RandomGenerate(int x, int y)
 
 void Tree::LoadRects()
 {
-	pugi::xml_node node = doc.child("cube1");
+	pugi::xml_node node = doc.child("config").child("cube1");
 
 	texture = App->tex->Load(node.attribute("texture").as_string());
 
@@ -248,6 +253,17 @@ void Tree::LoadRects()
 		rect.w = node.attribute("rect_w").as_int();
 		rect.h = node.attribute("rect_h").as_int();
 		rects.add(rect);
+	}
+
+	node = doc.child("config").child("cube2").child("rects");
+	for (; node != NULL; node = node.next_sibling("rects"))
+	{
+		SDL_Rect rect_green = { 0, 0, 0, 0 };
+		rect_green.x = node.attribute("rect_x").as_int();
+		rect_green.y = node.attribute("rect_y").as_int();
+		rect_green.w = node.attribute("rect_w").as_int();
+		rect_green.h = node.attribute("rect_h").as_int();
+		rects_green.add(rect_green);
 	}
 }
 

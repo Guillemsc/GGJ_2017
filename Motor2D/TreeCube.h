@@ -7,26 +7,28 @@
 struct CubePart
 {
 	CubePart() {  };
-	CubePart(iPoint _pos, SDL_Rect _rect)
+	CubePart(iPoint _pos, SDL_Rect _rect, SDL_Rect _rect_green)
 	{
 		pos = _pos; 
 		rect = { _rect.x, _rect.y, _rect.w, _rect.h };
+		rect_green = _rect_green;
 	};
 
 	iPoint pos;
 	SDL_Rect rect;
+	SDL_Rect rect_green;
 };
 
 class TreeCube : public Entity
 {
 public:
-	TreeCube(iPoint position, const char* entity_name, p2List<SDL_Rect> &rects, SDL_Texture* texture);
+	TreeCube(iPoint position, const char* entity_name, p2List<SDL_Rect> &rects, p2List<SDL_Rect> &rects_green, SDL_Texture* texture);
 
 	~TreeCube();
 
 	bool Update(float dt);
 
-	bool Draw();
+	bool Draw(int position);
 
 	int GetX();
 	int GetY();

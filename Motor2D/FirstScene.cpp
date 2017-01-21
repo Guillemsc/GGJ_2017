@@ -57,13 +57,13 @@ bool FirstScene::Start()
 
 	wind_bar = new WindOscillatingBar(30, 30, 200, 20);
 
-	// Background
-	pugi::xml_node node = t1->doc.child("ground");
+	// Ground
+	pugi::xml_node node = t1->doc.child("config").child("ground");
 	ground_rect = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int()};
 	App->back->back1 = true;
 
 	// Levels manager
-	node = t1->doc.child("back_shadow");
+	node = t1->doc.child("config").child("back_shadow");
 	levels = new Levels(t1, t1->texture, { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int() });
 	levels->SetLevel(1);
 
@@ -83,8 +83,11 @@ bool FirstScene::Update(float dt)
 	// Tree movement
 	if (counter == 15)
 	{
-		if(!levels->level_ended)
+		if (!levels->level_ended)
 			t1->WindForceOnTree(wind_force);
+		else
+			t1->end_tree_steps--;
+
 		counter = 0;
 	}
 	counter++;
@@ -96,7 +99,6 @@ bool FirstScene::Update(float dt)
 	// Wind Bar
 	wind_bar->UpdateBar();
 	wind_force = wind_bar->wind_power;
-
 
 	// Levels
 	levels->Update(dt);
@@ -163,3 +165,4 @@ void FirstScene::SaveCVar(p2SString & cvar_name, pugi::xml_node & node) const
 void FirstScene::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 }
+
