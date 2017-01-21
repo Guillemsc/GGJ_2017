@@ -61,7 +61,7 @@ bool j1Entities::CleanUp()
 
 Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 {
-	static_assert(NoType == 6, "CreateEntity code need update");
+	static_assert(NoType == 5, "CreateEntity code need update");
 
 	Entity* tmp = nullptr;
 
@@ -71,8 +71,6 @@ Entity * j1Entities::CreateEntity(EntityType type, int pos_x, int pos_y)
 		tmp = new Tree(iPoint(pos_x, pos_y), "tree_cube");
 		break;
 	case tree_Cube:
-		break;
-	case flower:
 		break;
 	case branch:
 		break;

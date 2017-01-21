@@ -6,7 +6,6 @@
 #include "TreeCube.h"
 
 class TreeCube;
-class Flower;
 class Branch;
 
 enum WindDirection
@@ -57,7 +56,6 @@ public:
 
 	// List with tree cubes
 	p2List<TreeCube*> tree_cubes_list;
-	p2List<Flower*> flower_list;
 	p2List<Branch*> branch_list;
 
 	// Highest point on the tree

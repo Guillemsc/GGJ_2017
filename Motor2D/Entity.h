@@ -7,7 +7,6 @@ enum EntityType
 {
 	tree,
 	tree_Cube,
-	flower,
 	branch,
 	grass,
 	cloud,

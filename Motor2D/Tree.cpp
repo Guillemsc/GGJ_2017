@@ -1,6 +1,5 @@
 #include "Tree.h"
 #include "TreeCube.h"
-#include "Flower.h"
 #include "Branch.h"
 #include <random>
 #include <iostream>
@@ -306,10 +305,6 @@ void Tree::Reset()
 	while (branch_list.count()) {
 		RELEASE(branch_list.end->data);
 		branch_list.del(branch_list.end);
-	}
-	while (flower_list.count()) {
-		RELEASE(flower_list.end->data);
-		flower_list.del(flower_list.end);
 	}
 
 	end_tree_steps = 0;
