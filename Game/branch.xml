@@ -8,7 +8,7 @@
   </anim>
   <anim type="1" speed="0.1">
     <!--right 2-->
-    <frame x="9" y="443" w="157" h="49"/>
+    <frame x="9" y="437" w="157" h="55"/>
   </anim>
   <anim type="2" speed="0.1">
     <!--right 3-->
