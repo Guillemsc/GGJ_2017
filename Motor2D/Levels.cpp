@@ -82,6 +82,8 @@ void Levels::SetLevel(int level)
 	case 3:
 		Level3();
 		break;
+	case 4:
+		Level4();
 	default:
 
 		break;
@@ -228,4 +230,48 @@ void Levels::Level3()
 	CreateLevelPoint(iPoint(410, -2250), 100, 100);
 	CreateLevelPoint(iPoint(400, -2350), 100, 100);
 	CreateLevelPoint(iPoint(400, -2450), 100, 100);
+}
+
+void Levels::Level4()
+{
+	CreateLevelPoint(iPoint(300, 750), 100, 100);
+	CreateLevelPoint(iPoint(300, 650), 100, 100);
+	CreateLevelPoint(iPoint(300, 550), 100, 100);
+	CreateLevelPoint(iPoint(250, 450), 100, 100);
+	CreateLevelPoint(iPoint(200, 350), 100, 100);
+	CreateLevelPoint(iPoint(150, 250), 100, 100);
+	CreateLevelPoint(iPoint(100, 150), 100, 100);
+	CreateLevelPoint(iPoint(50, 50), 100, 100);
+	CreateLevelPoint(iPoint(50, -50), 100, 100);
+	CreateLevelPoint(iPoint(100, -150), 100, 100);
+	CreateLevelPoint(iPoint(150, -250), 100, 100);
+	CreateLevelPoint(iPoint(200, -350), 100, 100);
+	CreateLevelPoint(iPoint(180, -450), 100, 100);
+	CreateLevelPoint(iPoint(130, -550), 100, 100);
+	CreateLevelPoint(iPoint(60, -650), 100, 100);
+	CreateLevelPoint(iPoint(40, -750), 100, 100);
+	CreateLevelPoint(iPoint(40, -850), 100, 100);
+	CreateLevelPoint(iPoint(40, -950), 100, 100);
+	CreateLevelPoint(iPoint(60, -1050), 100, 100);
+	CreateLevelPoint(iPoint(80, -1150), 100, 100);
+	CreateLevelPoint(iPoint(100, -1250), 100, 100);
+	CreateLevelPoint(iPoint(120, -1350), 100, 100);
+	CreateLevelPoint(iPoint(140, -1450), 100, 100);
+	CreateLevelPoint(iPoint(180, -1550), 100, 100);
+	CreateLevelPoint(iPoint(230, -1650), 100, 100);
+	CreateLevelPoint(iPoint(280, -1750), 100, 100);
+	CreateLevelPoint(iPoint(260, -1850), 100, 100);
+	CreateLevelPoint(iPoint(210, -1950), 100, 100);
+	CreateLevelPoint(iPoint(200, -2050), 100, 100);
+	CreateLevelPoint(iPoint(230, -2150), 100, 100);
+	CreateLevelPoint(iPoint(280, -2250), 100, 100);
+	CreateLevelPoint(iPoint(300, -2350), 100, 100);
+	CreateLevelPoint(iPoint(360, -2450), 100, 100);
+	CreateLevelPoint(iPoint(370, -2550), 100, 100);
+	CreateLevelPoint(iPoint(400, -2650), 100, 100);
+	CreateLevelPoint(iPoint(450, -2750), 100, 100);
+	CreateLevelPoint(iPoint(480, -2850), 100, 100);
+	CreateLevelPoint(iPoint(480, -2950), 100, 100);
+	CreateLevelPoint(iPoint(480, -3050), 100, 100);
+	CreateLevelPoint(iPoint(480, -3150), 100, 100);
 }

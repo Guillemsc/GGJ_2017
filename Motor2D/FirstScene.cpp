@@ -68,7 +68,7 @@ bool FirstScene::Start()
 	node = t1->doc.child("config").child("back_shadow_red");
 	SDL_Rect shadow_red = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int() };
 	levels = new Levels(t1, t1->texture, shadow, shadow_red);
-	levels->SetLevel(1);
+	levels->SetLevel(4);
 
 	return true;
 }
