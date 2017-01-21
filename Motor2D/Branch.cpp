@@ -27,23 +27,9 @@ bool Branch::Update(float dt)
 
 bool Branch::Draw()
 {
-	float angle;
-	if (GetDirection() == "left") angle = 180;
-	else if (GetDirection() == "right") angle = 0;
-	
-	App->render->Blit(info.GetTexture(), info.GetPos().x, info.GetPos().y, &info.GetAnim()->GetCurrentFrameRect(), true, 1.0F, angle);
+	App->render->Blit(info.GetTexture(), info.GetPos().x, info.GetPos().y, &info.GetAnim()->GetCurrentFrameRect());
 
 	return true;
-}
-
-void Branch::ChangeDirection(const char * _direction)
-{
-	direction = _direction;
-}
-
-p2SString Branch::GetDirection()
-{
-	return direction;
 }
 
 int Branch::CalculateAnimSpeed(float wind) const

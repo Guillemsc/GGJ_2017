@@ -163,6 +163,7 @@
     <ClInclude Include="WindOscillatingBar.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="..\Game\branch.xml" />
     <Xml Include="..\Game\cloud.xml" />
     <Xml Include="..\Game\config.xml" />
     <Xml Include="..\Game\grass.xml" />

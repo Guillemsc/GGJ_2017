@@ -9,6 +9,8 @@
 #include "j1Entities.h"
 #include "WindOscillatingBar.h"
 
+#include "Grass.h"
+
 IntroScene::IntroScene()
 {
 }
@@ -37,6 +39,8 @@ bool IntroScene::Start()
 	music_check->active = false;
 
 	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
+
+	test_grass = (Grass*)App->entities->CreateEntity(grass, 50, 400);
 	
 	return true;
 }

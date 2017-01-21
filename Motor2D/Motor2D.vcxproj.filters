@@ -317,5 +317,8 @@
     <Xml Include="..\Game\tree_cube.xml">
       <Filter>Desenvolupament  ========\Entities\TreeCube</Filter>
     </Xml>
+    <Xml Include="..\Game\branch.xml">
+      <Filter>Desenvolupament  ========\Entities\Branch</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

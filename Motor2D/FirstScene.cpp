@@ -93,7 +93,7 @@ bool FirstScene::Update(float dt)
 	counter++;
 
 	// Camera
-	if(t1->center_point_top.y <= CAMERA_SCROLL)
+	if(t1->center_point_top.y <= CAMERA_SCROLL && !levels->level_ended)
 	App->render->camera.y = -t1->center_point_top.y + CAMERA_SCROLL;
 
 	// Wind Bar
@@ -122,7 +122,7 @@ bool FirstScene::Update(float dt)
 		gen_cloud = false;
 	}
 	if (levels->level_ended && -App->render->camera.y<0) {
-		App->render->camera.y -= ceil(100 * dt);
+		App->render->camera.y -= ceil(250 * dt);
 	}
 
 	return true;
