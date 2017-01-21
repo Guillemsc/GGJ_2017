@@ -7,6 +7,7 @@
 #include "UICheckBox.h"
 #include "j1Console.h"
 #include "j1Entities.h"
+#include "WindOscillatingBar.h"
 
 IntroScene::IntroScene()
 {
@@ -26,8 +27,6 @@ bool IntroScene::Start()
 	options_button->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //ajust to final ones
 	options_button->AddListener(App->scene);
 
-	test_cloud = (Cloud*)App->entities->CreateEntity(cloud, 50, 50);
-
 	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);
 	options_window->SetRect({ 20,20,60,30 }); //ajust to final one
 	options_window->active = false;
@@ -37,13 +36,8 @@ bool IntroScene::Start()
 	music_check->AddListener(App->scene);
 	music_check->active = false;
 
-	wind_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 200, 20);
-	options_window->SetRect({ 20,20,60,30 }); //adjust to final one
-
-	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, 10, 20);
-	wind_bar->SetRect({ 20,20,60,30 }); //adjust to final one
-	wind_bar->AddListener(App->scene);
-
+	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
+	
 	return true;
 }
 
@@ -54,8 +48,7 @@ bool IntroScene::PreUpdate()
 
 bool IntroScene::Update(float dt)
 {
-	angle += 0.05;
-	wind_bar->position.x = 190*sin(angle);
+	wind_bar->UpdateBar();
 	return true;
 }
 
@@ -70,6 +63,7 @@ void IntroScene::Draw()
 
 bool IntroScene::CleanUp()
 {
+	delete wind_bar;
 	return true;
 }
 

@@ -1,5 +1,5 @@
 #include "FirstScene.h"
-
+#include "WindOscillatingBar.h"
 #include "p2Defs.h"
 #include "p2Log.h"
 #include "j1App.h"
@@ -20,6 +20,8 @@
 #include "j1Scene.h"
 #include "Tree.h"
 #include "j1Entities.h"
+#include "Cloud.h"
+#include "Grass.h"
 
 FirstScene::FirstScene()
 {
@@ -38,6 +40,16 @@ bool FirstScene::Start()
 	t1 = (Tree*)App->entities->CreateEntity(tree, 300, 300);
 	t1->Set(1);
 	t1->StartGrowing();
+
+	cloud1 = (Cloud*)App->entities->CreateEntity(cloud, 25, 30);
+	cloud2 = (Cloud*)App->entities->CreateEntity(cloud, 250, 130);
+	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 100, 70);
+
+	grass1 = (Grass*)App->entities->CreateEntity(grass, 25, 680);
+	grass2 = (Grass*)App->entities->CreateEntity(grass, 230, 620);
+	grass3 = (Grass*)App->entities->CreateEntity(grass, 450, 650);
+
+	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
 
 	return true;
 }
@@ -65,6 +77,10 @@ bool FirstScene::Update(float dt)
 	counter++;
 
 	App->render->camera.y += t1->speed;
+
+	wind_bar->UpdateBar();
+	wind_force = wind_bar->wind_power;
+
 	return true;
 }
 
@@ -79,6 +95,7 @@ void FirstScene::Draw()
 
 bool FirstScene::CleanUp()
 {
+	delete wind_bar;
 	return true;
 }
 

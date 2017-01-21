@@ -14,7 +14,7 @@ public:
 	bool Draw();
 
 private:
-	int CalculateAnimSpeed(float wind)const;
+	float CalculateAnimSpeed(float wind)const;
 
 private:
 	float speed = 0;

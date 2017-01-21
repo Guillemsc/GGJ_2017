@@ -17,10 +17,12 @@ bool Grass::Update(float dt)
 	acumulated_dt += dt;
 	if(acumulated_dt>dt*10){
 		speed = CalculateAnimSpeed(App->scene->GetWindForce());
+		if (speed > 0.3) info.SetAnimation(Jump);
+		else if (speed > 0.1) info.SetAnimation(Run);
+		else if (speed > -.1) info.SetAnimation(Idle);
+		else if (speed > -.3)info.SetAnimation(Shoot);
+		else info.SetAnimation(Hit);
 		info.GetAnim()->SetSpeed(speed);
-		if (speed < 0.1 && speed > -.1)
-			info.SetAnimation(Idle);
-		else info.SetAnimation(Run);
 		acumulated_dt = 0;
 	}
 	return true;
@@ -28,11 +30,11 @@ bool Grass::Update(float dt)
 
 bool Grass::Draw()
 {
-	App->render->Blit(info.GetTexture(), info.GetPos().x, info.GetPos().y, &info.GetAnim()->GetCurrentFrameRect(), true, 1.0f, (speed > 0) ? 0 : 180);
+	App->render->Blit(info.GetTexture(), info.GetPos().x, info.GetPos().y, &info.GetAnim()->GetCurrentFrameRect());
 	return true;
 }
 
-int Grass::CalculateAnimSpeed(float wind) const
+float Grass::CalculateAnimSpeed(float wind) const
 {
-	return wind/15.0f;
+	return wind/30.0f;
 }

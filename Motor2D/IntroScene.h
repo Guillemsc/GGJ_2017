@@ -4,10 +4,10 @@
 #include "Scene.h"
 
 class UIButton;
-class Cloud;
 class UIWindow;
 class UICheckBox;
 class UIImage;
+class WindOscillatingBar;
 
 class IntroScene: public Scene{
 public:
@@ -35,16 +35,10 @@ private:
 	UIButton* start_button;
 	UIButton* options_button;
 
-	Cloud* test_cloud;
-
 	UIWindow*		options_window;
 	UICheckBox*		music_check;
 
-	UIWindow*		wind_window;
-	UIImage*		wind_bar;
-
-	float			angle = 0;
-
+	WindOscillatingBar*	wind_bar;
 public:
 
 private:
