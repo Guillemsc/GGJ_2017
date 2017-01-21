@@ -21,28 +21,24 @@ Levels::~Levels()
 
 bool Levels::Update(float dt)
 {
-	for (int i = 0; i < level_points_list.count(); i++)
-	{
-		SDL_Rect rect2; rect2 = { level_points_list[i].pos.x, level_points_list[i].pos.y, level_points_list[i].width, level_points_list[i].height};
-		//App->render->DrawQuad(rect2, 0, 255, 0, 255, false);
-		
-		App->render->Blit(texture, level_points_list[i].pos.x, level_points_list[i].pos.y, &rect);
-	}
-
+	SDL_Rect to_blit;
 	// Is following the circuit ?
 	if (GetCurrentLevelPoint() != -1 && !level_ended && tree->center_point_top.y <= starting_point)
 	{
 		accomplished_distance -= tree->center_point_top.y - last_point;
 		last_point = tree->center_point_top.y;
+		to_blit = { rect.x, rect.y, rect.w, rect.h };
 	}
 	else
 	{
 		last_point = tree->center_point_top.y;
+		to_blit = { rect2.x, rect2.y, rect2.w, rect2.h };
 	}
 
 	// Circuit end
 	if (tree->center_point_top.y <= starting_point - level_distance)
 	{
+		to_blit = { rect.x, rect.y, rect.w, rect.h };
 		tree->speed = 0;
 		level_ended = true;
 
@@ -52,6 +48,14 @@ bool Levels::Update(float dt)
 		end_label->active = true;
 		p2SString txt; txt.create("LEVEL %d COMPLETED WITH %.f PERCENT", current_level, final_percentage);
 		end_label->SetText(txt.GetString());
+	}
+
+	for (int i = 0; i < level_points_list.count(); i++)
+	{
+		SDL_Rect rect2; rect2 = { level_points_list[i].pos.x, level_points_list[i].pos.y, level_points_list[i].width, level_points_list[i].height };
+		//App->render->DrawQuad(rect2, 0, 255, 0, 255, false);
+
+		App->render->Blit(texture, level_points_list[i].pos.x, level_points_list[i].pos.y, &to_blit);
 	}
 
 	return true;
@@ -112,7 +116,7 @@ int Levels::GetCurrentLevelPoint()
 		{
 			if (tree->center_point_top.x > level_points_list[i].pos.x && tree->center_point_top.x < level_points_list[i].pos.x + level_points_list[i].width)
 			{
-				if (tree->center_point_top.y > level_points_list[i].pos.y && tree->center_point_top.y < level_points_list[i].pos.y + level_points_list[i].height)
+				if (tree->center_point_top.y > level_points_list[i].pos.y -1 && tree->center_point_top.y < level_points_list[i].pos.y + level_points_list[i].height + 1)
 				{
 					return i;
 				}
