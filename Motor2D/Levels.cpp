@@ -22,7 +22,7 @@ bool Levels::Update(float dt)
 {
 	for (int i = 0; i < level_points_list.count(); i++)
 	{
-		SDL_Rect rect2; rect2 = { level_points_list[i].pos.x, level_points_list[i].pos.y, level_points_list[i].width, level_points_list[i].height };
+		SDL_Rect rect2; rect2 = { level_points_list[i].pos.x, level_points_list[i].pos.y, level_points_list[i].width, level_points_list[i].height};
 		//App->render->DrawQuad(rect2, 0, 255, 0, 255, false);
 		
 		App->render->Blit(texture, level_points_list[i].pos.x, level_points_list[i].pos.y, &rect);

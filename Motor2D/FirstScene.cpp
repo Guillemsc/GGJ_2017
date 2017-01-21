@@ -105,8 +105,8 @@ bool FirstScene::Update(float dt)
 	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y && !gen_cloud){
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::uniform_int_distribution<> random(0, 20);
-		if(random(gen)<15)
+		std::uniform_int_distribution<> random1(0, 20);
+		if(random1(gen)<15)
 			gen_cloud = true;
 	}
 	prev_cam_y = App->render->camera.y;
@@ -114,8 +114,8 @@ bool FirstScene::Update(float dt)
 	if (gen_cloud) {
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::uniform_int_distribution<> random(0, 600);
-		int pos_x = random(gen);
+		std::uniform_int_distribution<> random2(App->render->camera.x, App->render->camera.x + App->render->camera.w);
+		int pos_x = random2(gen);
 		clouds.add((Cloud*)App->entities->CreateEntity(cloud, pos_x, -App->render->camera.y - 75));
 		gen_cloud = false;
 	}
