@@ -8,7 +8,8 @@
 #include "j1Console.h"
 #include "j1Entities.h"
 #include "WindOscillatingBar.h"
-
+#include "j1BackgroundDrawer.h"
+#include "Cloud.h"
 #include "Grass.h"
 
 IntroScene::IntroScene()
@@ -21,15 +22,19 @@ IntroScene::~IntroScene()
 
 bool IntroScene::Start()
 {
-	sabling = (UIImage*)App->gui->CreateUIElement(Image, 0, 0);
-	sabling->SetRect({});
+	ground = { 0,1120,700,159 };
 
-	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 250,nullptr,60,30);
-	start_button->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //ajust to final ones
+	sabling = (UIImage*)App->gui->CreateUIElement(Image, 75, 202);
+	sabling->SetRect({ 0,567,550,421 });
+
+	App->back->back2 = true;
+
+	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 400,nullptr,211,75);
+	start_button->SetRects({ 255,424,211,75 }, { 242,271,211,75 }, { 255,424,211,75 }); //ajust to final ones
 	start_button->AddListener(App->scene);
 
-	options_button = (UIButton*)App->gui->CreateUIElement(Button, 450, 50, nullptr, 30, 30);
-	options_button->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //ajust to final ones
+	options_button = (UIButton*)App->gui->CreateUIElement(Button, 112, 462, nullptr, 148, 58);
+	options_button->SetRects({ 0,192,148,58 }, { 0,342,148,58 }, { 0,495,148,58 }); //ajust to final ones
 	options_button->AddListener(App->scene);
 
 	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);
@@ -41,10 +46,17 @@ bool IntroScene::Start()
 	music_check->AddListener(App->scene);
 	music_check->active = false;
 
-	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
-
-	test_grass = (Grass*)App->entities->CreateEntity(grass, 50, 400);
+	grass1 = (Grass*)App->entities->CreateEntity(grass, 10, 630);
+	grass2 = (Grass*)App->entities->CreateEntity(grass, 540, 630);
+	grass3 = (Grass*)App->entities->CreateEntity(grass, 70, 680);
+	grass4 = (Grass*)App->entities->CreateEntity(grass, 480, 680);
+	grass5 = (Grass*)App->entities->CreateEntity(grass, 40, 720);
+	grass6 = (Grass*)App->entities->CreateEntity(grass, 520, 720);
 	
+	cloud1 = (Cloud*)App->entities->CreateEntity(cloud, 150, 50);
+	cloud2 = (Cloud*)App->entities->CreateEntity(cloud, 350, 10);
+	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 500, 125);
+
 	return true;
 }
 
@@ -55,12 +67,38 @@ bool IntroScene::PreUpdate()
 
 bool IntroScene::Update(float dt)
 {
+	accumulted_dt += dt;
+
+	if (start) {
+		start = false;
+		App->console->AddText("scene.wind_speed 6", Input);
+	}
+	
+	if (cloud1->info.GetPos().x > 700) {
+		iPoint new_pos(-200, cloud1->info.GetPos().y);
+		cloud1->info.SetPos(new_pos);
+	}
+
+	if (cloud2->info.GetPos().x > 700) {
+		iPoint new_pos(-200, cloud2->info.GetPos().y);
+		cloud2->info.SetPos(new_pos);
+	}
+	if (cloud3->info.GetPos().x > 700) {
+		iPoint new_pos(-200, cloud3->info.GetPos().y);
+		cloud3->info.SetPos(new_pos);
+	}
+
+	if (accumulted_dt > 5) {
+		accumulted_dt = 0;
+		wind_force = -wind_force;
+	}
+
+	App->render->Blit(App->gui->GetAtlas(), 0, 700, &ground);
 	return true;
 }
 
 bool IntroScene::PostUpdate()
 {
-	wind_bar->UpdateBar();
 	return true;
 }
 
@@ -70,7 +108,6 @@ void IntroScene::Draw()
 
 bool IntroScene::CleanUp()
 {
-	delete wind_bar;
 	return true;
 }
 

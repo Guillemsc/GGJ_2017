@@ -55,6 +55,8 @@ public:
 
 	p2List<Cloud*> clouds;
 
+	bool wait_for_menu = false;
+
 private:
 
 	Grass* grass1 = nullptr;

@@ -11,6 +11,7 @@ class UIImage;
 class WindOscillatingBar;
 
 class Grass;
+class Cloud;
 
 class IntroScene: public Scene{
 public:
@@ -38,14 +39,27 @@ private:
 	UIButton* start_button;
 	UIButton* options_button;
 
+	SDL_Rect ground;
+
 	UIImage* sabling;
 
 	UIWindow*		options_window;
 	UICheckBox*		music_check;
 
-	WindOscillatingBar*	wind_bar;
+	Grass* grass1;
+	Grass* grass2;
+	Grass* grass3;
+	Grass* grass4;
+	Grass* grass5;
+	Grass* grass6;
 
-	Grass* test_grass;
+	Cloud* cloud1;
+	Cloud* cloud2;
+	Cloud* cloud3;
+
+	float accumulted_dt = 0;
+
+	bool start = true;
 public:
 
 private:

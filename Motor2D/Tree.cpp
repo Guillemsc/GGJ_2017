@@ -328,12 +328,12 @@ void Tree::Reset()
 
 	for (int i = 0; i < tree_cubes_list.count(); i++)
 	{
-		delete(tree_cubes_list[i]);
+		RELEASE(tree_cubes_list[i]);
 	}
 
 	for (int i = 0; i < branch_list.count(); i++)
 	{
-		delete(branch_list[i]);
+		RELEASE(branch_list[i]);
 	}
 
 	for (int i = 0; i < App->scene->first_scene->clouds.count(); i++)
