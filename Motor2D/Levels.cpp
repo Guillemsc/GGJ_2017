@@ -21,7 +21,8 @@ Levels::~Levels()
 
 bool Levels::Update(float dt)
 {
-	SDL_Rect to_blit;
+	SDL_Rect to_blit = NULLRECT;
+
 	// Is following the circuit ?
 	if (GetCurrentLevelPoint() != -1 && !level_ended && tree->center_point_top.y <= starting_point)
 	{
