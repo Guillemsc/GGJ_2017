@@ -2,6 +2,7 @@
 #define _INTROSCENE_H_
 
 #include "Scene.h"
+#include "j1Render.h"
 
 class UIButton;
 class UIWindow;
@@ -36,6 +37,8 @@ private:
 
 	UIButton* start_button;
 	UIButton* options_button;
+
+	UIImage* sabling;
 
 	UIWindow*		options_window;
 	UICheckBox*		music_check;

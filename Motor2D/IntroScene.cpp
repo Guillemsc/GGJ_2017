@@ -21,6 +21,9 @@ IntroScene::~IntroScene()
 
 bool IntroScene::Start()
 {
+	sabling = (UIImage*)App->gui->CreateUIElement(Image, 0, 0);
+	sabling->SetRect({});
+
 	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 250,nullptr,60,30);
 	start_button->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //ajust to final ones
 	start_button->AddListener(App->scene);
