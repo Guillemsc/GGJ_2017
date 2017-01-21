@@ -4,6 +4,10 @@
 #include "Scene.h"
 
 class Tree;
+class Grass;
+class Cloud;
+class WindOscillatingBar;
+
 class FirstScene : public Scene 
 {
 public:
@@ -27,7 +31,18 @@ public:
 
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
+public:
 	Tree* t1 = nullptr;
+
+	WindOscillatingBar*	wind_bar;
+
+private:
+	Cloud* cloud1;
+	Cloud* cloud2;
+	Cloud* cloud3;
+	Grass* grass1;
+	Grass* grass2;
+	Grass* grass3;
 };
 
 #endif

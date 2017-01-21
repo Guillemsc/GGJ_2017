@@ -4,12 +4,10 @@
 #include "Scene.h"
 
 class UIButton;
-class Cloud;
 class UIWindow;
 class UICheckBox;
 class UIImage;
 class WindOscillatingBar;
-class Grass;
 
 class IntroScene: public Scene{
 public:
@@ -36,9 +34,6 @@ private:
 
 	UIButton* start_button;
 	UIButton* options_button;
-
-	Cloud* test_cloud;
-	Grass* test_grass;
 
 	UIWindow*		options_window;
 	UICheckBox*		music_check;
