@@ -51,13 +51,18 @@ public:
 
 	float GetWindForce()const;
 
+	void AddBird();
+	void AddNested();
+	void RestartBirds();
 public:
 
 	Scene* current_scene = nullptr;
 
 	FirstScene* first_scene = nullptr;
 	IntroScene* intro_scene = nullptr;
-
+	
+	int num_birds = 0;
+	int nested = 0;
 private:
 	SDL_Texture* debug_tex = nullptr;
 
@@ -75,6 +80,7 @@ private:
 	UICheckBox* multi_option1 = nullptr;
 	UICheckBox* multi_option2 = nullptr;
 	UIWindow* vis = nullptr;
+	
 };
 
 #endif // __j1SCENE_H__

@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "j1Entities.h"
 #include "j1Audio.h"
+#include "j1Scene.h"
 
 Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
@@ -59,6 +60,23 @@ bool Levels::Update(float dt)
 			App->audio->PlayFx(end_level_FX);
 			play = false;
 		}
+
+		if (App->scene->num_birds != 0) {
+			int birds_not_nested = App->scene->num_birds - App->scene->nested;
+			App->gui->CreateUIElement(Window, 50, 200, nullptr, 300, 300);
+			iPoint pos(0, 0);
+				while (App->scene->num_birds != 0) {
+					if (App->scene->nested != 0) {
+						App->scene->nested--;
+					}
+					else if (birds_not_nested != 0) {
+						birds_not_nested--;
+					}
+					App->scene->num_birds--;
+				}
+		}
+		
+
 
 		if(accomplished_distance != 0)
 			final_percentage = ((accomplished_distance * 100) / level_distance);

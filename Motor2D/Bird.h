@@ -23,7 +23,6 @@ private:
 	bool one_time = true;
 	uint bird_creation_FX = NULL;
 	uint bird_later_FX = NULL;
-
 };
 
 #endif // !_BIRD_

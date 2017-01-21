@@ -119,7 +119,7 @@ void Tree::CreateNewBranch(p2List_item<TreeCube*>* node)
 	p2SString name; name.create("branch");
 
 	// Create branchs on a random number
-	int rand = RandomGenerate(0, 8); //0 & 7-14 don't create, 1-3 create in left, 4-6 create in rigth
+	int rand = RandomGenerate(0, 8); //0 & 7-8 don't create, 1-3 create in left, 4-6 create in rigth
 	Branch* branch;
 	int x, y = node->data->GetY();
 
@@ -136,6 +136,7 @@ void Tree::CreateNewBranch(p2List_item<TreeCube*>* node)
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Run);
 		Bird* tmp = (Bird*)App->entities->CreateEntity(bird, x+RandomGenerate(-200,200), y - 150);
+		App->scene->AddBird();
 		tmp->SetNest(branch);
 	}
 			break;
