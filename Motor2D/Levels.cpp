@@ -323,9 +323,9 @@ void Levels::Level5()
 	CreateLevelPoint(iPoint(330, -2650), 100, 100);
 	CreateLevelPoint(iPoint(280, -2750), 100, 100);
 	CreateLevelPoint(iPoint(280, -2850), 100, 100);
-	CreateLevelPoint(iPoint(300, -2650), 100, 100);
-	CreateLevelPoint(iPoint(320, -2750), 100, 100);
-	CreateLevelPoint(iPoint(300, -2850), 100, 100);
+	CreateLevelPoint(iPoint(300, -2950), 100, 100);
+	CreateLevelPoint(iPoint(320, -3050), 100, 100);
+	CreateLevelPoint(iPoint(300, -3150), 100, 100);
 }
 
 void Levels::Level6()
