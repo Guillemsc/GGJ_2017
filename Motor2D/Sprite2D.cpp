@@ -54,6 +54,7 @@ void Sprite2D::LoadAnimations(pugi::xml_node & node)
 		if (type != -1)
 			anims.add(new Animation(anim_rects, speed, static_cast<AnimTypes>(type), loop));
 	}
+	SetAnimation(Idle);
 }
 
 void Sprite2D::SetAnimation(AnimTypes anim)

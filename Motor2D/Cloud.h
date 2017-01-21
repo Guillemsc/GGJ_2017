@@ -14,6 +14,14 @@ public:
 
 private:
 	int CalculateSpeed(float wind) const;
+	int GetTargetFrame(float speed) const;
+
+private:
+	float speed = 0;
+	float acumulated_dt = 0;
+	int element = 0;
+	int curr_frame = 3;
+	int target_frame = 3;
 
 };
 

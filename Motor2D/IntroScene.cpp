@@ -6,6 +6,7 @@
 #include "UIWindow.h"
 #include "UICheckBox.h"
 #include "j1Console.h"
+#include "j1Entities.h"
 
 IntroScene::IntroScene()
 {
@@ -24,6 +25,8 @@ bool IntroScene::Start()
 	options_button = (UIButton*)App->gui->CreateUIElement(Button, 450, 50, nullptr, 30, 30);
 	options_button->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //ajust to final ones
 	options_button->AddListener(App->scene);
+
+	test_cloud = (Cloud*)App->entities->CreateEntity(cloud, 50, 50);
 
 	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);
 	options_window->SetRect({ 20,20,60,30 }); //ajust to final one

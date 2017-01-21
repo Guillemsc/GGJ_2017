@@ -157,6 +157,7 @@
     <ClInclude Include="UIWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="..\Game\cloud.xml" />
     <Xml Include="..\Game\config.xml" />
     <Xml Include="..\Game\grass.xml" />
   </ItemGroup>
