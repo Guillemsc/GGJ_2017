@@ -43,6 +43,7 @@ private:
 	void Level2();
 	void Level3();
 	void Level4();
+	void Level5();
 
 public:
 	int current_level = 0;
