@@ -87,6 +87,7 @@ bool j1Scene::PostUpdate()
 	if (current_scene != nullptr)
 		current_scene->PostUpdate();
 
+
 	// Jeje
 	if (App->input->GetKey(SDL_SCANCODE_GRAVE) == KEY_DOWN)
 		App->console->Activate();

@@ -53,6 +53,8 @@ private:
 	Grass* grass1;
 	Grass* grass2;
 	Grass* grass3;
+	Grass* grass4;
+	Grass* grass5;
 
 	// Ground
 	SDL_Rect ground_rect;

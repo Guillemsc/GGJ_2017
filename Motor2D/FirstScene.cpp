@@ -49,19 +49,23 @@ bool FirstScene::Start()
 	cloud2 = (Cloud*)App->entities->CreateEntity(cloud, 250, 130);
 	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 100, 70);
 
-	grass1 = (Grass*)App->entities->CreateEntity(grass, 25, 680);
-	//grass2 = (Grass*)App->entities->CreateEntity(grass, 230, 670);
-	//grass3 = (Grass*)App->entities->CreateEntity(grass, 450, 650);
+	grass1 = (Grass*)App->entities->CreateEntity(grass, 0, 680);
+	grass2 = (Grass*)App->entities->CreateEntity(grass, 390, 670);
+	grass3 = (Grass*)App->entities->CreateEntity(grass, 550, 680);
+	grass4 = (Grass*)App->entities->CreateEntity(grass, 200, 670);
+	grass5 = (Grass*)App->entities->CreateEntity(grass, 100, 680);
 
 	wind_bar = new WindOscillatingBar(30, 30, 200, 20);
-
-	levels = new Levels(t1);
-	levels->SetLevel(1);
 
 	// Background
 	pugi::xml_node node = t1->doc.child("ground");
 	ground_rect = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int()};
 	App->back->back1 = true;
+
+	// Levels manager
+	node = t1->doc.child("back_shadow");
+	levels = new Levels(t1, t1->texture, { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int() });
+	levels->SetLevel(1);
 
 	return true;
 }
@@ -73,6 +77,9 @@ bool FirstScene::PreUpdate()
 
 bool FirstScene::Update(float dt)
 {
+	// Levels
+	levels->Update(dt);
+
 	// Tree movement
 	if (counter == 15)
 	{
@@ -90,20 +97,18 @@ bool FirstScene::Update(float dt)
 	wind_bar->UpdateBar();
 	wind_force = wind_bar->wind_power;
 
-	// Levels
-	levels->Update(dt);
-
 	return true;
 }
 
 bool FirstScene::PostUpdate()
 {
+	App->render->Blit(t1->texture, 0, 700, &ground_rect);
 	return true;
 }
 
 void FirstScene::Draw()
 {
-	App->render->Blit(t1->texture, 0, 700, &ground_rect);
+
 }
 
 bool FirstScene::CleanUp()

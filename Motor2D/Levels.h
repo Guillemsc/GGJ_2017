@@ -26,7 +26,7 @@ struct LevelPoint
 class Levels
 {
 public:
-	Levels(Tree* tree);
+	Levels(Tree* tree, SDL_Texture* texture, SDL_Rect rect);
 
 	~Levels();
 
@@ -40,7 +40,6 @@ public:
 
 private:
 	void Level1();
-	SDL_Texture* texture = nullptr;
 
 public:
 	int current_level = 0;
@@ -53,6 +52,9 @@ public:
 	bool level_ended = false;
 
 	float final_percentage = 0.0f;
+
+	SDL_Texture* texture = nullptr;
+	SDL_Rect rect;
 
 private:
 	bool debug = true;

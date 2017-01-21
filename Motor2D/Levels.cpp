@@ -6,9 +6,10 @@
 #include "UILabel.h"
 #include "j1Gui.h"
 
-Levels::Levels(Tree* _tree) : tree(_tree)
+Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect) : tree(_tree)
 {
-	//texture = App->tex->Load("")
+	texture = _texture;
+	rect = { _rect.x, _rect.y, _rect.w, _rect.h };
 	end_label = (UILabel*)App->gui->CreateUIElement(Label, 100, 200, nullptr, 400, 60);
 	end_label->active = true;
 }
@@ -21,8 +22,10 @@ bool Levels::Update(float dt)
 {
 	for (int i = 0; i < level_points_list.count(); i++)
 	{
-		SDL_Rect rect; rect = { level_points_list[i].pos.x, level_points_list[i].pos.y, level_points_list[i].width, level_points_list[i].height };
-		App->render->DrawQuad(rect, 0, 255, 0, 255, false);
+		SDL_Rect rect2; rect2 = { level_points_list[i].pos.x, level_points_list[i].pos.y, level_points_list[i].width, level_points_list[i].height };
+		//App->render->DrawQuad(rect2, 0, 255, 0, 255, false);
+		
+		App->render->Blit(texture, level_points_list[i].pos.x, level_points_list[i].pos.y, &rect);
 	}
 
 	// Is following the circuit ?

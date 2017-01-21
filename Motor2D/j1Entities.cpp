@@ -50,6 +50,10 @@ bool j1Entities::Update(float dt)
 
 bool j1Entities::PostUpdate()
 {
+	for (p2List_item<Entity*>* entity = entities.start; entity; entity = entity->next) 
+	{
+		entity->data->Draw();
+	}
 	return true;
 }
 
