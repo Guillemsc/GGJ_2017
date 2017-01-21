@@ -68,6 +68,9 @@ void Levels::SetLevel(int level)
 	case 1:
 		Level1();
 		break;
+	case 2:
+		Level2();
+
 	default:
 		break;
 	}
@@ -143,4 +146,11 @@ void Levels::Level1()
 	CreateLevelPoint(iPoint(240, -1150), 100, 100);
 	CreateLevelPoint(iPoint(250, -1250), 100, 100);
 	CreateLevelPoint(iPoint(260, -1350), 100, 100);
+}
+
+void Levels::Level2()
+{
+	CreateLevelPoint(iPoint(300, 750), 100, 100);
+	CreateLevelPoint(iPoint(300, 650), 100, 100);
+	CreateLevelPoint(iPoint(300, 550), 100, 100);
 }

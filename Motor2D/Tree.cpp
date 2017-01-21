@@ -292,6 +292,11 @@ void Tree::Reset()
 	growing = false;
 	create_cube = true;
 
+	center_point_top.x = 0;
+	center_point_top.y = 0;
+
+	distance_next_treecube = 0;
+
 	while (tree_cubes_list.count()) {
 		RELEASE(tree_cubes_list.end->data);
 		tree_cubes_list.del(tree_cubes_list.end);
@@ -304,4 +309,6 @@ void Tree::Reset()
 		RELEASE(flower_list.end->data);
 		flower_list.del(flower_list.end);
 	}
+
+	end_tree_steps = 0;
 }

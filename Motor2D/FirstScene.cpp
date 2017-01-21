@@ -122,17 +122,28 @@ bool FirstScene::Update(float dt)
 		clouds.add((Cloud*)App->entities->CreateEntity(cloud, pos_x, -App->render->camera.y - 75));
 		gen_cloud = false;
 	}
-	if (levels->level_ended && -App->render->camera.y<0) {
+
+	// Camera moves down
+	if (levels->level_ended && -App->render->camera.y<0) 
+	{
 		App->render->camera.y -= ceil(250 * dt);
 	}
+	else if (levels->level_ended)
+	{
+		levels->SetLevel(2);
+		t1->Reset();
+		t1->StartGrowing();
+		t1->speed = 2;
+	}
 
+	// Blit ground
 	App->render->Blit(t1->texture, 0, 700, &ground_rect);
+
 	return true;
 }
 
 bool FirstScene::PostUpdate()
 {
-	//App->render->Blit(t1->texture, 0, 700, &ground_rect);
 	return true;
 }
 
@@ -144,7 +155,7 @@ void FirstScene::Draw()
 bool FirstScene::CleanUp()
 {
 	delete wind_bar;
-	App->back->back1 = false;
+	App->back->back1 = false;                            
 	return true;
 }
 
