@@ -15,7 +15,6 @@
 #include "UIScrollBar.h"
 #include "UICheckBox.h"
 
-
 j1Gui::j1Gui() : j1Module()
 {
 	name.create("gui");
@@ -157,6 +156,7 @@ bool j1Gui::PostUpdate()
 	UIElement* tmp;
 	while (draw_queue.Pop(tmp))
 		tmp->Draw();
+
 	return true;
 }
 

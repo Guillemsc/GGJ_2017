@@ -26,6 +26,8 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 	sprite = new Sprite2D();
 	sprite->LoadTexture("Sprites/UIsheet.png");
 	sprite->LoadAnimations(node);
+	
+	play = false;
 }
 
 WindOscillatingBar::~WindOscillatingBar()
@@ -38,14 +40,21 @@ void WindOscillatingBar::UpdateBar()
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
-		
-		sprite->SetAnimation(Idle);
-
+		play = true;
+		if ((wind_power >= -10  && wind_power < -8) || (wind_power > 8 && wind_power <= 10))
+			sprite->SetAnimation(Run);
+		else sprite->SetAnimation(Idle);
 		sprite->GetAnim()->Reset();
 	}
-	if (!sprite->GetAnim()->Finished()) {
-		App->render->Blit(sprite->GetTexture(), wind_bar->position.x, wind_bar->position.y, &sprite->GetAnim()->GetCurrentFrameRect(), false);
+	
+	if (!sprite->GetAnim()->Finished() && play) {
+		App->render->Blit(sprite->GetTexture(), wind_bar->GetPosition().x - 60, wind_bar->GetPosition().y - 60, &sprite->GetAnim()->GetCurrentFrameRect(), false);
 	}
 	angle += 0.05;
 
+}
+
+iPoint WindOscillatingBar::GetPosition()
+{
+	return iPoint(wind_bar->position.x, wind_bar->position.y);
 }
