@@ -28,10 +28,15 @@ bool Cloud::Update(float dt)
 		iPoint pos(info.GetPos().x+speed*dt, info.GetPos().y);
 		info.SetPos(pos);
 		target_frame = GetTargetFrame(speed);
-		if(curr_frame!= target_frame){
-			if (curr_frame < target_frame)
+		if(curr_frame != target_frame){
+			if (curr_frame < target_frame){
 				info.GetAnim()->AnimForward();
-			else info.GetAnim()->AnimBack();
+				curr_frame++;
+			}
+			else {
+				info.GetAnim()->AnimBack();
+				curr_frame--;
+			}
 		}
 		acumulated_dt = 0;
 	}
@@ -52,9 +57,9 @@ int Cloud::CalculateSpeed(float wind) const
 
 int Cloud::GetTargetFrame(float speed) const
 {
-	if ((speed / 15) > 7) return 0;
-	if ((speed / 15) > 3) return 1;
-	if (speed / 15 > -3) return 2;
-	if (speed / 15 > -7) return 3;
+	if ((speed / 15.0f) > 7.0f) return 0;
+	if ((speed / 15.0f) > 3.0f) return 1;
+	if (speed / 15.0f > -3.0f) return 2;
+	if (speed / 15.0f > -7.0f) return 3;
 	return 4;
 }
