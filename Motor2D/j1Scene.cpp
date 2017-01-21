@@ -70,8 +70,11 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	if(current_scene!= nullptr)
+	if (current_scene != nullptr)
+	{
 		current_scene->Update(dt);
+		current_scene->Draw();
+	}
 
 	return true;
 }

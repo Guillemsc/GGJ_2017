@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 
+<ground rect_x = "0" rect_y = "137" rect_w = "700" rect_h = "162"/>
+<back_shadow rect_x = "0" rect_y = "299" rect_w = "105" rect_h = "72"/>
+
 <cube1 texture = "Sprites/treechunks.png">
    <rects rect_x = "1" rect_y = "1" rect_w = "105" rect_h = "36"/>
    <rects rect_x = "1" rect_y = "38" rect_w = "105" rect_h = "36"/>

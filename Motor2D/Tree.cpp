@@ -175,6 +175,9 @@ void Tree::MakeTreeGrow()
 
 void Tree::WindForceOnTree(float force)
 {
+	if (force == 0.0f)
+		return;
+
 	int general_counter = 1;
 	int cube_counter = 1;
 	p2List_item<TreeCube*>* current_cube = tree_cubes_list.end;

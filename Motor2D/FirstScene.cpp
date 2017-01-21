@@ -40,7 +40,7 @@ bool FirstScene::Start()
 	pugi::xml_document doc; App->LoadXML("test.xml", doc);
 	int value = doc.child("test").attribute("value").as_int();
 
-	t1 = (Tree*)App->entities->CreateEntity(tree, 270, 850);
+	t1 = (Tree*)App->entities->CreateEntity(tree, 290, 750);
 	t1->Set(3);
 	t1->StartGrowing();
 
@@ -56,6 +56,10 @@ bool FirstScene::Start()
 
 	levels = new Levels(t1);
 	levels->SetLevel(1);
+
+	// Background
+	pugi::xml_node node = t1->doc.child("ground");
+	ground_rect = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int()};
 
 	return true;
 }
@@ -100,6 +104,7 @@ bool FirstScene::PostUpdate()
 
 void FirstScene::Draw()
 {
+	App->render->Blit(t1->texture, 0, 700, &ground_rect);
 }
 
 bool FirstScene::CleanUp()

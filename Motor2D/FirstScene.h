@@ -2,12 +2,14 @@
 #define _FIRSTSCENE_
 
 #include "Scene.h"
+#include "j1Render.h"
 
 class Tree;
 class Grass;
 class Cloud;
 class WindOscillatingBar;
 class Levels;
+
 
 class FirstScene : public Scene 
 {
@@ -50,6 +52,9 @@ private:
 	Grass* grass1;
 	Grass* grass2;
 	Grass* grass3;
+
+	// Ground
+	SDL_Rect ground_rect;
 
 };
 

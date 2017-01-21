@@ -9,18 +9,17 @@ class Tree;
 struct LevelPoint
 {
 	LevelPoint() {  };
-	LevelPoint(iPoint _pos, int _width, int _height, SDL_Rect _rect)
+	LevelPoint(iPoint _pos, int _width, int _height)
 	{
 		pos = _pos;
 		width = _width;
 		height = _height;
-		rect = _rect;
 	}
 
 	iPoint pos;
 	int width = 0;
 	int height = 0;
-	SDL_Rect rect;
+
 };
 
 class Levels
@@ -33,7 +32,7 @@ public:
 	bool Update(float dt);
 
 	void SetLevel(int level);
-	void CreateLevelPoint(iPoint pos, int w, int h, SDL_Rect rect);
+	void CreateLevelPoint(iPoint pos, int w, int h);
 	void CleanLevel();
 	int GetLevelDistance();
 	int GetCurrentLevelPoint();
