@@ -71,6 +71,13 @@ public:
 	SDL_Rect rect2 = NULLRECT;
 
 	UIButton*	next_level_button = nullptr;
+
+	UIImage*	star1 = nullptr;
+	UIImage*	star2 = nullptr;
+	UIImage*	star3 = nullptr;
+
+	SDL_Rect	highlight = NULLRECT;
+	SDL_Rect	standard = NULLRECT;
 private:
 	bool debug = true;
 	p2List<LevelPoint> level_points_list;
@@ -81,13 +88,6 @@ private:
 	bool play = true;
 	bool one_time = true;
 	uint end_level_FX = NULL;
-
-	UIImage*	star1 = nullptr;
-	UIImage*	star2 = nullptr;
-	UIImage*	star3 = nullptr;
-
-	SDL_Rect	highlight = NULLRECT;
-	SDL_Rect	standard = NULLRECT;
 
 	bool can_change_level = false;
 };
