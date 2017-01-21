@@ -18,6 +18,9 @@ bool j1BackgroundDrawer::Update(float dt)
 		App->render->Blit(back_tex, 0, back1_1_y, &background);
 		App->render->Blit(back_tex, 0, back1_2_y, &background);
 	}
+	if (back2) {
+		App->render->Blit(back_tex, 0, -1400, &background);
+	}
 	return true;
 }
 

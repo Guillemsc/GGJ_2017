@@ -17,6 +17,7 @@ public:
 
 public:
 	bool back1 = false;
+	bool back2 = false;
 
 private:
 	SDL_Rect background;

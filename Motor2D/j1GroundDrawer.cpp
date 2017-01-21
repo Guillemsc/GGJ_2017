@@ -17,7 +17,8 @@ j1GroundDrawer::~j1GroundDrawer()
 
 bool j1GroundDrawer::Update(float dt)
 {
-	App->render->Blit(App->scene->first_scene->t1->texture, 0, 700, &App->scene->first_scene->ground_rect);
+	if(App->scene->current_scene == App->scene->first_scene)
+		App->render->Blit(App->scene->first_scene->t1->texture, 0, 700, &App->scene->first_scene->ground_rect);
 	return true;
 }
 
