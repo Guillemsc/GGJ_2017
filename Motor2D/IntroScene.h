@@ -8,6 +8,7 @@ class Cloud;
 class UIWindow;
 class UICheckBox;
 class UIImage;
+class Grass;
 
 class IntroScene: public Scene{
 public:
@@ -36,6 +37,7 @@ private:
 	UIButton* options_button;
 
 	Cloud* test_cloud;
+	Grass* test_grass;
 
 	UIWindow*		options_window;
 	UICheckBox*		music_check;

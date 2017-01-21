@@ -24,7 +24,7 @@ Cloud::~Cloud()
 bool Cloud::Update(float dt)
 {
 	acumulated_dt += dt;
-	if (acumulated_dt>dt * 10) {
+	if (acumulated_dt>dt * 5) {
 		speed = CalculateSpeed(App->scene->GetWindForce());
 		iPoint pos(info.GetPos().x+speed*dt, info.GetPos().y);
 		info.SetPos(pos);
