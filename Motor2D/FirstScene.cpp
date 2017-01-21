@@ -59,8 +59,6 @@ bool FirstScene::Start()
 
 	wind_bar = new WindOscillatingBar(30, 30, 200, 20);
 
-	for (int i = 0; i < events_num; i++)
-			active_events[i] = false;
 	// Ground
 	pugi::xml_node node = t1->doc.child("config").child("ground");
 	ground_rect = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int()};
@@ -74,9 +72,8 @@ bool FirstScene::Start()
 	levels = new Levels(t1, t1->texture, shadow, shadow_red);
 
 	levels->SetLevel(1);
-	active_events[1] = true;
-	
 
+	event_time.Start();
 
 	return true;
 }
@@ -131,7 +128,7 @@ bool FirstScene::Update(float dt)
 	levels->Update(dt);
 
 	// Cloud generator
-	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y && !gen_cloud){
+	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y && !gen_cloud && !levels->level_ended){
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> random1(0, 20);
@@ -140,7 +137,6 @@ bool FirstScene::Update(float dt)
 	}
 	prev_cam_y = App->render->camera.y;
 
-	//Generate Clouds
 	if (gen_cloud) 
 	{
 		std::random_device rd;
@@ -171,27 +167,22 @@ bool FirstScene::Update(float dt)
 		switch (levels->current_level)
 		{
 		case 5:
-			active_events[wind_gust] = true;
+			active_event = true;
 			break;
 		case 6:
-			active_events[wind_gust] = false;
-			active_events[storm] = true;
+			active_event = false;
 			break;
 		case 7:
-			active_events[against_wind] = true;
-			active_events[storm] = false;
+			active_event = true;
 			break;
 		case 8:
-			active_events[against_wind] = false;
-			active_events[storm] = true;
-			active_events[wind_gust] = true;
+			active_event = true;
 			break;
 		case 9:
-			active_events[against_wind] = true;
-			active_events[storm] = false;
-			active_events[wind_gust] = true;
+			active_event = true;
 			break;
 		default:
+			active_event = false;
 			break;
 		}
 
@@ -215,9 +206,19 @@ bool FirstScene::Update(float dt)
 	App->render->Blit(t1->texture, 0, 700, &ground_rect);
 
 	//Event Mangement
-	if (active_events[wind_gust] == true) {
-
-
+	if (active_event == true && !levels->level_ended) {
+		if (activate_wind_gust) {
+			if (t1->RandomGenerate(0, 1) == 0) wind_bar->wind_power = -7.5f;
+			else wind_bar->wind_power = 7.5f;
+			event_reset_time = t1->RandomGenerate(2, 5);
+			event_time.Start();
+			activate_wind_gust = false;
+		}
+		else {
+			if (event_time.ReadSec() > event_reset_time) {
+				activate_wind_gust = true;
+			}
+		}
 	}
 
 	return true;
@@ -250,6 +251,34 @@ void FirstScene::OnCommand(p2List<p2SString>& tokens)
 
 void FirstScene::OnCVar(p2List<p2SString>& tokens)
 {
+	switch (tokens.count())
+	{
+	case 1:
+		if (tokens[0] == "scene.wind_speed") {
+			p2SString speed("wind speed: %.2f", wind_force);
+			App->console->AddText(speed.GetString(), Output);
+		}
+		if (tokens[0] == "scene.wind_gust") {
+			p2SString speed("wind gust event: %s", (active_event == true) ? "true" : "false");
+			App->console->AddText(speed.GetString(), Output);
+		}
+	
+		break;
+	case 2:
+		if (tokens[0] == "scene.wind_speed") {
+			wind_force = atof(tokens[1].GetString());
+			p2SString speed("wind speed set to %.2f", wind_force);
+			App->console->AddText(speed.GetString(), Output);
+		}
+		if (tokens[0] == "scene.wind_gust") {
+			active_event = (tokens[1] == "true") ? true : false;
+			p2SString speed("wind gust event: %s", (active_event == true) ? "true" : "false");
+			App->console->AddText(speed.GetString(), Output);
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void FirstScene::SaveCVar(p2SString & cvar_name, pugi::xml_node & node) const

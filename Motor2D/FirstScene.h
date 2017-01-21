@@ -3,10 +3,8 @@
 
 #include "Scene.h"
 #include "j1Render.h"
+#include "j1Timer.h"
 
-enum Events {
-	bird_nest, storm, wind_gust, wind, against_wind, events_num
-};
 
 class Tree;
 class Grass;
@@ -68,9 +66,14 @@ private:
 	int prev_cam_y = 0;
 	bool gen_cloud = true;
 
-	bool active_events[events_num];
+	bool active_event = false;;
 
 	bool move_camera = false;
+
+	bool activate_wind_gust = false;
+
+	j1Timer event_time;
+	float event_reset_time;
 
 };
 

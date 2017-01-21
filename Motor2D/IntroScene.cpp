@@ -30,8 +30,8 @@ bool IntroScene::Start()
 
 	App->back->back2 = true;
 
-	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 400,nullptr,211,75);
-	start_button->SetRects({ 255,424,211,75 },{ 255,424,211,75 }, { 242,271,211,75 }); //ajust to final ones
+	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 400,nullptr,221,81);
+	start_button->SetRects({ 242,424,221,81 },{ 243,120,221,81 }, { 242,264,221,81 }); //ajust to final ones
 	start_button->AddListener(App->scene);
 
 	options_button = (UIButton*)App->gui->CreateUIElement(Button, 112, 462, nullptr, 147, 64);

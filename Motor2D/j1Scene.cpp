@@ -54,6 +54,9 @@ bool j1Scene::Start()
 	}
 
 	App->console->AddCVar("scene.wind_speed", this, "Set wind speed to x value. Max Args: 1. Args: -10<x<10");
+	App->console->AddCVar("scene.wind_gust", this, "Activate or desactivate wind gust event. Max Args: 1. Args: true, false");
+	App->console->AddCVar("scene.storm", this, "Activate or desactivate storm event. Max Args: 1. Args: true, false");
+	App->console->AddCVar("scene.against_wind", this, "Activate or desactivate against wind event. Max Args: 1. Args: true, false");
 
 	return true;
 }

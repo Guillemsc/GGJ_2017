@@ -481,15 +481,15 @@ float j1App::Getdt() const
 
 void j1App::LoadXML(const char* path, pugi::xml_document& doc)
 {
-	LOG("Loading %s XML", path);
+	//LOG("Loading %s XML", path);
 
 	char* buf;
 	int size = App->fs->Load(path, &buf);
 	pugi::xml_parse_result result = doc.load_buffer(buf, size);
 	RELEASE(buf);
 
-	if (result == NULL)
+	/*if (result == NULL)
 		LOG("Could not load xml file %s. pugi error: %s", path, result.description());
 	else
-		LOG("Succes loading xml file %s.", path);
+		LOG("Succes loading xml file %s.", path);*/
 }
