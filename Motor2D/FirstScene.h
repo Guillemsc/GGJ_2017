@@ -7,6 +7,7 @@ class Tree;
 class Grass;
 class Cloud;
 class WindOscillatingBar;
+class Levels;
 
 class FirstScene : public Scene 
 {
@@ -34,11 +35,12 @@ public:
 public:
 	Tree* t1 = nullptr;
 
-
 	int counter = 0;
 	int force = 0;
 
 	WindOscillatingBar*	wind_bar;
+
+	Levels* levels = nullptr;
 
 private:
 	Cloud* cloud1;

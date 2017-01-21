@@ -47,6 +47,8 @@ public:
 
 	float abs(float value);
 
+	void Reset();
+
 public:
 	// Growing speed of the tree
 	int speed = 0;

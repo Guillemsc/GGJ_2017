@@ -202,7 +202,7 @@ void Tree::WindForceOnTree(float force)
 				{
 					current_part->data->pos.x += general_counter;
 
-					general_counter += force / 2;
+					general_counter += force / 1.3f;
 				}
 			}
 		}
@@ -212,7 +212,7 @@ void Tree::WindForceOnTree(float force)
 			{
 				current_part->data->pos.x += general_counter;
 
-				general_counter += force / 2;
+				general_counter += force / 1.3f;
 			}
 		}
 
@@ -256,4 +256,23 @@ float Tree::abs(float value)
 		ret = -ret;
 
 	return ret;
+}
+
+void Tree::Reset()
+{
+	growing = false;
+	create_cube = true;
+
+	while (tree_cubes_list.count()) {
+		RELEASE(tree_cubes_list.end->data);
+		tree_cubes_list.del(tree_cubes_list.end);
+	}
+	while (branch_list.count()) {
+		RELEASE(branch_list.end->data);
+		branch_list.del(branch_list.end);
+	}
+	while (flower_list.count()) {
+		RELEASE(flower_list.end->data);
+		flower_list.del(flower_list.end);
+	}
 }

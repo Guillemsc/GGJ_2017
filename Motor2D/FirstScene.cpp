@@ -22,6 +22,7 @@
 #include "j1Entities.h"
 #include "Cloud.h"
 #include "Grass.h"
+#include "Levels.h"
 
 #define CAMERA_SCROLL 300
 
@@ -39,8 +40,8 @@ bool FirstScene::Start()
 	pugi::xml_document doc; App->LoadXML("test.xml", doc);
 	int value = doc.child("test").attribute("value").as_int();
 
-	t1 = (Tree*)App->entities->CreateEntity(tree, 300, 850);
-	t1->Set(2);
+	t1 = (Tree*)App->entities->CreateEntity(tree, 270, 850);
+	t1->Set(3);
 	t1->StartGrowing();
 
 	cloud1 = (Cloud*)App->entities->CreateEntity(cloud, 25, 30);
@@ -52,6 +53,9 @@ bool FirstScene::Start()
 	grass3 = (Grass*)App->entities->CreateEntity(grass, 450, 650);
 
 	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
+
+	levels = new Levels(t1);
+	levels->SetLevel(1);
 
 	return true;
 }
@@ -83,6 +87,8 @@ bool FirstScene::Update(float dt)
 
 	wind_bar->UpdateBar();
 	wind_force = wind_bar->wind_power;
+
+	levels->Update(dt);
 
 	return true;
 }

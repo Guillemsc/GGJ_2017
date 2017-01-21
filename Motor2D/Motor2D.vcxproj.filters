@@ -92,6 +92,9 @@
       <Filter>Desenvolupament  ========\Entities\Cloud</Filter>
     </ClCompile>
     <ClCompile Include="WindOscillatingBar.cpp" />
+    <ClCompile Include="Levels.cpp">
+      <Filter>Desenvolupament  ========\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -240,6 +243,9 @@
     </ClInclude>
     <ClInclude Include="WindOscillatingBar.h">
       <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Levels.h">
+      <Filter>Desenvolupament  ========\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
