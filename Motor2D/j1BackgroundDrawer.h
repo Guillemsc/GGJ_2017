@@ -22,8 +22,8 @@ private:
 	SDL_Rect background;
 	SDL_Texture* back_tex;
 
-	int back1_1_y = -1386;
-	int back1_2_y = -3597;
+	int back1_1_y = -1881;
+	int back1_2_y = -4587;
 	int it = 0;
 };
 
