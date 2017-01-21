@@ -99,65 +99,50 @@ void Tree::CreateNewCube()
 
 }
 
-void Tree::CreateNewFlower(int x, int y, p2SString _direction)
-{
-	// Set Name
-	p2SString name; name.create("flower");
-
-	// Create flowers on a percentage
-	int rand = RandomGenerate(0, 1); // 0 No create, 1 Create
-
-	if (rand != 0) {
-		Flower* flower = new Flower(iPoint(x, y), name.GetString());
-		flower->ChangeDirection(_direction.GetString());
-		flower_list.add(flower);
-	}
-}
-
-void Tree::CreateNewBranch()
+void Tree::CreateNewBranch(p2List_item<TreeCube*>* node)
 {
 	// Set Name
 	p2SString name; name.create("branch");
 
 	// Create branchs on a random number
-	int rand = RandomGenerate(0, 10); //0 & 7-14 don't create, 1-3 create in left, 4-6 create in rigth
+	int rand = RandomGenerate(0, 8); //0 & 7-14 don't create, 1-3 create in left, 4-6 create in rigth
 	Branch* branch;
-	int x, y = tree_cubes_list.end->data->GetY();
+	int x, y = node->data->GetY();
 
 
 	switch (rand) {
 	case 1:	{
-		x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth());
+		x = node->data->GetX() + (node->data->GetWidth());
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Idle);
 	}
 		break;
 	case 2: {
-		x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth());
+		x = node->data->GetX() + (node->data->GetWidth());
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Run);
 	}
 			break;
 	case 3: {
-		x = tree_cubes_list.end->data->GetX() + (tree_cubes_list.end->data->GetWidth());
+		x = node->data->GetX() + (node->data->GetWidth());
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Shoot);
 	}
 			break;
 	case 4: {
-		x = tree_cubes_list.end->data->GetX() - (tree_cubes_list.end->data->GetWidth() / 2);
+		x = node->data->GetX() - (node->data->GetWidth() / 2);
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Jump);
 	}
 			break;
 	case 5: {
-		x = tree_cubes_list.end->data->GetX() - (tree_cubes_list.end->data->GetWidth()*1.49);
+		x = node->data->GetX() - (node->data->GetWidth()*1.49);
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Hit);
 	}
 			break;
 	case 6: {
-		x = tree_cubes_list.end->data->GetX() - (tree_cubes_list.end->data->GetWidth());
+		x = node->data->GetX() - (node->data->GetWidth());
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Explode);
 	}
@@ -190,7 +175,9 @@ void Tree::MakeTreeGrow()
 	// Check if we have to create another treecube
 	if (tree_cubes_list.end->data->GetY() <= distance_next_treecube) 
 	{
-		CreateNewBranch();
+		if (tree_cubes_list.count() > 3) {
+			CreateNewBranch(tree_cubes_list.end->prev->prev);
+		}
 		create_cube = true;
 	}
 }

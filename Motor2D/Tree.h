@@ -33,8 +33,7 @@ public:
 	void StartGrowing();
 
 	void CreateNewCube();
-	void CreateNewFlower(int x, int y, p2SString _direction);
-	void CreateNewBranch();
+	void CreateNewBranch(p2List_item<TreeCube*>* node);
 
 	void UpdateCenterPointTop();
 
