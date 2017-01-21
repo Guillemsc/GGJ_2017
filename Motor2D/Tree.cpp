@@ -6,6 +6,8 @@
 #include <iostream>
 #include "j1FileSystem.h"
 #include "p2Log.h"
+#include "j1Render.h"
+
 using namespace std;
 
 Tree::Tree()

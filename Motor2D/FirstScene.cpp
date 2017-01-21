@@ -128,12 +128,20 @@ bool FirstScene::Update(float dt)
 	{
 		App->render->camera.y -= ceil(250 * dt);
 	}
+	// Level change
 	else if (levels->level_ended)
 	{
 		/*levels->SetLevel(2);
 		t1->Reset();
 		t1->StartGrowing();
 		t1->speed = 2;*/
+	}
+
+	// End game if out of the limits
+	if (t1->center_point_top.x < App->render->camera.x || t1->center_point_top.x > App->render->camera.x + App->render->camera.w)
+	{
+		levels->level_ended = true;
+		t1->speed = 0;
 	}
 
 	// Blit ground
