@@ -180,7 +180,7 @@ void Tree::WindForceOnTree(float force)
 	p2List_item<TreeCube*>* current_cube = tree_cubes_list.end;
 	p2List_item<TreeCube*>* to_copy = current_cube;
 	
-	for (cube_counter; cube_counter < 4; cube_counter++)
+	for (cube_counter; cube_counter < 3; cube_counter++)
 	{
 		if (current_cube->prev != nullptr)
 		{
@@ -194,10 +194,26 @@ void Tree::WindForceOnTree(float force)
 	{
 		p2List_item<CubePart*>* current_part = current_cube->data->tree_cube_parts.end;
 
-		for (; current_part != nullptr; current_part = current_part->prev)
-		{	
-			current_part->data->pos.x += general_counter;
-			general_counter -= force;
+		if (current_cube == to_copy && current_cube->prev != nullptr)
+		{
+			for (; current_part != nullptr; current_part = current_part->prev)
+			{
+				if (current_part != current_cube->data->tree_cube_parts.end && current_part != current_cube->data->tree_cube_parts.end->prev)
+				{
+					current_part->data->pos.x += general_counter;
+
+					general_counter += force / 2;
+				}
+			}
+		}
+		else
+		{
+			for (; current_part != nullptr; current_part = current_part->prev)
+			{
+				current_part->data->pos.x += general_counter;
+
+				general_counter += force / 2;
+			}
 		}
 
 		current_cube = current_cube->next;
@@ -230,4 +246,14 @@ void Tree::LoadRects()
 		rect.h = node.attribute("rect_h").as_int();
 		rects.add(rect);
 	}
+}
+
+float Tree::abs(float value)
+{
+	float ret = value;
+
+	if (ret < 0)
+		ret = -ret;
+
+	return ret;
 }

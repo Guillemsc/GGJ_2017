@@ -23,6 +23,8 @@
 #include "Cloud.h"
 #include "Grass.h"
 
+#define CAMERA_SCROLL 300
+
 FirstScene::FirstScene()
 {
 }
@@ -37,8 +39,8 @@ bool FirstScene::Start()
 	pugi::xml_document doc; App->LoadXML("test.xml", doc);
 	int value = doc.child("test").attribute("value").as_int();
 
-	t1 = (Tree*)App->entities->CreateEntity(tree, 300, 300);
-	t1->Set(1);
+	t1 = (Tree*)App->entities->CreateEntity(tree, 300, 850);
+	t1->Set(2);
 	t1->StartGrowing();
 
 	cloud1 = (Cloud*)App->entities->CreateEntity(cloud, 25, 30);
@@ -69,14 +71,15 @@ bool FirstScene::Update(float dt)
 	{
 		force--;
 	}
-	if (counter == 10)
+	if (counter == 20)
 	{
-		t1->WindForceOnTree(force);
+		t1->WindForceOnTree(wind_force);
 		counter = 0;
 	}
 	counter++;
 
-	App->render->camera.y += t1->speed;
+	if(t1->center_point_top.y <= CAMERA_SCROLL)
+	App->render->camera.y = -t1->center_point_top.y + CAMERA_SCROLL;
 
 	wind_bar->UpdateBar();
 	wind_force = wind_bar->wind_power;

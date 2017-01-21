@@ -45,6 +45,8 @@ public:
 
 	void LoadRects();
 
+	float abs(float value);
+
 public:
 	// Growing speed of the tree
 	int speed = 0;
