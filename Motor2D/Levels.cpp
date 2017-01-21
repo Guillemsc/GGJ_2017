@@ -45,10 +45,10 @@ bool Levels::Update(float dt)
 
 		if(accomplished_distance != 0)
 			final_percentage = ((accomplished_distance * 100) / level_distance);
-
-		end_label->active = true;
-		p2SString txt; txt.create("LEVEL %d COMPLETED WITH %.f PERCENT", current_level, final_percentage);
-		end_label->SetText(txt.GetString());
+			
+		//end_label->active = true;
+		////p2SString txt("Level completed");
+		//end_label->SetText(txt.GetString());
 	}
 
 	for (int i = 0; i < level_points_list.count(); i++)
