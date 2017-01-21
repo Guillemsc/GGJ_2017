@@ -295,5 +295,8 @@
     <Xml Include="..\Game\grass.xml">
       <Filter>Desenvolupament  ========\Entities\Grass</Filter>
     </Xml>
+    <Xml Include="..\Game\cloud.xml">
+      <Filter>Desenvolupament  ========\Entities\Cloud</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

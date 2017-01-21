@@ -1,0 +1,10 @@
+<!--grass configuration xml-->
+
+<config>
+  <texture path="Sprites/clod.png"/>
+  <anim type="0" speed="0.1">
+    <frame x="1" y="0" w="171" h="63"/>
+    <frame x="173" y="" w="171" h="63"/>
+    <frame x="345" y="" w="171" h="63"/>
+  </anim>
+</config>

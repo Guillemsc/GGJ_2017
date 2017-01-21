@@ -3,6 +3,7 @@
 #include "j1Gui.h"
 #include "UIButton.h"
 #include "j1Console.h"
+#include "j1Entities.h"
 
 IntroScene::IntroScene()
 {
@@ -21,6 +22,8 @@ bool IntroScene::Start()
 	options_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 350, nullptr, 60, 30);
 	options_button->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //ajust to final ones
 	options_button->AddListener(App->scene);
+
+	test_cloud = (Cloud*)App->entities->CreateEntity(cloud, 50, 50);
 
 	return true;
 }

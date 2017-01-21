@@ -4,6 +4,7 @@
 #include "Scene.h"
 
 class UIButton;
+class Cloud;
 
 class IntroScene: public Scene{
 public:
@@ -29,6 +30,8 @@ public:
 private:
 	UIButton* start_button;
 	UIButton* options_button;
+
+	Cloud* test_cloud;
 
 public:
 
