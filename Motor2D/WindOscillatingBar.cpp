@@ -37,7 +37,7 @@ WindOscillatingBar::~WindOscillatingBar()
 
 void WindOscillatingBar::UpdateBar()
 {
-	wind_bar->position.x = (wind_window->position.w - wind_bar->position.w) / 2 + ((wind_window->position.w - wind_bar->position.w) / 2)*sin(angle);
+	wind_bar->position.x = (wind_window->position.w - wind_bar->position.w) / 2 + ((wind_window->position.w - wind_bar->position.w) / 2)*sin(angle) + offset;
 
 	if (one_time) {
 		soft_wind_FX = App->audio->LoadFx("audio/fx/soft_wind_FX.wav");
@@ -69,4 +69,19 @@ void WindOscillatingBar::UpdateBar()
 iPoint WindOscillatingBar::GetPosition()
 {
 	return iPoint(wind_bar->position.x, wind_bar->position.y);
+}
+
+const float WindOscillatingBar::GetOffset() const
+{
+	return offset;
+}
+
+const void WindOscillatingBar::SetOffset(float _offset)
+{
+	offset = _offset;
+}
+
+const void WindOscillatingBar::ResetOffset() 
+{
+	offset = 0;
 }

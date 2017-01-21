@@ -16,6 +16,10 @@ public:
 	void UpdateBar();
 
 	iPoint GetPosition();
+
+	const float GetOffset() const;
+	const void SetOffset(float _offset);
+	const void ResetOffset();
 private:
 	UIWindow*		wind_window = nullptr;
 	UIImage*		wind_bar = nullptr;
@@ -31,7 +35,10 @@ private:
 	bool one_time = true;
 	uint soft_wind_FX = NULL;
 	uint hard_wind_FX = NULL;
+
+	float offset = 0;
 public:
+
 	float wind_power = 0;	
 	Sprite2D*		sprite;
 };
