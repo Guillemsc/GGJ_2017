@@ -10,6 +10,7 @@
 #include "WindOscillatingBar.h"
 #include "j1BackgroundDrawer.h"
 #include "Cloud.h"
+#include "FirstScene.h"
 #include "Grass.h"
 
 IntroScene::IntroScene()
@@ -108,6 +109,20 @@ void IntroScene::Draw()
 
 bool IntroScene::CleanUp()
 {
+	App->gui->DeleteUIElement(start_button);
+	App->gui->DeleteUIElement(options_button);
+	App->gui->DeleteUIElement(options_window);
+	App->gui->DeleteUIElement(music_check);
+	App->gui->DeleteUIElement(sabling);
+	App->entities->DeleteEntity(cloud1);
+	App->entities->DeleteEntity(cloud2);
+	App->entities->DeleteEntity(cloud3);
+	App->entities->DeleteEntity(grass1);
+	App->entities->DeleteEntity(grass2);
+	App->entities->DeleteEntity(grass3);
+	App->entities->DeleteEntity(grass4);
+	App->entities->DeleteEntity(grass5);
+	App->entities->DeleteEntity(grass6);
 	return true;
 }
 
@@ -130,6 +145,9 @@ void IntroScene::UIReaction(UIElement * element, int react)
 		}
 		else if (element == music_check) {
 			music_check->Standard();
+		}
+		else if (element == start_button) {
+			App->scene->ChangeScene(App->scene->first_scene);
 		}
 		break;
 	case MouseEnter:
