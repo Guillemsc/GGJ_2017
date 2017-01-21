@@ -6,6 +6,7 @@
 class UIButton;
 class UIWindow;
 class UICheckBox;
+class UIImage;
 
 class IntroScene: public Scene{
 public:
@@ -33,6 +34,12 @@ private:
 	UIButton*		options_button;
 	UIWindow*		options_window;
 	UICheckBox*		music_check;
+
+	UIWindow*		wind_window;
+	UIImage*		wind_bar;
+
+	float			angle = 0;
+
 public:
 
 private:

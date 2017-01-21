@@ -1,6 +1,7 @@
 #include "IntroScene.h"
 #include "j1Scene.h"
 #include "j1Gui.h"
+#include "UIImage.h"
 #include "UIButton.h"
 #include "UIWindow.h"
 #include "UICheckBox.h"
@@ -26,12 +27,19 @@ bool IntroScene::Start()
 
 	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);
 	options_window->SetRect({ 20,20,60,30 }); //ajust to final one
-	options_window->AddListener(App->scene);
 	options_window->active = false;
 
 	music_check = (UICheckBox*)App->gui->CreateUIElement(CheckBox, 75, 150, options_window, 30, 30);
 	music_check->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //adjust to final ones
+	music_check->AddListener(App->scene);
 	music_check->active = false;
+
+	wind_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 200, 20);
+	options_window->SetRect({ 20,20,60,30 }); //adjust to final one
+
+	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, 10, 20);
+	wind_bar->SetRect({ 20,20,60,30 }); //adjust to final one
+	wind_bar->AddListener(App->scene);
 
 	return true;
 }
@@ -43,6 +51,8 @@ bool IntroScene::PreUpdate()
 
 bool IntroScene::Update(float dt)
 {
+	angle += 0.05;
+	wind_bar->position.x = 190*sin(angle);
 	return true;
 }
 
