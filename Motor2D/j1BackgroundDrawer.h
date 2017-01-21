@@ -24,7 +24,6 @@ private:
 
 	int back1_1_y = -1881;
 	int back1_2_y = -4587;
-	int it = 0;
 };
 
 #endif // !_J1BACKGROWNDRAWER_
