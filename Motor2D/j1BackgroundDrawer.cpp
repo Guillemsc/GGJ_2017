@@ -14,8 +14,16 @@ j1BackgroundDrawer::~j1BackgroundDrawer()
 
 bool j1BackgroundDrawer::Update(float dt)
 {
-	if (back1)
-		App->render->Blit(back_tex, 0, -1386, &background);
+	if (back1){
+		App->render->Blit(back_tex, 0, back1_1_y, &background);
+		App->render->Blit(back_tex, 0, back1_2_y, &background);
+		if (App->render->camera.y % 2090 == 0 && App->render->camera.y != 0) {
+			it++;
+			if (it % 2 == 0) 
+				back1_2_y -= 2211;
+			else back1_1_y -= 2211;
+		}
+	}
 	return true;
 }
 

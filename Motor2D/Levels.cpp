@@ -11,7 +11,7 @@ Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect) : tree(_tree)
 	texture = _texture;
 	rect = { _rect.x, _rect.y, _rect.w, _rect.h };
 	end_label = (UILabel*)App->gui->CreateUIElement(Label, 100, 200, nullptr, 400, 60);
-	end_label->active = true;
+	end_label->active = false;
 }
 
 Levels::~Levels()

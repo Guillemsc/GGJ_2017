@@ -46,9 +46,7 @@ public:
 	Levels* levels = nullptr;
 
 private:
-	Cloud* cloud1;
-	Cloud* cloud2;
-	Cloud* cloud3;
+	p2List<Cloud*> clouds;
 
 	Grass* grass1;
 	Grass* grass2;
@@ -58,6 +56,9 @@ private:
 
 	// Ground
 	SDL_Rect ground_rect;
+
+	int prev_cam_y;
+	bool gen_cloud = true;
 
 };
 

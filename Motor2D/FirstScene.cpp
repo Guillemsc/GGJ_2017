@@ -24,6 +24,8 @@
 #include "Grass.h"
 #include "Levels.h"
 #include "j1BackgroundDrawer.h"
+#include <random>
+#include <iostream>
 
 #define CAMERA_SCROLL 300
 
@@ -45,9 +47,7 @@ bool FirstScene::Start()
 	t1->Set(3);
 	t1->StartGrowing();
 
-	cloud1 = (Cloud*)App->entities->CreateEntity(cloud, 25, 30);
-	cloud2 = (Cloud*)App->entities->CreateEntity(cloud, 250, 130);
-	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 100, 70);
+	clouds.add((Cloud*)App->entities->CreateEntity(cloud, 275, 125));
 
 	grass1 = (Grass*)App->entities->CreateEntity(grass, 0, 680);
 	grass2 = (Grass*)App->entities->CreateEntity(grass, 390, 670);
@@ -96,6 +96,29 @@ bool FirstScene::Update(float dt)
 	// Wind Bar
 	wind_bar->UpdateBar();
 	wind_force = wind_bar->wind_power;
+
+
+	// Levels
+	levels->Update(dt);
+
+	// Cloud generator
+	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y && !gen_cloud){
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> random(0, 20);
+		if(random(gen)<15)
+			gen_cloud = true;
+	}
+	prev_cam_y = App->render->camera.y;
+
+	if (gen_cloud) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> random(0, 600);
+		int pos_x = random(gen);
+		clouds.add((Cloud*)App->entities->CreateEntity(cloud, pos_x, -App->render->camera.y - 75));
+		gen_cloud = false;
+	}
 
 	return true;
 }
