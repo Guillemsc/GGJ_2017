@@ -36,26 +36,26 @@ public:
 
 private:
 
-	UIButton* start_button;
-	UIButton* options_button;
+	UIButton* start_button = nullptr;
+	UIButton* options_button = nullptr;
 
-	SDL_Rect ground;
+	SDL_Rect ground = NULLRECT;
 
-	UIImage* sabling;
+	UIImage* sabling = nullptr;
 
-	UIWindow*		options_window;
-	UICheckBox*		music_check;
+	UIWindow*		options_window = nullptr;
+	UICheckBox*		music_check = nullptr;
 
-	Grass* grass1;
-	Grass* grass2;
-	Grass* grass3;
-	Grass* grass4;
-	Grass* grass5;
-	Grass* grass6;
+	Grass* grass1 = nullptr;
+	Grass* grass2 = nullptr;
+	Grass* grass3 = nullptr;
+	Grass* grass4 = nullptr;
+	Grass* grass5 = nullptr;
+	Grass* grass6 = nullptr;
 
-	Cloud* cloud1;
-	Cloud* cloud2;
-	Cloud* cloud3;
+	Cloud* cloud1 = nullptr;
+	Cloud* cloud2 = nullptr;
+	Cloud* cloud3 = nullptr;
 
 	float accumulted_dt = 0;
 
