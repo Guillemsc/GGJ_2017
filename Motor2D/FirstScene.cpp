@@ -62,6 +62,7 @@ bool FirstScene::PreUpdate()
 bool FirstScene::Update(float dt)
 {
 	wind_bar->UpdateBar();
+	wind_force = wind_bar->wind_power;
 	return true;
 }
 

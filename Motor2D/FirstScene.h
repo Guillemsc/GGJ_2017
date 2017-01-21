@@ -40,6 +40,7 @@ private:
 	Cloud* cloud1;
 	Cloud* cloud2;
 	Cloud* cloud3;
+
 	Grass* grass1;
 	Grass* grass2;
 	Grass* grass3;
