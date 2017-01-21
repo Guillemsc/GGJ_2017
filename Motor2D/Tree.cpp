@@ -8,6 +8,11 @@
 #include "j1Render.h"
 #include "Bird.h"
 #include "j1Entities.h"
+#include "j1App.h"
+#include "Scene.h"
+#include "FirstScene.h"
+#include "j1Scene.h"
+#include "Cloud.h"
 
 using namespace std;
 
@@ -330,8 +335,14 @@ void Tree::Reset()
 		delete(branch_list[i]);
 	}
 
+	for (int i = 0; i < App->scene->first_scene->clouds.count(); i++)
+	{
+		App->entities->DeleteEntity(App->scene->first_scene->clouds[i]);
+	}
+
 	tree_cubes_list.clear();
 	branch_list.clear();
+	App->scene->first_scene->clouds.clear();
 
 	end_tree_steps = 0;
 }

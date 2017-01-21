@@ -53,8 +53,9 @@ public:
 	// Ground
 	SDL_Rect ground_rect = NULLRECT;
 
-private:
 	p2List<Cloud*> clouds;
+
+private:
 
 	Grass* grass1 = nullptr;
 	Grass* grass2 = nullptr;
