@@ -76,7 +76,8 @@ bool FirstScene::Update(float dt)
 	// Tree movement
 	if (counter == 15)
 	{
-		t1->WindForceOnTree(wind_force);
+		if(!levels->level_ended)
+			t1->WindForceOnTree(wind_force);
 		counter = 0;
 	}
 	counter++;
