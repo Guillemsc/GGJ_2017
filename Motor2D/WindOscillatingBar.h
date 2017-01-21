@@ -16,6 +16,9 @@ private:
 	UIImage*		wind_bar;
 
 	float			angle = 0;
+
+public:
+	float wind_power = 0;
 };
 
 #endif _WINDOSCILLATINGBAR_

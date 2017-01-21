@@ -1,6 +1,7 @@
 #include "WindOscillatingBar.h"
 #include "UIWindow.h"
 #include "UIImage.h"
+#include "j1Input.h"
 
 WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 {
@@ -18,5 +19,10 @@ WindOscillatingBar::~WindOscillatingBar()
 void WindOscillatingBar::UpdateBar()
 {
 	wind_bar->position.x = (wind_window->position.w - wind_bar->position.w) / 2 + ((wind_window->position.w - wind_bar->position.w) / 2)*sin(angle);
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+		wind_power = 10 * sin(angle);
+	}
 	angle += 0.05;
+
 }
