@@ -22,7 +22,7 @@ bool Grass::Update(float dt)
 		else if (speed > -.1) info.SetAnimation(Idle);
 		else if (speed > -.3)info.SetAnimation(Shoot);
 		else info.SetAnimation(Hit);
-		info.GetAnim()->SetSpeed(speed);
+		info.GetAnim()->SetSpeed(abs(speed));
 		acumulated_dt = 0;
 	}
 	return true;

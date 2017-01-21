@@ -9,6 +9,8 @@ class UICheckBox;
 class UIImage;
 class WindOscillatingBar;
 
+class Grass;
+
 class IntroScene: public Scene{
 public:
 	IntroScene();
@@ -39,6 +41,8 @@ private:
 	UICheckBox*		music_check;
 
 	WindOscillatingBar*	wind_bar;
+
+	Grass* test_grass;
 public:
 
 private:
