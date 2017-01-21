@@ -152,13 +152,13 @@ bool FirstScene::Update(float dt)
 	}
 
 	// Camera moves down
-	if (levels->level_ended && -App->render->camera.y<0 && counter2 > 180) // wait 3 sec
+	if (levels->level_ended && -App->render->camera.y<0 && (counter2 > 180 || !levels->level_finished )) // wait 3 sec
 	{
 		App->render->camera.y -= ceil(250 * dt);
 	}
 	// Level swaper ----------------
 
-	else if (levels->level_ended && counter2 > 180)
+	else if (levels->level_ended && (counter2 > 180 || !levels->level_finished))
 	{
 		// Change if finished
 		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS){
