@@ -69,6 +69,10 @@ public:
 
 	int end_tree_steps = 0;
 
+	SDL_Rect tree1 = NULLRECT;
+	SDL_Rect tree2 = NULLRECT;
+	SDL_Rect tree3 = NULLRECT;
+
 private:
 	p2List<SDL_Rect> rects;
 	p2List<SDL_Rect> rects_green;

@@ -40,6 +40,7 @@ private:
 	UIButton* options_button;
 
 	SDL_Rect ground;
+
 	UIImage* sabling;
 
 	UIWindow*		options_window;

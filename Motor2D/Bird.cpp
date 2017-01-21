@@ -2,6 +2,7 @@
 #include "j1App.h"
 #include "j1Scene.h"
 #include "j1Render.h"
+#include "j1Audio.h"
 
 Bird::Bird(iPoint pos):Entity(bird,pos,"bird")
 {
@@ -15,6 +16,12 @@ Bird::~Bird()
 
 bool Bird::Update(float dt)
 {
+	if (one_time) {
+		bird_creation_FX = App->audio->LoadFx("audio/fx/bird_creation_FX.wav");
+		App->audio->PlayFx(bird_creation_FX);
+		bird_later_FX = App->audio->LoadFx("audio/fx/bird_later_FX.wav");
+		one_time = false;
+	}
 	if(!nested){
 		int pos_y = info.GetPos().y;
 		if(info.GetPos().y<680)
@@ -30,6 +37,7 @@ bool Bird::Update(float dt)
 			bird_pos.y -= 45;
 			info.SetPos(bird_pos);
 			nested = true;
+			App->audio->PlayFx(bird_later_FX);
 		}
 	}
 	if (info.GetPos().y >= 680){

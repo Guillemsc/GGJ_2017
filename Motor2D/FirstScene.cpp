@@ -102,6 +102,23 @@ bool FirstScene::Update(float dt)
 	}
 	counter++;
 
+	// Tree tops
+	if (levels->level_finished)
+	{
+		counter2++;
+
+		if (levels->final_percentage < 40)
+			App->render->Blit(t1->texture, t1->center_point_top.x - 128, t1->center_point_top.y - 140, &t1->tree1);
+		else if (levels->final_percentage < 75)
+			App->render->Blit(t1->texture, t1->center_point_top.x - 258, t1->center_point_top.y - 180, &t1->tree2);
+		else
+			App->render->Blit(t1->texture, t1->center_point_top.x - 149, t1->center_point_top.y - 200, &t1->tree3);
+	}
+	else
+		counter2 = 0;
+
+
+
 	// Camera
 	if(t1->center_point_top.y <= CAMERA_SCROLL && !levels->level_ended)
 	App->render->camera.y = -t1->center_point_top.y + CAMERA_SCROLL;
@@ -135,13 +152,13 @@ bool FirstScene::Update(float dt)
 	}
 
 	// Camera moves down
-	if (levels->level_ended && -App->render->camera.y<0) 
+	if (levels->level_ended && -App->render->camera.y<0 && (counter2 > 180 || !levels->level_finished )) // wait 3 sec
 	{
 		App->render->camera.y -= ceil(250 * dt);
 	}
 	// Level swaper ----------------
 
-	else if (levels->level_ended)
+	else if (levels->level_ended && (counter2 > 180 || !levels->level_finished))
 	{
 		// Change if finished
 		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS){

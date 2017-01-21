@@ -7,6 +7,7 @@
 #include "j1Gui.h"
 #include "Entity.h"
 #include "j1Entities.h"
+#include "j1Audio.h"
 
 Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
@@ -24,6 +25,14 @@ Levels::~Levels()
 bool Levels::Update(float dt)
 {
 	SDL_Rect to_blit = NULLRECT;
+
+	if (one_time) {
+		end_level_FX = App->audio->LoadFx("audio/fx/end_level_FX.wav");
+		one_time = false;
+	}
+	if (tree->tree_cubes_list.count() < 3) {
+		play = true;
+	}
 
 	// Is following the circuit ?
 	if (GetCurrentLevelPoint() != -1 && !level_ended && tree->center_point_top.y <= starting_point)
@@ -45,6 +54,11 @@ bool Levels::Update(float dt)
 		tree->speed = 0;
 		level_ended = true;
 		level_finished = true;
+
+		if (play) {
+			App->audio->PlayFx(end_level_FX);
+			play = false;
+		}
 
 		if(accomplished_distance != 0)
 			final_percentage = ((accomplished_distance * 100) / level_distance);

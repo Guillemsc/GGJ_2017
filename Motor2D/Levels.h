@@ -72,5 +72,9 @@ private:
 
 	UILabel* end_label = nullptr;
 
+	bool play = true;
+	bool one_time = true;
+	uint end_level_FX = NULL;
+
 };
 #endif // !_LEVELS_H_

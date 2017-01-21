@@ -27,8 +27,6 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 	sprite = new Sprite2D();
 	sprite->LoadTexture("Sprites/UIsheet.png");
 	sprite->LoadAnimations(node);
-	
-	bar_bouncing_fx = App->audio->LoadFx("audio/fx/bar_change_direction_FX.wav");
 
 	play = false;
 }
@@ -41,14 +39,23 @@ void WindOscillatingBar::UpdateBar()
 {
 	wind_bar->position.x = (wind_window->position.w - wind_bar->position.w) / 2 + ((wind_window->position.w - wind_bar->position.w) / 2)*sin(angle);
 
-	if (wind_power == 8 || wind_power == -8) App->audio->PlayFx(bar_bouncing_fx, 0);
+	if (one_time) {
+		soft_wind_FX = App->audio->LoadFx("audio/fx/soft_wind_FX.wav");
+		hard_wind_FX = App->audio->LoadFx("audio/fx/hard_wind_FX.wav");
+		one_time = false;
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
 		play = true;
-		if ((wind_power >= -10  && wind_power < -8) || (wind_power > 8 && wind_power <= 10))
+		if ((wind_power >= -10 && wind_power < -8) || (wind_power > 8 && wind_power <= 10)) {
 			sprite->SetAnimation(Run);
-		else sprite->SetAnimation(Idle);
+			App->audio->PlayFx(hard_wind_FX);
+		}
+		else { 
+			sprite->SetAnimation(Idle); 
+			App->audio->PlayFx(soft_wind_FX);
+		}
 		sprite->GetAnim()->Reset();
 	}
 	
