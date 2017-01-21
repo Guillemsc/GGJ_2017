@@ -17,9 +17,6 @@ public:
 
 	bool Draw();
 
-	void ChangeDirection(const char* _direction);
-	p2SString GetDirection();
-
 private:
 	int CalculateAnimSpeed(float wind)const;
 
