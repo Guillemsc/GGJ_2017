@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
 	<app framerate_cap="">
-		<title>Grow</title>
+		<title>Sapling</title>
 		<organization>Boolas Studio</organization>
 	</app>
 	<renderer>

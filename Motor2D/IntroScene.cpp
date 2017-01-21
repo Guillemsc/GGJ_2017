@@ -31,11 +31,11 @@ bool IntroScene::Start()
 	App->back->back2 = true;
 
 	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 400,nullptr,211,75);
-	start_button->SetRects({ 255,424,211,75 }, { 242,271,211,75 }, { 255,424,211,75 }); //ajust to final ones
+	start_button->SetRects({ 255,424,211,75 },{ 255,424,211,75 }, { 242,271,211,75 }); //ajust to final ones
 	start_button->AddListener(App->scene);
 
-	options_button = (UIButton*)App->gui->CreateUIElement(Button, 112, 462, nullptr, 148, 58);
-	options_button->SetRects({ 0,192,148,58 }, { 0,342,148,58 }, { 0,495,148,58 }); //ajust to final ones
+	options_button = (UIButton*)App->gui->CreateUIElement(Button, 112, 462, nullptr, 147, 64);
+	options_button->SetRects({ 0,496,147,64 }, { 1,192,147,64 }, { 0,336,147,64 }); //ajust to final ones
 	options_button->AddListener(App->scene);
 
 	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);

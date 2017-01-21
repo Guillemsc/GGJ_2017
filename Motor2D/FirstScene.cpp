@@ -215,7 +215,8 @@ bool FirstScene::Update(float dt)
 	App->render->Blit(t1->texture, 0, 700, &ground_rect);
 
 	//Event Mangement
-	if (active_events[bird] == true) {
+	if (active_events[wind_gust] == true) {
+
 
 	}
 
