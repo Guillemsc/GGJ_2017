@@ -14,6 +14,7 @@ Tree::Tree()
 
 Tree::Tree(iPoint position, const char* entity_name) : Entity(EntityType::tree, position, entity_name)
 {
+	draw_order = AfterScene;
 }
 
 Tree::~Tree()

@@ -14,6 +14,12 @@ enum EntityType
 	NoType
 };
 
+enum DrawOrder
+{
+	BeforeScene,
+	AfterScene
+};
+
 class Entity
 {
 public:
@@ -33,6 +39,7 @@ private:
 
 public:
 	Sprite2D info;
+	DrawOrder draw_order = BeforeScene;
 
 private:
 	p2SString name;
