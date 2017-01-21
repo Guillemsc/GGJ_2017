@@ -2,17 +2,21 @@
 
 <config>
   
-  <texture path="Sprites/treechunks.png"/>
+  <texture path="Sprites/UIsheet.png"/>
   
-  <window x = "0" y = "601" w = "591" h = "148"/> <!--window-->
+  <window x = "0" y = "0" w = "593" h = "119"/> <!--window-->
   
-  <bar x = "594" y = "604" w = "67" h = "142"/>
+  <bar x = "594" y = "75" w = "67" h = "112"/>
 
-  <anim type="0" speed="0.1"> <!--Spacebar pressed-->
-    <frame x="9" y="386" w="57" h="34"/>
-    <frame x="9" y="386" w="57" h="34"/>
+  <anim type="0" speed="0.1" loop="false"> <!--Spacebar pressed Green-->
+    <frame x="661" y="13" w="156" h="210"/>
+    <frame x="820" y="9" w="183" h="227"/>
   </anim>
-  
+  <anim type="1" speed="0.1" loop="false"> <!--Spacebar pressed Red-->
+    <frame x="661" y="240" w="156" h="210"/>
+    <frame x="820" y="236" w="183" h="227"/>
+  </anim>
+
 </config>
 	
 

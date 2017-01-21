@@ -23,7 +23,9 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, bar_rect.w, bar_rect.h);
 	wind_bar->SetRect(bar_rect); //adjust to final one
 
-	//sprite->LoadAnimations(node);
+	sprite = new Sprite2D();
+	sprite->LoadTexture("Sprites/UIsheet.png");
+	sprite->LoadAnimations(node);
 }
 
 WindOscillatingBar::~WindOscillatingBar()
@@ -36,6 +38,13 @@ void WindOscillatingBar::UpdateBar()
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
+		
+		sprite->SetAnimation(Idle);
+
+		sprite->GetAnim()->Reset();
+	}
+	if (!sprite->GetAnim()->Finished()) {
+		App->render->Blit(sprite->GetTexture(), wind_bar->position.x, wind_bar->position.y, &sprite->GetAnim()->GetCurrentFrameRect(), false);
 	}
 	angle += 0.05;
 
