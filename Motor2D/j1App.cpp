@@ -17,6 +17,7 @@
 #include "j1App.h"
 #include "j1Console.h"
 #include "j1Entities.h"
+#include "j1BackgroundDrawer.h"
 #include "ModulePhysics.h"
 
 // Constructor
@@ -38,6 +39,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	console = new j1Console();
 	physics = new ModulePhysics();
 	entities = new j1Entities();
+	back = new j1BackgroundDrawer();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -52,10 +54,12 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(font);
 	AddModule(physics);
+	AddModule(back);
 	AddModule(entities);
 
 	// scene last
 	AddModule(scene);
+	
 
 	// render last to swap buffer
 	AddModule(render);

@@ -23,6 +23,7 @@
 #include "Cloud.h"
 #include "Grass.h"
 #include "Levels.h"
+#include "j1BackgroundDrawer.h"
 
 #define CAMERA_SCROLL 300
 
@@ -60,6 +61,7 @@ bool FirstScene::Start()
 	// Background
 	pugi::xml_node node = t1->doc.child("ground");
 	ground_rect = { node.attribute("rect_x").as_int(), node.attribute("rect_y").as_int(), node.attribute("rect_w").as_int(), node.attribute("rect_h").as_int()};
+	App->back->back1 = true;
 
 	return true;
 }
@@ -106,6 +108,7 @@ void FirstScene::Draw()
 bool FirstScene::CleanUp()
 {
 	delete wind_bar;
+	App->back->back1 = false;
 	return true;
 }
 

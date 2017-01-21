@@ -10,6 +10,7 @@ class Cloud;
 class WindOscillatingBar;
 class Levels;
 
+struct SDL_Texture;
 
 class FirstScene : public Scene 
 {
