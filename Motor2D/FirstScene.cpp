@@ -40,7 +40,7 @@ bool FirstScene::Start()
 	pugi::xml_document doc; App->LoadXML("test.xml", doc);
 	int value = doc.child("test").attribute("value").as_int();
 
-	t1 = (Tree*)App->entities->CreateEntity(tree, 290, 750);
+	t1 = (Tree*)App->entities->CreateEntity(tree, 291, 750);
 	t1->Set(3);
 	t1->StartGrowing();
 
@@ -49,10 +49,10 @@ bool FirstScene::Start()
 	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 100, 70);
 
 	grass1 = (Grass*)App->entities->CreateEntity(grass, 25, 680);
-	grass2 = (Grass*)App->entities->CreateEntity(grass, 230, 620);
-	grass3 = (Grass*)App->entities->CreateEntity(grass, 450, 650);
+	//grass2 = (Grass*)App->entities->CreateEntity(grass, 230, 670);
+	//grass3 = (Grass*)App->entities->CreateEntity(grass, 450, 650);
 
-	wind_bar = new WindOscillatingBar(175, 200, 200, 20);
+	wind_bar = new WindOscillatingBar(30, 30, 200, 20);
 
 	levels = new Levels(t1);
 	levels->SetLevel(1);
@@ -71,27 +71,23 @@ bool FirstScene::PreUpdate()
 
 bool FirstScene::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
-	{
-		force++;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
-	{
-		force--;
-	}
-	if (counter == 20)
+	// Tree movement
+	if (counter == 15)
 	{
 		t1->WindForceOnTree(wind_force);
 		counter = 0;
 	}
 	counter++;
 
+	// Camera
 	if(t1->center_point_top.y <= CAMERA_SCROLL)
 	App->render->camera.y = -t1->center_point_top.y + CAMERA_SCROLL;
 
+	// Wind Bar
 	wind_bar->UpdateBar();
 	wind_force = wind_bar->wind_power;
 
+	// Levels
 	levels->Update(dt);
 
 	return true;
