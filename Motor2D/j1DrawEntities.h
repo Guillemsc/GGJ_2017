@@ -9,6 +9,7 @@ public:
 	~j1DrawEntities();
 
 	bool Update(float dt);
+	bool PostUpdate();
 };
 
 

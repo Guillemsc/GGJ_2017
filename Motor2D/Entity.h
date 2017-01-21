@@ -17,7 +17,8 @@ enum EntityType
 enum DrawOrder
 {
 	BeforeScene,
-	AfterScene
+	AfterScene,
+	AfterAll
 };
 
 class Entity

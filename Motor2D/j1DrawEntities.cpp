@@ -19,3 +19,12 @@ bool j1DrawEntities::Update(float dt)
 	}
 	return true;
 }
+
+bool j1DrawEntities::PostUpdate()
+{
+	for (p2List_item<Entity*>* entity = App->entities->GetFirstEntity(); entity; entity = entity->next) {
+		if (entity->data->draw_order == AfterAll)
+			entity->data->Draw();
+	}
+	return true;
+}

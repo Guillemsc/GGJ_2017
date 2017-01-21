@@ -6,6 +6,7 @@
 Bird::Bird(iPoint pos):Entity(bird,pos,"bird")
 {
 	info.SetAnimation(Run);
+	draw_order = AfterAll;
 }
 
 Bird::~Bird()
@@ -15,7 +16,9 @@ Bird::~Bird()
 bool Bird::Update(float dt)
 {
 	if(!nested){
-		int pos_y = info.GetPos().y + speed*dt;
+		int pos_y = info.GetPos().y;
+		if(info.GetPos().y<680)
+			 pos_y = info.GetPos().y + speed*dt;
 		int pos_x = info.GetPos().x + App->scene->GetWindForce()*20*dt;
 		info.SetPos(iPoint(pos_x, pos_y));
 	}
@@ -28,6 +31,10 @@ bool Bird::Update(float dt)
 			info.SetPos(bird_pos);
 			nested = true;
 		}
+	}
+	if (info.GetPos().y >= 680){
+		info.SetAnimation(Idle);
+		nested = true;
 	}
 	return true;
 }
