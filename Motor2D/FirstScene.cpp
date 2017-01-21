@@ -130,10 +130,10 @@ bool FirstScene::Update(float dt)
 	}
 	else if (levels->level_ended)
 	{
-		levels->SetLevel(2);
+		/*levels->SetLevel(2);
 		t1->Reset();
 		t1->StartGrowing();
-		t1->speed = 2;
+		t1->speed = 2;*/
 	}
 
 	// Blit ground
