@@ -6,6 +6,7 @@
 
 class Tree;
 class UILabel;
+class UIImage;
 
 struct LevelPoint
 {
@@ -39,6 +40,7 @@ public:
 	int GetCurrentLevelPoint();
 
 	void ClearBirds() const;
+	void ActiveStars() const;
 
 private:
 	void Level1();
@@ -48,6 +50,7 @@ private:
 	void Level5();
 	void Level6();
 
+	void ResetStars();
 public:
 	int current_level = 0;
 	int level_distance = 0;
@@ -75,6 +78,13 @@ private:
 	bool play = true;
 	bool one_time = true;
 	uint end_level_FX = NULL;
+
+	UIImage*	star1 = nullptr;
+	UIImage*	star2 = nullptr;
+	UIImage*	star3 = nullptr;
+
+	SDL_Rect	highlight = NULLRECT;
+	SDL_Rect	standard = NULLRECT;
 
 };
 #endif // !_LEVELS_H_

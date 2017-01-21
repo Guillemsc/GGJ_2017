@@ -207,6 +207,7 @@ bool FirstScene::Update(float dt)
 	if (t1->center_point_top.x < App->render->camera.x || t1->center_point_top.x > App->render->camera.x + App->render->camera.w)
 	{
 		// Stop level
+		levels->ActiveStars();
 		levels->level_ended = true;
 		t1->speed = 0;
 	}
@@ -215,8 +216,7 @@ bool FirstScene::Update(float dt)
 	App->render->Blit(t1->texture, 0, 700, &ground_rect);
 
 	//Event Mangement
-	if (active_events[wind_gust] == true) {
-
+	if (active_events[bird] == true) {
 
 	}
 
