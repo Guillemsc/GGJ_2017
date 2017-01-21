@@ -28,6 +28,7 @@ private:
 	
 	bool play = false;
 
+	uint bar_bouncing_fx = NULL;
 public:
 	float wind_power = 0;	
 	Sprite2D*		sprite;

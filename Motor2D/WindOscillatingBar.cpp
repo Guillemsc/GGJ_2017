@@ -3,6 +3,7 @@
 #include "UIImage.h"
 #include "j1Input.h"
 #include "Sprite2D.h"
+#include "j1Audio.h"
 
 WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 {
@@ -27,6 +28,8 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 	sprite->LoadTexture("Sprites/UIsheet.png");
 	sprite->LoadAnimations(node);
 	
+	bar_bouncing_fx = App->audio->LoadFx("audio/fx/bar_change_direction_FX.wav");
+
 	play = false;
 }
 
@@ -37,6 +40,8 @@ WindOscillatingBar::~WindOscillatingBar()
 void WindOscillatingBar::UpdateBar()
 {
 	wind_bar->position.x = (wind_window->position.w - wind_bar->position.w) / 2 + ((wind_window->position.w - wind_bar->position.w) / 2)*sin(angle);
+
+	if (wind_power == 8 || wind_power == -8) App->audio->PlayFx(bar_bouncing_fx, 0);
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
