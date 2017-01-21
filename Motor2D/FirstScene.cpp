@@ -24,6 +24,8 @@
 #include "Grass.h"
 #include "Levels.h"
 #include "j1BackgroundDrawer.h"
+#include <random>
+#include <iostream>
 
 #define CAMERA_SCROLL 300
 
@@ -91,10 +93,23 @@ bool FirstScene::Update(float dt)
 	// Levels
 	levels->Update(dt);
 
-	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y){
-		clouds.add((Cloud*)App->entities->CreateEntity(cloud, 425, -App->render->camera.y-75));
+	if ((App->render->camera.y % 110) == 0 && App->render->camera.y != prev_cam_y && !gen_cloud){
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> random(0, 20);
+		if(random(gen)<15)
+			gen_cloud = true;
 	}
 	prev_cam_y = App->render->camera.y;
+
+	if (gen_cloud) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> random(0, 600);
+		int pos_x = random(gen);
+		clouds.add((Cloud*)App->entities->CreateEntity(cloud, pos_x, -App->render->camera.y - 75));
+		gen_cloud = false;
+	}
 
 	return true;
 }

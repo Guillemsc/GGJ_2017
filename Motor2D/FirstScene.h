@@ -56,6 +56,7 @@ private:
 	SDL_Rect ground_rect;
 
 	int prev_cam_y;
+	bool gen_cloud = true;
 
 };
 
