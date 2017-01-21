@@ -280,6 +280,24 @@ void Tree::LoadRects()
 		rect_green.h = node.attribute("rect_h").as_int();
 		rects_green.add(rect_green);
 	}
+
+	node = doc.child("config").child("tree1");
+	tree1.x = node.attribute("rect_x").as_int();
+	tree1.y = node.attribute("rect_y").as_int();
+	tree1.w = node.attribute("rect_w").as_int();
+	tree1.h = node.attribute("rect_h").as_int();
+
+	node = doc.child("config").child("tree2");
+	tree2.x = node.attribute("rect_x").as_int();
+	tree2.y = node.attribute("rect_y").as_int();
+	tree2.w = node.attribute("rect_w").as_int();
+	tree2.h = node.attribute("rect_h").as_int();
+
+	node = doc.child("config").child("tree3");
+	tree3.x = node.attribute("rect_x").as_int();
+	tree3.y = node.attribute("rect_y").as_int();
+	tree3.w = node.attribute("rect_w").as_int();
+	tree3.h = node.attribute("rect_h").as_int();
 }
 
 float Tree::abs(float value)

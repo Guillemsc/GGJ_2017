@@ -43,6 +43,7 @@ public:
 	Tree* t1 = nullptr;
 
 	int counter = 0;
+	int counter2 = 0;
 	int force = 0;
 
 	WindOscillatingBar*	wind_bar = nullptr;
@@ -65,6 +66,8 @@ private:
 	bool gen_cloud = true;
 
 	bool active_events[events_num];
+
+	bool move_camera = false;
 
 };
 
