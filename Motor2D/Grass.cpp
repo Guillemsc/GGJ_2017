@@ -6,6 +6,7 @@
 
 Grass::Grass(iPoint pos):Entity(grass,pos,"grass")
 {
+	draw_order = AfterScene;
 }
 
 Grass::~Grass()

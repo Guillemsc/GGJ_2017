@@ -84,9 +84,11 @@
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="j1BackgroundDrawer.cpp" />
     <ClCompile Include="j1Console.cpp" />
+    <ClCompile Include="j1DrawEntities.cpp" />
     <ClCompile Include="j1Entities.cpp" />
     <ClCompile Include="j1FileSystem.cpp" />
     <ClCompile Include="j1Fonts.cpp" />
+    <ClCompile Include="j1GroundDrawer.cpp" />
     <ClCompile Include="j1Gui.cpp" />
     <ClCompile Include="j1Main.cpp" />
     <ClCompile Include="j1App.cpp" />
@@ -120,7 +122,9 @@
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="j1BackgroundDrawer.h" />
     <ClInclude Include="j1Console.h" />
+    <ClInclude Include="j1DrawEntities.h" />
     <ClInclude Include="j1Entities.h" />
+    <ClInclude Include="j1GroundDrawer.h" />
     <ClInclude Include="Levels.h" />
     <ClInclude Include="ModulePhysics.h" />
     <ClInclude Include="p2PQueue.h" />

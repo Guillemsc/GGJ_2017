@@ -36,6 +36,8 @@ public:
 
 	void DeleteEntity(Entity* del_entity);
 
+	p2List_item<Entity*>* GetFirstEntity()const;
+
 private:
 
 private:

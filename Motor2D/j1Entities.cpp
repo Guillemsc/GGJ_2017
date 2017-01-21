@@ -38,7 +38,8 @@ bool j1Entities::Update(float dt)
 
 	for (p2List_item<Entity*>* entity = entities.start; entity; entity = entity->next) {
 		ret = entity->data->Update(dt);
-		ret = entity->data->Draw();
+		if(entity->data->draw_order == BeforeScene)
+			ret = entity->data->Draw();
 		if (!ret) {
 			LOG("Error updating entity: %s", entity->data->GetName());
 			break;
@@ -50,10 +51,6 @@ bool j1Entities::Update(float dt)
 
 bool j1Entities::PostUpdate()
 {
-	for (p2List_item<Entity*>* entity = entities.start; entity; entity = entity->next) 
-	{
-		entity->data->Draw();
-	}
 	return true;
 }
 
@@ -106,4 +103,9 @@ void j1Entities::DeleteEntity(Entity * del_entity)
 			break;
 		}
 	}
+}
+
+p2List_item<Entity*>* j1Entities::GetFirstEntity() const
+{
+	return entities.start;
 }
