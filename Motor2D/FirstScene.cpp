@@ -119,6 +119,9 @@ bool FirstScene::Update(float dt)
 		clouds.add((Cloud*)App->entities->CreateEntity(cloud, pos_x, -App->render->camera.y - 75));
 		gen_cloud = false;
 	}
+	if (levels->level_ended && -App->render->camera.y<0) {
+		App->render->camera.y -= ceil(100 * dt);
+	}
 
 	return true;
 }

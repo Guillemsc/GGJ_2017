@@ -44,7 +44,7 @@ bool Cloud::Draw()
 
 int Cloud::CalculateSpeed(float wind) const
 {
-	return wind*15;
+	return wind*30;
 }
 
 int Cloud::GetTargetFrame(float speed) const
