@@ -10,7 +10,7 @@ Levels::Levels(Tree* _tree) : tree(_tree)
 {
 	//texture = App->tex->Load("")
 	end_label = (UILabel*)App->gui->CreateUIElement(Label, 100, 200, nullptr, 400, 60);
-	end_label->active = true;
+	end_label->active = false;
 }
 
 Levels::~Levels()
