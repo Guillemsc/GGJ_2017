@@ -2,6 +2,7 @@
 #include "UIWindow.h"
 #include "UIImage.h"
 #include "j1Input.h"
+#include "Sprite2D.h"
 
 WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 {
@@ -21,6 +22,8 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 
 	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, bar_rect.w, bar_rect.h);
 	wind_bar->SetRect(bar_rect); //adjust to final one
+
+	sprite->LoadAnimations(node);
 }
 
 WindOscillatingBar::~WindOscillatingBar()
@@ -33,6 +36,7 @@ void WindOscillatingBar::UpdateBar()
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
+		wind_bar->
 	}
 	angle += 0.05;
 

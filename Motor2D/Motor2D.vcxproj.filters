@@ -73,9 +73,6 @@
     <ClCompile Include="Branch.cpp">
       <Filter>Desenvolupament  ========\Entities\Branch</Filter>
     </ClCompile>
-    <ClCompile Include="Flower.cpp">
-      <Filter>Desenvolupament  ========\Entities\Flower</Filter>
-    </ClCompile>
     <ClCompile Include="Tree.cpp">
       <Filter>Desenvolupament  ========\Entities\Tree</Filter>
     </ClCompile>
@@ -234,9 +231,6 @@
     <ClInclude Include="Branch.h">
       <Filter>Desenvolupament  ========\Entities\Branch</Filter>
     </ClInclude>
-    <ClInclude Include="Flower.h">
-      <Filter>Desenvolupament  ========\Entities\Flower</Filter>
-    </ClInclude>
     <ClInclude Include="Tree.h">
       <Filter>Desenvolupament  ========\Entities\Tree</Filter>
     </ClInclude>
@@ -298,9 +292,6 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Entities\Branch">
       <UniqueIdentifier>{454a2bb1-e2b4-42ca-a47b-5eb86f45ec23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Desenvolupament  ========\Entities\Flower">
-      <UniqueIdentifier>{1a394417-5eca-40b7-90c6-53295c5216e7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Desenvolupament  ========\Entities\Tree">
       <UniqueIdentifier>{35c115d5-1399-4de1-9ffc-5e1c827df9b6}</UniqueIdentifier>

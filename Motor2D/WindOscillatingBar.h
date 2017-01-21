@@ -6,6 +6,7 @@
 class UIWindow;
 class UIImage;
 class SDL_Rect;
+class Sprite2D;
 
 class WindOscillatingBar {
 public:
@@ -17,6 +18,7 @@ public:
 private:
 	UIWindow*		wind_window;
 	UIImage*		wind_bar;
+	Sprite2D*		sprite;
 
 	float			angle = 0;
 

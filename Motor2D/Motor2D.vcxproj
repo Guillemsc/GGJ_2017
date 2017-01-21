@@ -79,7 +79,6 @@
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FirstScene.cpp" />
-    <ClCompile Include="Flower.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="j1BackgroundDrawer.cpp" />
@@ -117,7 +116,6 @@
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FirstScene.h" />
-    <ClInclude Include="Flower.h" />
     <ClInclude Include="Grass.h" />
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="j1BackgroundDrawer.h" />
