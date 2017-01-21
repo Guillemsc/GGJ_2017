@@ -54,8 +54,9 @@ bool IntroScene::PreUpdate()
 
 bool IntroScene::Update(float dt)
 {
+	wind_bar->position.x = (wind_window->position.w - 10)/2 + ((wind_window->position.w - 10) /2)*sin(angle);
 	angle += 0.05;
-	wind_bar->position.x = 190*sin(angle);
+
 	return true;
 }
 
