@@ -4,7 +4,7 @@
 <back_shadow_red rect_x = "455" rect_y = "299" rect_w = "105" rect_h = "100"/>
 <ground rect_x = "0" rect_y = "137" rect_w = "700" rect_h = "162"/>
 <tree1 rect_x = "0" rect_y = "583" rect_w = "246" rect_h = "145"/>
-<tree2 rect_x = "0" rect_y = "740" rect_w = "525" rect_h = "182"/>
+<tree2 rect_x = "0" rect_y = "740" rect_w = "525" rect_h = "181"/>
 <tree3 rect_x = "0" rect_y = "921" rect_w = "302" rect_h = "215"/>
 
 <cube1 texture = "Sprites/treechunks.png">
