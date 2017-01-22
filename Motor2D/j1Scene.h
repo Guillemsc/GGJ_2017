@@ -62,20 +62,8 @@ public:
 private:
 	SDL_Texture* debug_tex = nullptr;
 
-	UIImage* banner = nullptr;
-	UILabel* text = nullptr;
-	UILabel* text2 = nullptr;
-	UIButton* button = nullptr;
-	UIButton* button2 = nullptr;
-	UIWindow* window = nullptr;
-	UIInputText* input_text = nullptr;
-	UIScrollBar* horizontal = nullptr;
-	UIScrollBar* vertical = nullptr;
-	UICheckBox* option1 = nullptr;
-	UICheckBox* option2 = nullptr;
-	UICheckBox* multi_option1 = nullptr;
-	UICheckBox* multi_option2 = nullptr;
-	UIWindow* vis = nullptr;
+
+	UICheckBox* music = nullptr;
 	
 };
 

@@ -34,10 +34,15 @@ public:
 
 	void StopMusic();
 
+	void SilenceMusic();
+	void DefaultVolume();
+
 private:
 
 	_Mix_Music*			music = NULL;
 	p2List<Mix_Chunk*>	fx;
+
+	int def_volume = 75;
 };
 
 #endif // __j1AUDIO_H__

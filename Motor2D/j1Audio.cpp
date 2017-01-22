@@ -177,3 +177,15 @@ void j1Audio::StopMusic()
 {
 	Mix_HaltMusic();
 }
+
+void j1Audio::SilenceMusic()
+{
+	Mix_Volume(-1, 0);
+}
+
+void j1Audio::DefaultVolume()
+{
+	Mix_Volume(-1, def_volume);
+}
+
+

@@ -16,7 +16,7 @@ public:
 			Standard();
 		App->render->Blit(App->gui->GetAtlas(), position.x + draw_offset.x, position.y + draw_offset.y, &image_rect, false);
 		if (clicked) {
-			App->render->Blit(App->gui->GetAtlas(), position.x + draw_offset.x + (position.w - GetClickedRect().w) / 2, position.y + draw_offset.y + (position.h - GetClickedRect().h) / 2, &GetClickedRect());
+			App->render->Blit(App->gui->GetAtlas(), position.x + draw_offset.x + (position.w - GetClickedRect().w) / 2, position.y + draw_offset.y + (position.h - GetClickedRect().h) / 2, &GetClickedRect(), false);
 		}
 	}
 

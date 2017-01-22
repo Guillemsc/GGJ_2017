@@ -60,6 +60,12 @@ bool j1Scene::Start()
 	App->console->AddCVar("scene.storm", this, "Activate or desactivate storm event. Max Args: 1. Args: true, false");
 	App->console->AddCVar("scene.against_wind", this, "Activate or desactivate against wind event. Max Args: 1. Args: true, false");
 
+	music = (UICheckBox*)App->gui->CreateUIElement(CheckBox, 650, 3, nullptr, 43, 60);
+	music->SetRects({0,0,43,60}, { 0,0,43,60 }, { 10,10,43,60 });
+	music->AddListener(this);
+
+	App->audio->DefaultVolume();
+
 	return true;
 }
 
@@ -113,7 +119,16 @@ bool j1Scene::CleanUp()
 
 void j1Scene::UIReaction(UIElement * element, int react)
 {
-	current_scene->UIReaction(element, react);
+	if (element == music) {
+		if (react == LeftClick) {
+			if (music->GetIsClicked()) {
+				App->audio->SilenceMusic();
+			}
+			else App->audio->DefaultVolume();
+		}
+	}
+	else
+		current_scene->UIReaction(element, react);
 }
 
 void j1Scene::OnCVar(p2List<p2SString>& tokens)
