@@ -136,7 +136,6 @@ void Tree::CreateNewBranch(p2List_item<TreeCube*>* node)
 		branch = new Branch(iPoint(x, y), name.GetString());
 		branch->info.SetAnimation(Run);
 		Bird* tmp = (Bird*)App->entities->CreateEntity(bird, x+RandomGenerate(-200,200), y - 150);
-		App->scene->AddBird();
 		tmp->SetNest(branch);
 	}
 			break;

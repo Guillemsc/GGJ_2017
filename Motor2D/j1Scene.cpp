@@ -132,19 +132,3 @@ float j1Scene::GetWindForce() const
 {
 	return current_scene->wind_force;
 }
-
-void j1Scene::AddBird()
-{
-	num_birds++;
-}
-
-void j1Scene::AddNested()
-{
-	nested++;
-}
-
-void j1Scene::RestartBirds()
-{
-	num_birds = 0;
-	nested = 0;
-}

@@ -39,7 +39,6 @@ bool Bird::Update(float dt)
 			bird_pos.y -= 45;
 			info.SetPos(bird_pos);
 			nested = true;
-			App->scene->AddNested();
 			App->audio->PlayFx(bird_later_FX);
 			App->scene->first_scene->nested_birds++;
 		}

@@ -51,10 +51,6 @@ public:
 	void ChangeScene(Scene* new_scene);
 
 	float GetWindForce()const;
-
-	void AddBird();
-	void AddNested();
-	void RestartBirds();
 public:
 
 	Scene* current_scene = nullptr;
@@ -63,8 +59,6 @@ public:
 	IntroScene* intro_scene = nullptr;
 	LevelSelect* levelselect_scene = nullptr;
 
-	int num_birds = 0;
-	int nested = 0;
 private:
 	SDL_Texture* debug_tex = nullptr;
 

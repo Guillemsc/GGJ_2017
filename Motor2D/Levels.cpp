@@ -32,14 +32,14 @@ Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rec
 	star3 = (UIImage*)App->gui->CreateUIElement(Image, 400, 180, nullptr, 185, 167);
 	star3->SetRect(standard); star3->active = false;
 
-	birds = (UIImage*)App->gui->CreateUIElement(Image, 400, 300);
+	birds = (UIImage*)App->gui->CreateUIElement(Image, 290, 345);
 	birds->SetRect({841,488,64,54}); birds->active = false;
-	nest_birds = (UIImage*)App->gui->CreateUIElement(Image, 400, 180);
-	nest_birds->SetRect({ 841,488,64,54 }); nest_birds->active = false;
+	nest_birds = (UIImage*)App->gui->CreateUIElement(Image, 290, 445);
+	nest_birds->SetRect({ 841,542,64,54 }); nest_birds->active = false;
 
-	num_birds = (UILabel*)App->gui->CreateUIElement(Label, 400, 100, nullptr, 50,30);
+	num_birds = (UILabel*)App->gui->CreateUIElement(Label, 358, 350, nullptr, 50,30);
 	num_birds->active = false;
-	num_nest_birds = (UILabel*)App->gui->CreateUIElement(Label, 400, 100, nullptr, 50, 30);
+	num_nest_birds = (UILabel*)App->gui->CreateUIElement(Label, 358, 450, nullptr, 50, 30);
 	num_nest_birds->active = false;
 
 	next_level_button = (UIButton*)App->gui->CreateUIElement(Button, 250, 450, nullptr, 202, 157);
@@ -89,19 +89,6 @@ bool Levels::Update(float dt)
 		if (play) {
 			App->audio->PlayFx(end_level_FX);
 			play = false;
-		}
-
-		if (App->scene->num_birds != 0) {
-			int birds_not_nested = App->scene->num_birds - App->scene->nested;
-				while (App->scene->num_birds != 0) {
-					if (App->scene->nested != 0) {
-						App->scene->nested--;
-					}
-					else if (birds_not_nested != 0) {
-						birds_not_nested--;
-					}
-					App->scene->num_birds--;
-				}
 		}
 		
 		if(accomplished_distance != 0)
@@ -224,11 +211,13 @@ void Levels::ActiveStars() const
 	birds->active = true;
 	nest_birds->active = true;
 	p2SString birds_num("= %d", App->scene->first_scene->birds);
-	num_birds->SetText(birds_num.GetString());
+	num_birds->SetText(birds_num.GetString(), {0,0,20,255}, App->font->big);
 	num_birds->active = true;
 	p2SString nest_birds_num("= %d", App->scene->first_scene->nested_birds);
-	num_nest_birds->SetText(nest_birds_num.GetString());
+	num_nest_birds->SetText(nest_birds_num.GetString(), { 0,0,20,255 }, App->font->big);
 	num_nest_birds->active = true;
+	App->scene->first_scene->birds = 0;
+	App->scene->first_scene->nested_birds = 0;
 }
 
 

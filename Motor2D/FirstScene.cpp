@@ -169,8 +169,11 @@ bool FirstScene::Update(float dt)
 		// Change if finished
 		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS)
 		{
+			if (levels->next_level_button->active == false)
+			{
+				levels->ActiveStars();
+			}
 			levels->next_level_button->active = true;
-			levels->ActiveStars();
 			levels->star1->SetRect(levels->highlight);
 		}
 		// Stay if failed
@@ -198,9 +201,6 @@ bool FirstScene::Update(float dt)
 			active_event = false;
 			break;
 		}
-
-		birds = 0;
-		nested_birds = 0;
 
 		wind_bar->wind_power = wind_force = 0;
 	}
@@ -234,6 +234,8 @@ bool FirstScene::Update(float dt)
 			}
 		}
 	}
+
+	LOG("%d %d", birds, nested_birds);
 
 	return true;
 }
