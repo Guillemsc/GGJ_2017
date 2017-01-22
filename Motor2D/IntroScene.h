@@ -42,6 +42,7 @@ private:
 	SDL_Rect ground = NULLRECT;
 
 	UIImage* sabling = nullptr;
+	UIImage* logo = nullptr;
 
 	Grass* grass1 = nullptr;
 	Grass* grass2 = nullptr;

@@ -28,6 +28,11 @@ bool IntroScene::Start()
 	sabling = (UIImage*)App->gui->CreateUIElement(Image, 75, 202);
 	sabling->SetRect({ 0,569,550,578 });
 
+	logo = (UIImage*)App->gui->CreateUIElement(Image, 250, 50);
+	logo->SetRect({ 1060,84,218,85 });
+	logo->AddListener(App->scene);
+	logo->active = false;
+
 	App->back->back2 = true;
 
 	start_button = (UIButton*)App->gui->CreateUIElement(Button, 360, 395,nullptr,221,81);
@@ -105,6 +110,7 @@ bool IntroScene::CleanUp()
 	App->gui->DeleteUIElement(start_button);
 	App->gui->DeleteUIElement(options_button);
 	App->gui->DeleteUIElement(sabling);
+	App->gui->DeleteUIElement(logo);
 	App->entities->DeleteEntity(cloud1);
 	App->entities->DeleteEntity(cloud2);
 	App->entities->DeleteEntity(cloud3);
@@ -126,6 +132,9 @@ void IntroScene::UIReaction(UIElement * element, int react)
 	case LeftClickUp:
 		if (element == start_button) {
 			App->scene->ChangeScene(App->scene->first_scene);
+		}
+		if (element == options_button) {
+			logo->active = !logo->active;
 		}
 		break;
 	case MouseEnter:

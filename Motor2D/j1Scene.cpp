@@ -60,8 +60,8 @@ bool j1Scene::Start()
 	App->console->AddCVar("scene.storm", this, "Activate or desactivate storm event. Max Args: 1. Args: true, false");
 	App->console->AddCVar("scene.against_wind", this, "Activate or desactivate against wind event. Max Args: 1. Args: true, false");
 
-	music = (UICheckBox*)App->gui->CreateUIElement(CheckBox, 650, 3, nullptr, 43, 60);
-	music->SetRects({0,0,43,60}, { 0,0,43,60 }, { 10,10,43,60 });
+	music = (UICheckBox*)App->gui->CreateUIElement(CheckBox, 650, 3, nullptr, 43, 39);
+	music->SetRects({1060,0,43,39}, { 1060,0,43,39 }, { 1072,54,21,22 });
 	music->AddListener(this);
 
 	App->audio->DefaultVolume();
