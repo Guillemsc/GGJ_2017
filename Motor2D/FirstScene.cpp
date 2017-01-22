@@ -254,14 +254,33 @@ void FirstScene::Draw()
 bool FirstScene::CleanUp()
 {
 	delete wind_bar;
-	App->back->back1 = false;                            
+	App->back->back1 = false;                  
+	App->gui->DeleteUIElement(levels->birds);
+	App->gui->DeleteUIElement(levels->num_birds);
+
+	App->gui->DeleteUIElement(levels->nest_birds);
+	App->gui->DeleteUIElement(levels->num_nest_birds);
+	App->gui->DeleteUIElement(levels->next_level_button);
+	App->gui->DeleteUIElement(levels->menu_button);
+	App->gui->DeleteUIElement(levels->retry_button);
+	App->gui->DeleteUIElement(levels->star1);
+	App->gui->DeleteUIElement(levels->star2);
+	App->gui->DeleteUIElement(levels->star3);
+
+	App->entities->DeleteEntity(grass1);
+	App->entities->DeleteEntity(grass2);
+	App->entities->DeleteEntity(grass3);
+	App->entities->DeleteEntity(grass4);
+	App->entities->DeleteEntity(grass5);
+
+	t1->Reset();
 	return true;
 }
 
 void FirstScene::UIReaction(UIElement * element, int react)
 {
 	switch (react) {
-	case LeftClick:
+	case LeftClickUp:
 		if (element == levels->next_level_button) 
 		{
 			if(levels->current_level+1 <= NUMBER_LEVELS)
