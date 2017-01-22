@@ -228,7 +228,8 @@ void Levels::ActiveStars() const
 	num_nest_birds->active = true;
 	App->scene->first_scene->birds = 0;
 	App->scene->first_scene->nested_birds = 0;
-	next_level_button->active = true;
+	if(level_finished)
+		next_level_button->active = true;
 	retry_button->active = true;
 	menu_button->active = true;
 }

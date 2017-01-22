@@ -180,7 +180,8 @@ bool FirstScene::Update(float dt)
 			{
 				levels->ActiveStars();
 			}
-			levels->next_level_button->active = true;
+			if(levels->level_finished)
+				levels->next_level_button->active = true;
 			levels->star1->SetRect(levels->highlight);
 		}
 		// Stay if failed
