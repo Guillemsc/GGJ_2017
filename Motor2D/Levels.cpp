@@ -73,9 +73,7 @@ bool Levels::Update(float dt)
 		tree->speed = 0;
 		level_ended = true;
 		level_finished = true;
-		next_level_button->active = true;
-		star1->active = true;	star2->active = true;	star3->active = true;
-		star1->SetRect(highlight);
+
 		if (play) {
 			App->audio->PlayFx(end_level_FX);
 			play = false;
@@ -213,15 +211,7 @@ void Levels::ActiveStars() const
 	star3->active = true;
 }
 
-void Levels::CanChangeLevel(bool boolean)
-{
-	can_change_level = boolean;
-}
 
-const bool Levels::GetCanChangeLevel() const
-{
-	return can_change_level;
-}
 
 void Levels::Level1()
 {

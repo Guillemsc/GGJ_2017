@@ -23,10 +23,10 @@ IntroScene::~IntroScene()
 
 bool IntroScene::Start()
 {
-	ground = { 0,1120,700,159 };
+	ground = { 0,1172,700,159 };
 
 	sabling = (UIImage*)App->gui->CreateUIElement(Image, 75, 202);
-	sabling->SetRect({ 0,567,550,421 });
+	sabling->SetRect({ 0,569,550,578 });
 
 	App->back->back2 = true;
 

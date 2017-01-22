@@ -159,11 +159,14 @@ bool FirstScene::Update(float dt)
 	}
 	// Level swaper ----------------
 
-	else if (levels->GetCanChangeLevel() && levels->level_ended && (counter2 > TIMER || !levels->level_finished))
+	else if (levels->level_ended && (counter2 > TIMER || !levels->level_finished))
 	{
 		// Change if finished
-		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS){
-			levels->SetLevel(levels->current_level + 1);
+		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS)
+		{
+			levels->next_level_button->active = true;
+			levels->star1->active = true;	levels->star2->active = true;	levels->star3->active = true;
+			levels->star1->SetRect(levels->highlight);
 		}
 		// Stay if failed
 		else
@@ -194,9 +197,6 @@ bool FirstScene::Update(float dt)
 		birds = 0;
 		nested_birds = 0;
 
-		t1->Reset();
-		t1->StartGrowing();
-		t1->speed = 3;
 		wind_bar->wind_power = wind_force = 0;
 	}
 
@@ -254,8 +254,13 @@ void FirstScene::UIReaction(UIElement * element, int react)
 {
 	switch (react) {
 	case LeftClick:
-		if (element = levels->next_level_button) {
-			levels->CanChangeLevel(true);
+		if (element = levels->next_level_button) 
+		{
+			levels->SetLevel(levels->current_level+1);
+
+			t1->Reset();
+			t1->StartGrowing();
+			t1->speed = 3;
 		}
 		break;
 	default:
