@@ -43,12 +43,12 @@ private:
 	float offset = 0;
 
 	j1Timer timer;
-	int random_num;
+	int random_num = 0;
 	bool start_timer = true;
 public:
 
 	float wind_power = 0;	
-	Sprite2D*		sprite;
+	Sprite2D*		sprite = nullptr;
 };
 
 #endif _WINDOSCILLATINGBAR_

@@ -123,6 +123,7 @@ void j1Scene::OnCVar(p2List<p2SString>& tokens)
 
 void j1Scene::ChangeScene(Scene * new_scene)
 {
+	App->gui->focused_element = nullptr;
 	current_scene->CleanUp();
 	current_scene = new_scene;
 	current_scene->Start();
