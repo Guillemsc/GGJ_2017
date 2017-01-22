@@ -256,7 +256,10 @@ void FirstScene::UIReaction(UIElement * element, int react)
 	case LeftClick:
 		if (element = levels->next_level_button) 
 		{
-			levels->SetLevel(levels->current_level+1);
+			if(levels->current_level+1 <= NUMBER_LEVELS)
+				levels->SetLevel(levels->current_level+1);
+			else
+				levels->SetLevel(1);
 
 			t1->Reset();
 			t1->StartGrowing();
