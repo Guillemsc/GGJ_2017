@@ -21,6 +21,7 @@
 #include "FirstScene.h"
 #include "Scene.h"
 #include "IntroScene.h"
+#include "LevelSelect.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -46,10 +47,11 @@ bool j1Scene::Start()
 	//first_scene = new FirstScene();
 	intro_scene = new IntroScene();
 	first_scene = new FirstScene();
+	levelselect_scene = new LevelSelect();
 
 	if (current_scene == nullptr)
 	{
-		current_scene = first_scene;
+		current_scene = levelselect_scene;
 		current_scene->Start();
 	}
 

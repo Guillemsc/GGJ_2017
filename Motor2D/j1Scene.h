@@ -8,6 +8,7 @@ struct SDL_Texture;
 class Scene;
 class FirstScene;
 class IntroScene;
+class LevelSelect;
 
 class UIImage;
 class UILabel;
@@ -60,7 +61,8 @@ public:
 
 	FirstScene* first_scene = nullptr;
 	IntroScene* intro_scene = nullptr;
-	
+	LevelSelect* levelselect_scene = nullptr;
+
 	int num_birds = 0;
 	int nested = 0;
 private:
