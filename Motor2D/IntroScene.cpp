@@ -49,6 +49,8 @@ bool IntroScene::Start()
 	cloud2 = (Cloud*)App->entities->CreateEntity(cloud, 350, 10);
 	cloud3 = (Cloud*)App->entities->CreateEntity(cloud, 500, 125);
 
+	App->render->camera.y = 0;
+
 	return true;
 }
 
