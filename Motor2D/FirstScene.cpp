@@ -174,7 +174,7 @@ bool FirstScene::Update(float dt)
 	else if (levels->level_ended && (counter2 > TIMER || !levels->level_finished))
 	{
 		// Change if finished
-		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS)
+		if(levels->level_finished && levels->current_level)
 		{
 			if (levels->next_level_button->active == false)
 			{
