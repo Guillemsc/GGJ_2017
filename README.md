@@ -11,4 +11,4 @@ Iban Mas:	      	https://github.com/Trodek		        (game designer & programmer)
 Ivan Papiol:     	https://ivotportfolio.tumblr.com  	(artist)
 Simón Stoyanov:  	https://github.com/SimonStoyanov	  (programmer & audio)
 
-![alt tag] https://raw.githubusercontent.com/Guillemsc/GGJ_2017/8373d3e9e75c52381844bba75459e8d94c8da416/Game/Sprites/cloasdghfddghhggfhd.png
+[IMG] https://raw.githubusercontent.com/Guillemsc/GGJ_2017/8373d3e9e75c52381844bba75459e8d94c8da416/Game/Sprites/cloasdghfddghhggfhd.png [IMG]
