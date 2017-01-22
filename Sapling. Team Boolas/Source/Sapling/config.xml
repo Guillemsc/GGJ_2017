@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+	<app framerate_cap="">
+		<title>Sapling</title>
+		<organization>Boolas Studio</organization>
+	</app>
+	<renderer>
+		<vsync value="true" />
+	</renderer>
+	<font>
+		<default_font file="fonts/pixellari/Pixellari.ttf" size="12" />
+	</font>
+	<gui>
+		<atlas file="Sprites/UIsheet.png" />
+	</gui>
+	<window>
+		<resolution width="700" height="825" scale="1" />
+		<fullscreen value="false" />
+		<borderless value="false" />
+		<resizable value="false" />
+		<fullscreen_window value="false" />
+	</window>
+	<file_system>
+		<path>data.zip</path>
+	</file_system>
+	<map>
+		<folder>maps/</folder>
+	</map>
+	<console>
+		<test />
+	</console>
+	<scene>
+		<wind_speed />
+	</scene>
+</config>

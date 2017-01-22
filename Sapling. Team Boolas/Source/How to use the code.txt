@@ -1,0 +1,17 @@
+This project is made with a simple own 2D motor.
+To use it, is required previous expirience with C++ and SDL.
+
+The motor is structured using an App made from diferents modules.
+Through SDL window, render, input and audio are managed. Physics is managed with Box2D.
+The motor supports isometric and orthogonal maps. It has a pathfinding module, an entities manger and 
+a simple GUI sistem. To ease the use of the external files a Virtual file system is included and 
+PugiXML is used to manage XML files for maps, saves and configurations.
+
+The actual project, is more simple and does not need to use all the motor modules (map, pathfinding and physics
+are not used). 
+To create more modules, a base class module is created. Add them to the App module list whom will call them
+automatically. Take in account the order of these modules need to draw. Some basic draw modules are included
+with that version of the motor. The same way, entities and gui have base class defined for improvements or 
+create more elements.
+The scenes have a manager and a base class to create as much as needed. On the project specifically, we use two scenes
+the intro and the level one. Levels are loaded from specific classes created for that.
