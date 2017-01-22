@@ -39,6 +39,8 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 
 WindOscillatingBar::~WindOscillatingBar()
 {
+	App->gui->DeleteUIElement(wind_bar);
+	App->gui->DeleteUIElement(wind_window);
 }
 
 void WindOscillatingBar::UpdateBar()
