@@ -306,6 +306,7 @@ void FirstScene::UIReaction(UIElement * element, int react)
 			t1->Reset();
 			t1->StartGrowing();
 			t1->speed = 3;
+			App->render->camera.y = 0;
 		}
 		if (element == levels->menu_button) {
 			App->scene->ChangeScene(App->scene->intro_scene);
