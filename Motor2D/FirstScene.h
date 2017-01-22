@@ -78,6 +78,8 @@ private:
 	j1Timer event_time;
 	float event_reset_time;
 
+	uint main_music = NULL;
+
 };
 
 #endif

@@ -76,6 +76,9 @@ bool FirstScene::Start()
 
 	event_time.Start();
 
+	main_music = App->audio->LoadFx("audio/music/main_music.wav");
+	App->audio->PlayFx(main_music, -1);
+
 	return true;
 }
 
