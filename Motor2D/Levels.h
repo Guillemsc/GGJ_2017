@@ -76,6 +76,11 @@ public:
 	UIImage*	star2 = nullptr;
 	UIImage*	star3 = nullptr;
 
+	UIImage*	birds = nullptr;
+	UIImage*	nest_birds = nullptr;
+	UILabel*	num_birds = nullptr;
+	UILabel*	num_nest_birds = nullptr;
+
 	SDL_Rect	highlight = NULLRECT;
 	SDL_Rect	standard = NULLRECT;
 private:

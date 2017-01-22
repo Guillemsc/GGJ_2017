@@ -11,6 +11,8 @@
 #include "j1Scene.h"
 #include "UIImage.h"
 #include "UIButton.h"
+#include "UILabel.h"
+#include "FirstScene.h"
 
 Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
@@ -29,6 +31,16 @@ Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rec
 	star2->SetRect(standard); star2->active = false;
 	star3 = (UIImage*)App->gui->CreateUIElement(Image, 400, 180, nullptr, 185, 167);
 	star3->SetRect(standard); star3->active = false;
+
+	birds = (UIImage*)App->gui->CreateUIElement(Image, 400, 300);
+	birds->SetRect({841,488,64,54}); birds->active = false;
+	nest_birds = (UIImage*)App->gui->CreateUIElement(Image, 400, 180);
+	nest_birds->SetRect({ 841,488,64,54 }); nest_birds->active = false;
+
+	num_birds = (UILabel*)App->gui->CreateUIElement(Label, 400, 100, nullptr, 50,30);
+	num_birds->active = false;
+	num_nest_birds = (UILabel*)App->gui->CreateUIElement(Label, 400, 100, nullptr, 50, 30);
+	num_nest_birds->active = false;
 
 	next_level_button = (UIButton*)App->gui->CreateUIElement(Button, 250, 450, nullptr, 202, 157);
 	next_level_button->SetRects({ 639, 488, 202, 157 }, { 639, 488, 202, 157 }, { 639, 488, 202, 157 });
@@ -209,6 +221,14 @@ void Levels::ActiveStars() const
 	star1->active = true;
 	star2->active = true;
 	star3->active = true;
+	birds->active = true;
+	nest_birds->active = true;
+	p2SString birds_num("= %d", App->scene->first_scene->birds);
+	num_birds->SetText(birds_num.GetString());
+	num_birds->active = true;
+	p2SString nest_birds_num("= %d", App->scene->first_scene->nested_birds);
+	num_nest_birds->SetText(nest_birds_num.GetString());
+	num_nest_birds->active = true;
 }
 
 
@@ -454,4 +474,8 @@ void Levels::ResetStars()
 	star1->SetRect(standard); star1->active = false;
 	star2->SetRect(standard); star2->active = false;
 	star3->SetRect(standard); star3->active = false;
+	birds->active = false;
+	nest_birds->active = false;
+	num_birds->active = false;
+	num_nest_birds->active = false;
 }

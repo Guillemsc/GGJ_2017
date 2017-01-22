@@ -51,7 +51,7 @@ bool j1Scene::Start()
 
 	if (current_scene == nullptr)
 	{
-		current_scene = levelselect_scene;
+		current_scene = intro_scene;
 		current_scene->Start();
 	}
 

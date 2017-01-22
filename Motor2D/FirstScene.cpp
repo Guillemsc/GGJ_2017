@@ -170,7 +170,7 @@ bool FirstScene::Update(float dt)
 		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS)
 		{
 			levels->next_level_button->active = true;
-			levels->star1->active = true;	levels->star2->active = true;	levels->star3->active = true;
+			levels->ActiveStars();
 			levels->star1->SetRect(levels->highlight);
 		}
 		// Stay if failed
