@@ -9,7 +9,7 @@
 struct SDL_Texture;
 
 enum AnimTypes {
-	Idle, Run, Shoot, Jump, Hit, Explode
+	Idle, Run, Shoot, Jump, Hit, Explode, Nothing
 };
 
 class Animation {
@@ -17,7 +17,7 @@ public:
 	p2List<SDL_Rect> frames;
 	float speed = 1.0f;
 	bool loop = false;
-	AnimTypes type;
+	AnimTypes type = Nothing;
 
 public:
 	Animation() {	}
