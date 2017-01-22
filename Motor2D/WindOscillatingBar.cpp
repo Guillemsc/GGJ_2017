@@ -64,7 +64,6 @@ void WindOscillatingBar::UpdateBar()
 		start_timer = true;
 	}
 
-
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
 		play = true;
@@ -104,4 +103,10 @@ const void WindOscillatingBar::SetOffset(float _offset)
 const void WindOscillatingBar::ResetOffset() 
 {
 	offset = 0;
+}
+
+const void WindOscillatingBar::SetActive(bool boolean)
+{
+	wind_bar->active = boolean;
+	wind_window->active = boolean;
 }

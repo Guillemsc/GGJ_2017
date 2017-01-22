@@ -7,6 +7,7 @@
 class Tree;
 class UILabel;
 class UIImage;
+class UIButton;
 
 struct LevelPoint
 {
@@ -41,7 +42,8 @@ public:
 
 	void ClearBirds() const;
 	void ActiveStars() const;
-
+	void CanChangeLevel(bool boolean);
+	const bool GetCanChangeLevel() const;
 private:
 	void Level1();
 	void Level2();
@@ -68,6 +70,7 @@ public:
 	SDL_Rect rect = NULLRECT;
 	SDL_Rect rect2 = NULLRECT;
 
+	UIButton*	next_level_button = nullptr;
 private:
 	bool debug = true;
 	p2List<LevelPoint> level_points_list;
@@ -86,5 +89,6 @@ private:
 	SDL_Rect	highlight = NULLRECT;
 	SDL_Rect	standard = NULLRECT;
 
+	bool can_change_level = false;
 };
 #endif // !_LEVELS_H_

@@ -147,6 +147,11 @@ bool FirstScene::Update(float dt)
 		gen_cloud = false;
 	}
 
+	if (levels->level_ended || levels->level_finished) {
+		wind_bar->SetActive(false);
+	}
+	else wind_bar->SetActive(true);
+
 	// Camera moves down
 	if (levels->level_ended && -App->render->camera.y<0 && (counter2 > TIMER || !levels->level_finished )) // wait 3 sec
 	{
@@ -154,7 +159,7 @@ bool FirstScene::Update(float dt)
 	}
 	// Level swaper ----------------
 
-	else if (levels->level_ended && (counter2 > TIMER || !levels->level_finished))
+	else if (levels->GetCanChangeLevel() && levels->level_ended && (counter2 > TIMER || !levels->level_finished))
 	{
 		// Change if finished
 		if(levels->level_finished && levels->current_level + 1 <= NUMBER_LEVELS){
@@ -247,6 +252,15 @@ bool FirstScene::CleanUp()
 
 void FirstScene::UIReaction(UIElement * element, int react)
 {
+	switch (react) {
+	case LeftClick:
+		if (element = levels->next_level_button) {
+			levels->CanChangeLevel(true);
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void FirstScene::OnCommand(p2List<p2SString>& tokens)

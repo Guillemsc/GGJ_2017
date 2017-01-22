@@ -21,6 +21,8 @@ public:
 	const float GetOffset() const;
 	const void SetOffset(float _offset);
 	const void ResetOffset();
+
+	const void SetActive(bool boolean);
 private:
 	UIWindow*		wind_window = nullptr;
 	UIImage*		wind_bar = nullptr;

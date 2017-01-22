@@ -10,6 +10,7 @@
 #include "j1Audio.h"
 #include "j1Scene.h"
 #include "UIImage.h"
+#include "UIButton.h"
 
 Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rect2) : tree(_tree)
 {
@@ -22,12 +23,17 @@ Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rec
 	highlight = { 631, 654, 185, 167 };
 	standard = { 816, 654, 185, 167 };
 
-	star1 = (UIImage*)App->gui->CreateUIElement(Image, 100, 250, nullptr, 185, 167);
+	star1 = (UIImage*)App->gui->CreateUIElement(Image, 100, 180, nullptr, 185, 167);
 	star1->SetRect(standard); star1->active = false;
-	star2 = (UIImage*)App->gui->CreateUIElement(Image, 250, 220, nullptr, 185, 167);
+	star2 = (UIImage*)App->gui->CreateUIElement(Image, 250, 150, nullptr, 185, 167);
 	star2->SetRect(standard); star2->active = false;
-	star3 = (UIImage*)App->gui->CreateUIElement(Image, 400, 250, nullptr, 185, 167);
+	star3 = (UIImage*)App->gui->CreateUIElement(Image, 400, 180, nullptr, 185, 167);
 	star3->SetRect(standard); star3->active = false;
+
+	next_level_button = (UIButton*)App->gui->CreateUIElement(Button, 250, 450, nullptr, 202, 157);
+	next_level_button->SetRects({ 639, 488, 202, 157 }, { 639, 488, 202, 157 }, { 639, 488, 202, 157 });
+	next_level_button->active = false;
+	next_level_button->AddListener(App->scene);
 }
 
 Levels::~Levels()
@@ -67,6 +73,7 @@ bool Levels::Update(float dt)
 		tree->speed = 0;
 		level_ended = true;
 		level_finished = true;
+		next_level_button->active = true;
 		star1->active = true;	star2->active = true;	star3->active = true;
 		star1->SetRect(highlight);
 		if (play) {
@@ -114,6 +121,7 @@ void Levels::SetLevel(int level)
 	level_finished = false;
 	final_percentage = 0.0f;
 	accomplished_distance = 0;
+	next_level_button->active = false;
 	ResetStars();
 
 	switch (level)
@@ -203,6 +211,16 @@ void Levels::ActiveStars() const
 	star1->active = true;
 	star2->active = true;
 	star3->active = true;
+}
+
+void Levels::CanChangeLevel(bool boolean)
+{
+	can_change_level = boolean;
+}
+
+const bool Levels::GetCanChangeLevel() const
+{
+	return can_change_level;
 }
 
 void Levels::Level1()
