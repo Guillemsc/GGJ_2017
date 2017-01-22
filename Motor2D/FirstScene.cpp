@@ -132,8 +132,13 @@ bool FirstScene::Update(float dt)
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> random1(0, 20);
-		if(random1(gen)<15)
+		if(!active_event){
+			if(random1(gen)<15)
+				gen_cloud = true;
+		}
+		else {
 			gen_cloud = true;
+		}
 	}
 	prev_cam_y = App->render->camera.y;
 

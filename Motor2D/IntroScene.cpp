@@ -38,19 +38,10 @@ bool IntroScene::Start()
 	options_button->SetRects({ 0,496,147,64 }, { 1,192,147,64 }, { 0,336,147,64 }); //ajust to final ones
 	options_button->AddListener(App->scene);
 
-	options_window = (UIWindow*)App->gui->CreateUIElement(Window, 175, 200, nullptr, 300, 400);
-	options_window->SetRect({ 20,20,60,30 }); //ajust to final one
-	options_window->active = false;
-
-	music_check = (UICheckBox*)App->gui->CreateUIElement(CheckBox, 75, 150, options_window, 30, 30);
-	music_check->SetRects({ 20,20,60,30 }, { 20,20,60,30 }, { 20,20,60,30 }); //adjust to final ones
-	music_check->AddListener(App->scene);
-	music_check->active = false;
-
 	grass1 = (Grass*)App->entities->CreateEntity(grass, 10, 630);
 	grass2 = (Grass*)App->entities->CreateEntity(grass, 540, 630);
 	grass3 = (Grass*)App->entities->CreateEntity(grass, 70, 680);
-	grass4 = (Grass*)App->entities->CreateEntity(grass, 480, 680);
+	grass4 = (Grass*)App->entities->CreateEntity(grass, 440, 680);
 	grass5 = (Grass*)App->entities->CreateEntity(grass, 40, 720);
 	grass6 = (Grass*)App->entities->CreateEntity(grass, 520, 720);
 	
@@ -111,8 +102,6 @@ bool IntroScene::CleanUp()
 {
 	App->gui->DeleteUIElement(start_button);
 	App->gui->DeleteUIElement(options_button);
-	App->gui->DeleteUIElement(options_window);
-	App->gui->DeleteUIElement(music_check);
 	App->gui->DeleteUIElement(sabling);
 	App->entities->DeleteEntity(cloud1);
 	App->entities->DeleteEntity(cloud2);
@@ -131,41 +120,15 @@ void IntroScene::UIReaction(UIElement * element, int react)
 {
 	switch (react) {
 	case LeftClick:
-		if (element == options_button) {
-			options_button->Clicked();
-			options_window->active = !options_window->active;
-			music_check->active = !music_check->active;
-		}
-		else if (element == music_check) {
-			music_check->Clicked();
-		}
 		break;
 	case LeftClickUp:
-		if (element == options_button) {
-			options_button->Standard();
-		}
-		else if (element == music_check) {
-			music_check->Standard();
-		}
-		else if (element == start_button) {
+		if (element == start_button) {
 			App->scene->ChangeScene(App->scene->first_scene);
 		}
 		break;
 	case MouseEnter:
-		if (element == options_button) {
-			options_button->Highlight();
-		}
-		else if (element == music_check) {
-			music_check->Highlight();
-		}
 		break;
 	case MouseLeave:
-		if (element == options_button) {
-			options_button->Standard();
-		}
-		else if (element == music_check) {
-			music_check->Standard();
-		}
 		break;
 	}
 }

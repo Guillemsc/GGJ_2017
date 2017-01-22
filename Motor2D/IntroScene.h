@@ -43,9 +43,6 @@ private:
 
 	UIImage* sabling = nullptr;
 
-	UIWindow*		options_window = nullptr;
-	UICheckBox*		music_check = nullptr;
-
 	Grass* grass1 = nullptr;
 	Grass* grass2 = nullptr;
 	Grass* grass3 = nullptr;

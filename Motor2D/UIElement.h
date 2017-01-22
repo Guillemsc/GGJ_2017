@@ -38,7 +38,7 @@ public:
 		//check element is inside parent boundaries
 		if (GetPosition().x + position.w > viewport.x + viewport.w) position.x = viewport.w - position.w;
 		if (position.x < 0) position.x = 0;
-		DebugDraw();
+		//DebugDraw();
 		InnerDraw();
 		App->render->ResetViewPort();
 	}
