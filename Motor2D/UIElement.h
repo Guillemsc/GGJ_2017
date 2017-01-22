@@ -106,7 +106,7 @@ public:
 	}
 
 public:
-	SDL_Rect position;
+	SDL_Rect position = NULLRECT;
 	bool can_react = true;
 	bool mouse_over = false;
 	bool can_move = false;
@@ -116,7 +116,7 @@ public:
 	iPoint draw_offset = { 0,0 };
 
 private:
-	UItypes type;
+	UItypes type = Unknow;
 	UIElement* parent = nullptr;
 	int priority = 0;
 	p2List<j1Module*> listeners;

@@ -274,7 +274,7 @@ void FirstScene::UIReaction(UIElement * element, int react)
 			t1->speed = 3;
 		}
 		if (element == levels->retry_button) {
-			levels->SetLevel(levels->current_level + 1);
+			levels->SetLevel(levels->current_level);
 			t1->Reset();
 			t1->StartGrowing();
 			t1->speed = 3;
