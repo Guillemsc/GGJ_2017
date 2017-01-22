@@ -58,8 +58,8 @@ public:
 private:
 	
 private:
-	SDL_Rect standard_rect = { 0,0,0,0 };
-	SDL_Rect highlight_rect = { 0,0,0,0 };
-	SDL_Rect clicked_rect = { 0,0,0,0 };
+	SDL_Rect standard_rect = NULLRECT;
+	SDL_Rect highlight_rect = NULLRECT;
+	SDL_Rect clicked_rect = NULLRECT;
 };
 #endif // !_UIBUTTON_

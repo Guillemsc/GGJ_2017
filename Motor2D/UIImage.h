@@ -36,7 +36,7 @@ public:
 	}
 
 public:
-	SDL_Rect image_rect = { 0,0,0,0 };
+	SDL_Rect image_rect = NULLRECT;
 private:
 	
 private:

@@ -57,13 +57,13 @@ public:
 	}
 
 private:
-	UIImage* bar;
-	UIImage* scroll;
+	UIImage* bar = nullptr;
+	UIImage* scroll = nullptr;
 	int pos_diff = 0;
 
 public:
 
-	UIElement* target;
+	UIElement* target = nullptr;
 };
 
 #endif // !_UISCROLLBAR_

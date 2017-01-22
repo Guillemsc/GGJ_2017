@@ -59,7 +59,7 @@ private:
 
 private:
 
-	SDL_Texture* atlas;
+	SDL_Texture* atlas = nullptr;
 	p2SString atlas_file_name;
 
 	p2List<UIElement*> UIelements;

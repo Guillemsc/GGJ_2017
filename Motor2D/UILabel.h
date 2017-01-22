@@ -40,8 +40,8 @@ public:
 
 public:
 	std::string text = "";
-	SDL_Texture* text_texture;
-	SDL_Rect texture_rect = { 0, 0, 0, 0 };
+	SDL_Texture* text_texture = nullptr;
+	SDL_Rect texture_rect =  NULLRECT;
 	_TTF_Font* font = App->font->default;
 	SDL_Color color = { 255,255,255,255 };
 

@@ -110,7 +110,7 @@ public:
 	}
 
 private:
-	int cursor_position;
+	int cursor_position = 0;
 	std::string default_text;
 	bool used = true;
 };
