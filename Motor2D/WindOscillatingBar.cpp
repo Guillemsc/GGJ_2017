@@ -64,7 +64,7 @@ void WindOscillatingBar::UpdateBar()
 		start_timer = true;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+	if (wind_bar->active && App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		wind_power = 10 * sin(angle);
 		play = true;
 		if ((wind_power >= -10 && wind_power < -8) || (wind_power > 8 && wind_power <= 10)) {
