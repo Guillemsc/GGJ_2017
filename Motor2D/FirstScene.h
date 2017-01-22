@@ -69,7 +69,7 @@ private:
 	int prev_cam_y = 0;
 	bool gen_cloud = true;
 
-	bool active_event = false;;
+	bool active_event = false;
 
 	bool move_camera = false;
 
@@ -79,7 +79,7 @@ private:
 	float event_reset_time;
 
 	uint main_music = NULL;
-
+	bool one_time = true;
 };
 
 #endif

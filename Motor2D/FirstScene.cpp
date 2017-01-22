@@ -76,8 +76,11 @@ bool FirstScene::Start()
 
 	event_time.Start();
 
-	main_music = App->audio->LoadFx("audio/music/main_music.wav");
-	App->audio->PlayFx(main_music, -1);
+	if (one_time) {
+		main_music = App->audio->LoadFx("audio/music/main_music.wav");
+		App->audio->PlayFx(main_music, -1);
+		one_time = false;
+	}
 
 	return true;
 }
@@ -275,6 +278,8 @@ bool FirstScene::CleanUp()
 	App->entities->DeleteEntity(grass5);
 
 	levels->ClearBirds();
+
+	App->audio->StopMusic();
 
 	t1->Reset();
 	return true;

@@ -82,7 +82,7 @@ void WindOscillatingBar::UpdateBar()
 		sprite->GetAnim()->Reset();
 	}
 	
-	if (!sprite->GetAnim()->Finished() && play) {
+	if (wind_bar->active && !sprite->GetAnim()->Finished() && play) {
 		App->render->Blit(sprite->GetTexture(), wind_bar->GetPosition().x - 60, wind_bar->GetPosition().y - 60, &sprite->GetAnim()->GetCurrentFrameRect(), false);
 	}
 	angle += 0.05;
