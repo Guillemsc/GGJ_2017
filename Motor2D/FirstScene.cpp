@@ -236,8 +236,6 @@ bool FirstScene::Update(float dt)
 		}
 	}
 
-	LOG("%d %d", birds, nested_birds);
-
 	return true;
 }
 
@@ -272,6 +270,8 @@ bool FirstScene::CleanUp()
 	App->entities->DeleteEntity(grass3);
 	App->entities->DeleteEntity(grass4);
 	App->entities->DeleteEntity(grass5);
+
+	levels->ClearBirds();
 
 	t1->Reset();
 	return true;

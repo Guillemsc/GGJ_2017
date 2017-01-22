@@ -24,9 +24,11 @@ WindOscillatingBar::WindOscillatingBar(int x, int y, int w, int h)
 
 	wind_window = (UIWindow*)App->gui->CreateUIElement(Window, x, y, nullptr, window_rect.w, window_rect.h);
 	wind_window->SetRect(window_rect); //adjust to final one
+	wind_window->can_react = false;
 
 	wind_bar = (UIImage*)App->gui->CreateUIElement(Image, 0, 0, wind_window, bar_rect.w, bar_rect.h);
 	wind_bar->SetRect(bar_rect); //adjust to final one
+	wind_bar->can_react = false;
 
 	sprite = new Sprite2D();
 	sprite->LoadTexture("Sprites/UIsheet.png");
