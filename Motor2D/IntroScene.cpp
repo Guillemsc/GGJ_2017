@@ -123,6 +123,7 @@ bool IntroScene::CleanUp()
 	App->entities->DeleteEntity(grass4);
 	App->entities->DeleteEntity(grass5);
 	App->entities->DeleteEntity(grass6);
+	App->back->back2 = false;
 	return true;
 }
 
