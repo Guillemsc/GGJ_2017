@@ -42,10 +42,20 @@ Levels::Levels(Tree* _tree, SDL_Texture* _texture, SDL_Rect _rect, SDL_Rect _rec
 	num_nest_birds = (UILabel*)App->gui->CreateUIElement(Label, 358, 450, nullptr, 50, 30);
 	num_nest_birds->active = false;
 
-	next_level_button = (UIButton*)App->gui->CreateUIElement(Button, 250, 450, nullptr, 202, 157);
-	next_level_button->SetRects({ 639, 488, 202, 157 }, { 639, 488, 202, 157 }, { 639, 488, 202, 157 });
+	next_level_button = (UIButton*)App->gui->CreateUIElement(Button, 225, 625, nullptr, 262, 102);
+	next_level_button->SetRects({ 886, 1127, 262, 102 }, { 886, 1335, 262, 102 }, { 886, 1335, 262, 102 });
 	next_level_button->active = false;
 	next_level_button->AddListener(App->scene);
+
+	retry_button = (UIButton*)App->gui->CreateUIElement(Button, 375, 525, nullptr, 261, 102);
+	retry_button->SetRects({ 730, 1025, 261, 102 }, { 730, 1233, 261, 102 }, { 730, 1233, 261, 102 });
+	retry_button->active = false;
+	retry_button->AddListener(App->scene);
+
+	menu_button = (UIButton*)App->gui->CreateUIElement(Button, 75, 525, nullptr, 262, 102);
+	menu_button->SetRects({ 1009, 1025, 262, 102 }, { 1009, 1233, 262, 102 }, { 1009, 1233, 262, 102 });
+	menu_button->active = false;
+	menu_button->AddListener(App->scene);
 }
 
 Levels::~Levels()
@@ -218,6 +228,9 @@ void Levels::ActiveStars() const
 	num_nest_birds->active = true;
 	App->scene->first_scene->birds = 0;
 	App->scene->first_scene->nested_birds = 0;
+	next_level_button->active = true;
+	retry_button->active = true;
+	menu_button->active = true;
 }
 
 
@@ -467,4 +480,7 @@ void Levels::ResetStars()
 	nest_birds->active = false;
 	num_birds->active = false;
 	num_nest_birds->active = false;
+	retry_button->active = false;
+	next_level_button->active = false;
+	menu_button->active = false;
 }

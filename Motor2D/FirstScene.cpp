@@ -26,6 +26,7 @@
 #include "j1BackgroundDrawer.h"
 #include <random>
 #include <iostream>
+#include "IntroScene.h"
 
 #define CAMERA_SCROLL 300
 #define NUMBER_LEVELS 6
@@ -261,7 +262,7 @@ void FirstScene::UIReaction(UIElement * element, int react)
 {
 	switch (react) {
 	case LeftClick:
-		if (element = levels->next_level_button) 
+		if (element == levels->next_level_button) 
 		{
 			if(levels->current_level+1 <= NUMBER_LEVELS)
 				levels->SetLevel(levels->current_level+1);
@@ -271,6 +272,15 @@ void FirstScene::UIReaction(UIElement * element, int react)
 			t1->Reset();
 			t1->StartGrowing();
 			t1->speed = 3;
+		}
+		if (element == levels->retry_button) {
+			levels->SetLevel(levels->current_level + 1);
+			t1->Reset();
+			t1->StartGrowing();
+			t1->speed = 3;
+		}
+		if (element == levels->menu_button) {
+			App->scene->ChangeScene(App->scene->intro_scene);
 		}
 		break;
 	default:

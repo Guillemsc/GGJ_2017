@@ -71,6 +71,8 @@ public:
 	SDL_Rect rect2 = NULLRECT;
 
 	UIButton*	next_level_button = nullptr;
+	UIButton*	retry_button = nullptr;
+	UIButton*	menu_button = nullptr;
 
 	UIImage*	star1 = nullptr;
 	UIImage*	star2 = nullptr;
